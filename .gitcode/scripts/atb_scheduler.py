@@ -154,7 +154,7 @@ def analyze_diff(args):
                 run_all_test = True
                 no_need_run_test = False
                 break
-            elif file.startswith("src/ops/ops_infer") or file.startswith("ops/src/ops_train"):
+            elif file.startswith("src/ops/ops_infer") or file.startswith("src/ops/ops_train"):
                 op = file.split("/")[3].replace('_', '').lower()
                 if op not in ops:
                     ops.add(op)

@@ -157,7 +157,7 @@ def get_op_from_header_file(file_name):
 
 def build_ops_dict():
     op_dict = {}
-    path0 = [f"{os.getcwd()}/src/ops_infer", f"{os.getcwd()}/src/ops_train"]
+    path0 = [f"{os.getcwd()}/src/ops/ops_train", f"{os.getcwd()}/src/ops_infer", f"{os.getcwd()}/src/ops_train"]
     for path in path0:
         if os.path.exists(path) and os.path.isdir(path):
             for file in os.listdir(path):
@@ -183,7 +183,7 @@ def build_ops_dict():
                     op_dict[key] = file.split('.')[0]
     op_dict["mla"] = "1"
 
-    paths3 = [f"{os.getcwd()}/src/ops/ops_infer", f"{os.getcwd()}/ops/src/ops_train"]
+    paths3 = [f"{os.getcwd()}/src/ops/ops_infer", f"{os.getcwd()}/src/ops/ops_train"]
     for path in paths3:
         if os.path.exists(path) and os.path.isdir(path):
             for file in os.listdir(path):
