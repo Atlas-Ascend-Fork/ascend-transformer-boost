@@ -46,6 +46,30 @@ void SliceAclnnRunner::CleanUp()
             ATB_LOG(ERROR) << GetLogPrefix() << "destroy out_->tensor failed with return value: " << ret;
         out_ = nullptr;
     }
+    if (stepsArray_ != nullptr) {
+        ret = aclDestroyIntArray(stepsArray_);
+        if (ret != ACL_SUCCESS)
+            ATB_LOG(ERROR) << GetLogPrefix() << "destroy aclIntArray steps failed with return value: " << ret;
+        stepsArray_ = nullptr;
+    }
+    if (axesArray_ != nullptr) {
+        ret = aclDestroyIntArray(axesArray_);
+        if (ret != ACL_SUCCESS)
+            ATB_LOG(ERROR) << GetLogPrefix() << "destroy aclIntArray axes failed with return value: " << ret;
+        axesArray_ = nullptr;
+    }
+    if (startsArray_ != nullptr) {
+        ret = aclDestroyIntArray(startsArray_);
+        if (ret != ACL_SUCCESS)
+            ATB_LOG(ERROR) << GetLogPrefix() << "destroy aclIntArray starts failed with return value: " << ret;
+        startsArray_ = nullptr;
+    }
+    if (endsArray_ != nullptr) {
+        ret = aclDestroyIntArray(endsArray_);
+        if (ret != ACL_SUCCESS)
+            ATB_LOG(ERROR) << GetLogPrefix() << "destroy aclIntArray ends failed with return value: " << ret;
+        endsArray_ = nullptr;
+    }
 }
 
 SliceAclnnRunner::~SliceAclnnRunner()
@@ -243,7 +267,7 @@ aclnnStatus SliceAclnnRunner::SetAclNNWorkspaceExecutor()
             ATB_LOG(ERROR) << GetLogPrefix() << "destroy aclIntArray ends failed!";
             return ret;
         }
-        startsArray_ = nullptr;
+        endsArray_ = nullptr;
     }
     stepsArray_ = aclCreateIntArray(steps, dimNum);
     axesArray_ = aclCreateIntArray(axes, dimNum);
