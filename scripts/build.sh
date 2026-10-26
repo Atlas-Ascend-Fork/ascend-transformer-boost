@@ -869,7 +869,8 @@ function fn_main()
             fn_make_run_package
             ;;
         "testframework")
-            COMPILE_OPTIONS="${COMPILE_OPTIONS} -DBUILD_TEST_FRAMEWORK=ON"
+            COMPILE_OPTIONS="${COMPILE_OPTIONS} -DBUILD_TEST_FRAMEWORK=ON -DUSE_UNIT_TEST=ON -DUSE_KERNEL_UNIT_TEST=ON"
+            fn_build_3rdparty_for_test
             fn_build
             generate_atb_version_info
             pack_testframework
