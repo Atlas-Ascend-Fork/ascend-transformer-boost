@@ -102,6 +102,7 @@ Status IfOperation::Setup(const VariantPack &variantPack, uint64_t &workspaceSiz
     Status st = GetOperationFromCondition(opSelected_);
     if (st != NO_ERROR) {
         ATB_LOG(ERROR) << GetLogPrefix() << "Failed to select operation based on condition!";
+        return st;
     }
     ATB_LOG(INFO) << GetLogPrefix() << "Calling Setup...";
     return opSelected_->Setup(variantPack, workspaceSize, context);
