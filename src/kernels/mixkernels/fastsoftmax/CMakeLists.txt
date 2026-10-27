@@ -8,7 +8,6 @@
 set(fastsoftmax_srcs
     ${CMAKE_CURRENT_LIST_DIR}/fastsoftmax_operation.cpp
     ${CMAKE_CURRENT_LIST_DIR}/fastsoftmax_kernel.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/fastsoftmax_operation.cpp
     ${CMAKE_CURRENT_LIST_DIR}/tiling/fastsoftmax_tiling.cpp
 )
 
