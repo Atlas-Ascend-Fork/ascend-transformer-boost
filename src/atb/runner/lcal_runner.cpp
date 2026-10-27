@@ -13,7 +13,9 @@
 #include <atb/utils/log.h>
 #include <acl/acl.h>
 #include "atb/utils/config.h"
+#include "atb/utils/comm_pool.h"
 #include "atb/utils/common_utils.h"
+#include "atb/utils/singleton.h"
 #include "atb/utils/operation_register.h"
 
 namespace atb {
@@ -38,11 +40,12 @@ Lcal::LcalComm *LcalRunner::GetLcalComm()
 
 void LcalRunner::InitLcalComm()
 {
-    lcalComm_ = CreateLcalComm();
+    lcalComm_ = GetSingleton<CommPool<Lcal::LcalComm>>().GetComm(std::to_string(rank_) + "_" + commDomain_,
+                                                                 std::bind(&LcalRunner::CreateLcalComm, this));
     if (lcalComm_) {
-        ATB_LOG(INFO) << GetLogPrefix() << "create lcal comm success, rank : " << rank_;
+        ATB_LOG(INFO) << GetLogPrefix() << "get lcal comm from comm pool success, rank : " << rank_;
     } else {
-        ATB_LOG(ERROR) << GetLogPrefix() << "create lcal comm failed, rank : " << rank_;
+        ATB_LOG(ERROR) << GetLogPrefix() << "get lcal comm from comm pool failed, rank : " << rank_;
     }
 }
 
@@ -117,11 +120,7 @@ std::shared_ptr<Lcal::LcalComm> LcalRunner::CreateLcalComm()
         ATB_LOG(ERROR) << GetLogPrefix() << "init LcalComm failed, lcalErrorCode : " << lcalErrorCode_;
         return std::shared_ptr<Lcal::LcalComm>();
     }
-    return std::shared_ptr<Lcal::LcalComm>(static_cast<Lcal::LcalComm *>(comm), [](Lcal::LcalComm *ptr) {
-        if (ptr != nullptr) {
-            delete ptr;
-        }
-    });
+    return std::shared_ptr<Lcal::LcalComm>(static_cast<Lcal::LcalComm *>(comm));
 }
 
 Status LcalRunner::SetupImpl(RunnerVariantPack &runnerVariantPack)
