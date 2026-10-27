@@ -153,7 +153,6 @@ if("${PACKAGE_COMPILE}" STREQUAL "ON" AND NOT "${LOCAL_RELEASE_COMPILE}" STREQUA
         ${TBE_TILING_DIR}/runtime/trans_data_positive_source_tc_1011.cc
         ${CANNDEV_DIR}/conversion/transpose/op_host/transpose_tiling.cpp
         ${CANNDEV_DIR}/conversion/view_copy/op_host/view_copy_tiling.cpp
-        ${TBE_TILING_DIR}/runtime/runtime2_util.cc
         ${TBE_TILING_DIR}/../fusion_pass/common/fp16_t.cc
         ${PROJECT_SOURCE_DIR}/3rdparty/canndev/ops/common/src/op_util.cc
         ${PROJECT_SOURCE_DIR}/3rdparty/canndev/ops/common/src/getcdim.cc
@@ -292,7 +291,6 @@ else()
         ${TBE_TILING_DIR}/runtime/view_copy.cc
         ${TBE_TILING_DIR}/runtime/view_copy_tiling.cc
         ${TBE_TILING_DIR}/runtime/scatter_elements_v2_tiling.cc
-        ${TBE_TILING_DIR}/runtime/runtime2_util.cc
         ${TBE_TILING_DIR}/../fusion_pass/common/fp16_t.cc
         ${PROJECT_SOURCE_DIR}/3rdparty/canndev/ops/common/src/op_util.cc
         ${PROJECT_SOURCE_DIR}/3rdparty/canndev/ops/common/src/getcdim.cc
@@ -381,7 +379,6 @@ if("${PACKAGE_COMPILE}" STREQUAL "ON" AND NOT "${LOCAL_RELEASE_COMPILE}" STREQUA
         ${DEVKIT_DIR}/impl/adv_api/tiling/pad/pad_tiling_impl.cpp
         ${DEVKIT_DIR}/impl/adv_api/tiling/transpose/confusion_transpose_tiling_impl.cpp
         ${DEVKIT_DIR}/impl/adv_api/tiling/pad/broadcast_tiling.cpp
-        ${DEVKIT_DIR}/impl/adv_api/tiling/pad/broadcast_tiling.cpp
         ${DEVKIT_DIR}/impl/adv_api/tiling/math/xor_tiling.cpp
         ${DEVKIT_DIR}/impl/adv_api/tiling/math/cumsum_tiling.cpp
         ${DEVKIT_DIR}/impl/adv_api/tiling/reduce/mean_tiling.cpp
@@ -453,7 +450,6 @@ else()
         ${TILING_API_SRC_DIR}/normalization/welfordfinalize/welfordfinalize_tiling_impl.cpp
         ${TILING_API_SRC_DIR}/pad/pad/pad_tiling_impl.cpp
         ${TILING_API_SRC_DIR}/transpose/confusion_transpose/confusion_transpose_tiling_impl.cpp
-        ${TILING_API_SRC_DIR}/pad/broadcast/broadcast_tiling.cpp
         ${TILING_API_SRC_DIR}/pad/broadcast/broadcast_tiling.cpp
         ${TILING_API_SRC_DIR}/math/xor/xor_tiling.cpp
         ${TILING_API_SRC_DIR}/math/cumsum/cumsum_tiling.cpp
