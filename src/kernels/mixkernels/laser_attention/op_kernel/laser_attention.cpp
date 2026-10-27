@@ -98,7 +98,8 @@ laser_attention(__gm__ uint8_t *__restrict__ ffts_addr, __gm__ uint8_t *__restri
     uint32_t col_size = sparseMode ? windowLen : baseS2;
     uint32_t score_size = coreGroupNum * (col_size + 128) * 128 * 2 * 4;
     uint32_t N2 = (headNum + headGroupSize - 1) / headGroupSize;
-    uint32_t q_size = batch * headNum * baseS1 * headDim * 2;
+    uint64_t q_size = static_cast<uint64_t>(batch) * static_cast<uint64_t>(headNum) * static_cast<uint64_t>(baseS1) *
+                      static_cast<uint64_t>(headDim) * 2;
     uint32_t kv_size = batch * N2 * baseS2 * 256 * 2;
 
     __gm__ uint8_t *__restrict__ gmq_out = (__gm__ uint8_t *__restrict__)(score_gm + score_size);
