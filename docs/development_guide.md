@@ -10,9 +10,9 @@
 * ATB operator development, on the other hand, focuses on implementing new operators based on the existing operator library, avoiding duplicate work. However, it requires integrating the operators into the ATB and writing the external interfaces for the ATB operators.
 
 ### ATB Operator Development Process
-<!--
-![image](images/development-process.png)
--->
+
+![image](images/开发流程.png)
+
 (1) Environment Setup
 
 - For CANN software installation, check [this guide](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/850alpha001/opdevg/Ascendcopdevg/atlas_ascendc_10_0002.html) (you can switch to the latest version in the top-left corner; the same applies below).
@@ -348,9 +348,11 @@ Status FastSoftMaxTiling(const LaunchParam &launchParam, KernelInfo &kernelInfo)
 
 #### Process Details
 
-<!--![image](images/tiling-process.png)-->
+![image](images/tiling开发流程.png)
+
 Tiling policies relate to kernel implementation. Tiling guides the memory allocation and partitioning of the kernel. Information is passed between tiling and the kernel via TilingData.
-<!--![image-viewer](images/relationship-between-tiling-and-kernel-development.png)-->
+
+![image-viewer](images/tiling开发和kernel的关系.png)
 
 ### Kernel Development
 
@@ -452,7 +454,8 @@ REG_KERNEL_BASE(FastSoftMaxKernel);
 
 #### Process Details
 
-<!--![image](images/kernel-development-process.png)-->
+![image](images/kernel流程详解.png)
+
 For details about how to write the kernel function, see [Kernel Functions](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/opdevg/Ascendcopdevg/atlas_ascendc_10_0014.html#ZH-CN_TOPIC_0000002370175061__zh-cn_topic_0000001447989210_section1915102519220).
 
 ### ATB Operator Integration

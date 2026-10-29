@@ -10,9 +10,9 @@ English | [简体中文](./README.md)
 The Ascend Transformer Boost (ATB for short) is an efficient and reliable acceleration library designed for Transformer model training and inference based on Huawei Ascend AI processors. For details on its working mechanisms, see [ATB Acceleration Mechanisms](docs/ATB_mechanisms.md).
 
 ### Software Architecture
-<!--
-![Architecture](docs/images/architecture.png)
--->
+
+![Architecture](docs/images/架构图.png)
+
 The preceding figure shows the ATB architecture. Its interface functions are divided into three parts:
 
 - Provides optimized fused operators (operations) so that you can use corresponding operators to complete desired computations as required.
@@ -77,7 +77,7 @@ This section provides example commands for quickly installing the CANN software.
 #### Preparations
 
 For both online and offline installation, ensure that the Python environment and pip3 are available. Currently, CANN supports Python 3.7.x to 3.11.4.
-For offline installation, click the [Download Link]](https://www.hiascend.com/developer/download/community/result?module=cann) to download the CANN software package and upload it to any path on the installation environment.
+For offline installation, click the [Download Link](https://www.hiascend.com/developer/download/community/result?module=cann) to download the CANN software package and upload it to any path on the installation environment.
 
 #### Installing CANN
 
@@ -121,14 +121,14 @@ You can refer to the [Ascend documentation](https://www.hiascend.com/document) >
 
 ### ATB Installation and Deployment Dependencies
 
-Before building the ATB, refer to [ATB Package Installation and Deployment](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/850alpha001/acce/ascendtb/ascendtb_0034.html) to check the version requirements for dependencies and proceed to install and deploy dependencies.
+Before building the ATB, refer to [ATB Package Installation and Deployment](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/index/index.html) to check the version requirements for dependencies and proceed to install and deploy dependencies.
 
 ### Tool Version Requirements and Installation
 
 After installing CANN, you can install some tools to facilitate subsequent development. For details, see the following:
 
-* [CANN Dependencies](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/850alpha001/softwareinst/instg/instg_0045.html?Mode=PmIns&InstallType=local&OS=Debian&Software=cannToolKit)
-* [Post-Installation Operations for CANN](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/850alpha001/softwareinst/instg/instg_0094.html?Mode=PmIns&InstallType=local&OS=Debian&Software=cannToolKit)
+* [CANN Dependencies](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/index/index.html)
+* [Post-Installation Operations for CANN](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/index/index.html)
 
 ## 3. Quick Start
 
@@ -167,7 +167,7 @@ The sample code in this section demonstrates how to call operators using Python 
 
 #### Python
 
-Before running Python code, you need to import the ATB Python API module torch_atb. The operation of this plugin depends on PyTorch and torch_npu. For details about the version requirements and installation guide, see [ATB Package Installation and Deployment](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/850alpha001/acce/ascendtb/ascendtb_0034.html).
+Before running Python code, you need to import the ATB Python API module torch_atb. The operation of this plugin depends on PyTorch and torch_npu. For details about the version requirements and installation guide, see [ATB Package Installation and Deployment](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/index/index.html).
 After installing PyTorch and torch_npu, you need to manually install torch_atb. There are two installation methods:
 
 - Run the `./Ascend-cann-nnal_${version_info}_linux-$(arch).run --install --torch_atb` command.
@@ -206,7 +206,7 @@ result=outputs[0].cpu().numpy()
 print(result)
 ```
 
-For code writing guidance, refer to [Operator Usage Guide (ATB Python API)](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/850alpha001/acce/ascendtb/ascendtb_0077.html).
+For code writing guidance, refer to [Operator Usage Guide (ATB Python API)](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/index/index.html).
 
 #### C++
 
@@ -269,7 +269,7 @@ A success message appears as shown below:
 faupdate demo success!
 ```
 
-For code writing guidance, refer to [Single-Operator](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/850alpha001/acce/ascendtb/ascendtb_0046.html).
+For code writing guidance, refer to [Single-Operator](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/index/index.html).
 
 #### Sample Security Statement
 
@@ -282,7 +282,7 @@ ATB does not recommend that you directly use the sample as the service code, and
 - ATB logs:
   [Logs and Debugging](https://gitcode.com/cann/ascend-transformer-boost/blob/master/docs/%E6%97%A5%E5%BF%97%E4%B8%8E%E8%B0%83%E8%AF%95.md)
 - ATB logs have partially adapted to CANN logs. Details about environment variables:
-  [CANN Community Edition Documentation/Environment Variables](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/83RC1alpha002/maintenref/envvar/envref_07_0119.html)
+  [CANN Community Edition Documentation/Environment Variables](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/index/index.html)
 
 ## 4. Custom Operator Development
 
@@ -307,11 +307,11 @@ For details, see [Contributing](docs/contributing.md).
 - [Development Guide](docs/development_guide.md): Using a fused operator as an example, this document details the ATB operator development process and how to perform functional, precision, and performance testing on operators.
 - [Contributing](docs/contributing.md): Describes how to contribute code.
 - [Logs and Debugging](docs/logging_and_debugging.md): Introduces ATB's log-related environment variables and debugging methods.
-- [API Reference](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/850alpha001/API/ascendtbapi/ascendtb_01_0098.html): Lists the ATB APIs and terms.
+- [API Reference](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/index/index.html): Lists the ATB APIs and terms.
 - [FAQ](docs/faq.md): Presents common issues and solutions during ATB build, installation, and use.
 - [Issues](https://gitcode.com/cann/ascend-transformer-boost/issues): Submit issues found.
 
 ## 7. References
 
-[CANN Community Edition Documentation](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/850alpha001/index/index.html)
-[ATB Community Edition Documentation](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/850alpha001/acce/ascendtb/ascendtb_0001.html)
+[CANN Community Edition Documentation](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/index/index.html)
+[ATB Community Edition Documentation](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/index/index.html)

@@ -96,4 +96,4 @@ src/kernels/kernels/{subpath}/
 
 - [推理算子](../../ops/ops_infer/AGENTS.md)
 - [训练算子](../../ops/ops_train/AGENTS.md)
-- [知识库主索引](../../.agent/knowledge/README.md)
+- [知识库主索引](../../../.agent/knowledge/README.md)

@@ -19,17 +19,17 @@ The preceding figure shows examples of the two types of performance bottlenecks.
 ### Operator Dispatch Process
 
 The dispatch process of a single operator can be simplified as follows:
-<!--
-<img src="./images/principle-2.png" alt="Operator dispatch process" style="width: 600; height: auto;">
--->
+
+<img src="./images/原理2.png" alt="Operator dispatch process" style="width: 600; height: auto;">
+
 1. Validity Check
 
     Check whether the operator inputs, outputs, and parameters meet the operator requirements to prevent errors caused by incorrect parameters submitted to the device.
 
 2. Output Shape Inference (Infer Shape): Infer the output shape and data type from the input shape and data type of the operator.
-<!--
-    <img src="./images/principle-3.png" alt="infer-shape-sample" style="width: 600; height:auto;">
--->
+
+    <img src="./images/原理3.png" alt="infer-shape-sample" style="width: 600; height:auto;">
+
     For example, for a simple Matmul operator, if the shape of the left matrix is `M * K` and the shape of the right matrix is `K * N`, the shape of the output matrix can be inferred as `M * N`.
 
 3. Tiling
@@ -37,9 +37,9 @@ The dispatch process of a single operator can be simplified as follows:
     In most cases, a single AI Core can only process a limited amount of data at a time. The operator's input data cannot be fully loaded at once to complete the computation. The input must be partitioned into multiple blocks, and the computation is completed block by block. This process is called tiling, and the algorithm for partitioning the data is called the tiling algorithm or tiling policy.
 
     For complex operators, each kernel implementation may have its own tiling algorithm: it determines how to partition data during kernel execution based on the input/output tensor shapes and other information. The result of this computation is typically stored in a custom tiling data structure.
-<!--
-    <img src="./images/principle-4.png" alt="Tiling sample" style="width: 600; height:auto;">
--->
+
+    <img src="./images/原理4.png" alt="Tiling sample" style="width: 600; height:auto;">
+
     The preceding figure shows a tiling policy for matrix multiplication (Matmul):
 
     - First, perform multi-core tiling on M, K, and N dimensions based on the current number of cores to obtain the shape sizes within a single core, namely, singleCoreM, singleCoreK, and singleCoreN.
@@ -64,9 +64,9 @@ The dispatch process of a single operator can be simplified as follows:
 4. Obtaining Workspace Size
 
     Operators sometimes require additional HBM for data exchange or caching. This space is called the operator's workspace. It needs to be allocated before the operator actually executes.
-<!--
-    <img src="./images/principle-5.png" alt="Workspace sample" style="width: 600; height:auto;">
--->
+
+    <img src="./images/原理5.png" alt="Workspace sample" style="width: 600; height:auto;">
+
     In the preceding sample, matrix multiplication is performed first, followed by a Reduce operation. A workspace is required to temporarily store the result of the matrix multiplication.
 
 5. Workspace Allocation
@@ -76,15 +76,15 @@ The dispatch process of a single operator can be simplified as follows:
 6. Operator Dispatch
 
     Package the previously prepared input/output tensor addresses, tiling information, workspace address memory space, and other parameters into an argument list. Call the Launch Kernel interface to notify the device to execute the kernel according to the above parameters.
-<!--
-    <img src="./images/principle-6.png" alt="LaunchKernel sample" style="width: 600; height:auto;">
--->
+
+    <img src="./images/原理6.png" alt="LaunchKernel sample" style="width: 600; height:auto;">
+
 ## ATB Mechanisms
 
 As models become increasingly complex with more and more operators, the aforementioned Host Bound gradually becomes apparent. To address this issue, ATB has implemented targeted optimizations. It provides the following features:
-<!--
-<img src="./images/principle-7.png" alt="ATB architecture" style="width: 500; height:auto;">
--->
+
+<img src="./images/原理7.png" alt="ATB architecture" style="width: 500; height:auto;">
+
 1. Customized fused operators: Commonly used operators for Transformer structures are available, such as PageAttention and Linear. Operators provided by the ATB are typically carefully designed fused operators for popular models, offering high performance.
 
 2. Lightweight graph building: You can build graphs using the above operators or third-party operators, and then operating on the graph as if it were a single operator. These are called graph operators below. Graph operators can be easily reused across different models and different layers.
@@ -127,19 +127,19 @@ atb::Status CreateLlamaMlpOperationByGraphOpBuilder(const LlamaMlpParamGb &param
 ```
 
 The preceding code builds a graph operator consisting of four operators. The following figure shows the logic view.
-<!--
- <img src="./images/principle-8.png" alt="Graph building sample" style="width: 400; height:auto;">
--->
+
+ <img src="./images/原理8.png" alt="Graph building sample" style="width: 400; height:auto;">
+
 Internally, ATB uses two Vector containers to store operator nodes and operator inputs/outputs, respectively.
-<!--
-<img src="./images/principle-9.png" alt="Internal implementation of a graph" style="width: 600; height:auto;">
--->
+
+<img src="./images/原理9.png" alt="Internal implementation of a graph" style="width: 600; height:auto;">
+
 ### Graph Operator Setup and Execute Processes
 
 Since graph operators in ATB are merely combinations of single operators and do not involve kernel fusion, the Setup and Execute processes for graph operators are similar to those for single operators. The only difference is that workspace optimization is performed during the Setup stage. The Setup and Execute processes are shown below:
-<!--
- <img src="./images/principle-10.png" alt="Graph operator Setup and Execute processes" style="width: 600; height:auto;">
--->
+
+ <img src="./images/原理10.png" alt="Graph operator Setup and Execute processes" style="width: 600; height:auto;">
+
 ### Runtime Optimizations
 
 1. Setup Reuse and Cache Optimization
@@ -151,9 +151,9 @@ Since graph operators in ATB are merely combinations of single operators and do 
     - Each operator execution context stores the tensor information, tiling information, and workspace size information from the previous execution. If the shape of a subsequent execution is exactly the same as the previous one, the context can be directly reused, skipping the entire Setup stage.
 
     The preceding two optimizations apply to both graph operators and single operators.
-<!--
-    <img src="./images/principle-11.png" alt="Tiling cache" style="width: 600; height:auto;">
--->
+
+    <img src="./images/原理11.png" alt="Tiling cache" style="width: 600; height:auto;">
+
 2. HBM Optimization
 
     ATB reuses HBM as much as possible during the graph operator Setup stage, making the workspace size of the entire graph operator smaller than the sum of the workspace sizes of its internal single operators. Specifically:
@@ -162,20 +162,19 @@ Since graph operators in ATB are merely combinations of single operators and do 
 
     - Intermediate tensors inside a graph operator do not need to be retained until the graph operator finishes executing. As soon as the last single operator that uses an intermediate tensor has finished executing, the space can be freed for other tensors.
 
-   <!-- <img src="./images/principle-12.png" alt="HBM optimization" style="width: 600; height:auto;">-->
+    <img src="./images/原理12.png" alt="HBM optimization" style="width: 600; height:auto;">
 
 3. Dispatch Optimization
 
     Dispatch before optimization: Operators are set up and executed one by one, which can easily create bubbles on the NPU.
-<!--
-    <img src="./images/principle-13.png" alt="Dispatching common operators" style="width: 600; height:auto;">
--->
+
+    <img src="./images/原理13.png" alt="Dispatching common operators" style="width: 600; height:auto;">
+
     Basic optimization: ATB performs batch operator Setup and task dispatch for graph operators, effectively reducing NPU bubbles. This optimization is automatically implemented in graph mode and requires no special user action.
-<!--
-    <img src="./images/principle-14.png" alt="Dispatching ATB graph operators" style="width: 600; height:auto;">
--->
+
+    <img src="./images/原理14.png" alt="Dispatching ATB graph operators" style="width: 600; height:auto;">
+
     Dual-thread dispatch optimization (recommended): Use two threads to perform batch operator Setup and batch task dispatch simultaneously, reducing both host execution time and NPU bubbles.
     In this case, you need to create two threads, with one handling Setup and the other handling Execute.
-<!--
-    <img src="./images/principle-15.png" alt="Multi-thread graph operator dispatch optimization" style="width: 600; height:auto;">
--->
+
+    <img src="./images/原理15.png" alt="Multi-thread graph operator dispatch optimization" style="width: 600; height:auto;">

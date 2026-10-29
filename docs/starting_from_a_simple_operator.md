@@ -7,9 +7,9 @@ You can choose to develop new operators in the `ops_customize` directory. This a
 ## ATB Operator Development Deliverables
 
 The following figure shows the ATB operator development process:
-<!--
-![Operator development process](images/development-process.png)
--->
+
+![Operator development process](images/开发流程.png)
+
 ### Operator Functionality
 
 Two input tensors are added along a specified dimension to produce one output tensor.

@@ -79,4 +79,4 @@ src/ops/ops_infer/{op_name}/
 
 - [训练算子](../ops_train/AGENTS.md)
 - [Kernel 模块](../../kernels/kernels/AGENTS.md)
-- [知识库主索引](../../.agent/knowledge/README.md)
+- [知识库主索引](../../../.agent/knowledge/README.md)
