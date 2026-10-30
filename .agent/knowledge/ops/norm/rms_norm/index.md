@@ -73,10 +73,10 @@ struct RmsNormParam {
 | `rmsNormType` | NORM/PRENORM/POSTNORM |
 | `precisionMode` | HIGH_PRECISION(fp32) / HIGH_PERFORMANCE(fp16) |
 | `modelType` | LLAMA / GEMMA 公式 |
-| `rstd` | 训练版 rmsnormforward，仅 A2，与 precisionMode/modelType 互斥 |
+| `rstd` | 训练版 rmsnormforward，仅Atlas A2系列产品，与 precisionMode/modelType 互斥 |
 | `dynamicQuantType` | UNDEFINED / SYMMETRIC（不支持 ASYMMETRIC） |
 | `epsilon` | ≥ 2e-38 |
-| bf16 | Atlas 推理系列不支持 |
+| bf16 | Atlas推理系列不支持 |
 | lastDim 对齐 | 32B（量化/PRENORM/POSTNORM） |
 
 ## 4. Computation Pipeline

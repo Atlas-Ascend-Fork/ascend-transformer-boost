@@ -54,7 +54,7 @@ struct RmsNormBackwardParam {
 |------|------|
 | （无） | 反向算子，参数由前向 `rms_norm` 的上下文决定 |
 
-**平台限制**: 仅 Atlas 800I A2 推理产品支持。
+**平台限制**: 仅Atlas A2系列产品支持。
 
 **输入约束**:
 - `dy`: 输出梯度，shape 同 `y`（前向输出）
@@ -81,7 +81,7 @@ RmsNormBackwardOperation::CreateRunner()
 
 | 平台 | Runner | 限制 |
 |------|--------|------|
-| Atlas A2 | OpsRunner | **仅 A2 推理产品** |
+| Atlas A2 | OpsRunner | **仅Atlas A2系列产品** |
 
 ## 6. Kernel Dependencies
 
@@ -93,7 +93,7 @@ RmsNormBackwardOperation::CreateRunner()
 
 | # | 问题 | 状态 |
 |---|------|------|
-| 1 | 仅 Atlas A2 推理产品支持 | lim |
+| 1 | 仅 Atlas A2推理系列产品支持 | lim |
 | 2 | 参数为空（仅 rsv），复用前向 rms_norm 参数 | 注意 |
 
 ## 9. Related Ops

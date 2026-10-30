@@ -9,10 +9,10 @@
 - 首先source 对应的CANN和nnal包的安装路径
     1. source [cann安装路径]/set_env.sh
         默认：source /usr/local/Ascend/ascend-toolkit/set_env.sh
-    2. source [nnal安装路径]/set_env.sh  
-        默认：source /usr/local/Ascend/nnal/atb/set_env.sh  
-        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh  
-        例如： source ./ascend-transformer-boost/output/atb/set_env.sh
+    2. source [nnal安装路径]/set_env.sh
+        默认：source /usr/local/Ascend/nnal/atb/set_env.sh
+        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh
+        例如：source ./ascend-transformer-boost/output/atb/set_env.sh
 
 - 运行demo
 
@@ -43,16 +43,16 @@
 
 ## 产品支持情况
 
-本op在<term>Atlas A2 训练系列产品/Atlas A2 推理系列产品</term>、<term>Atlas A3 训练系列产品/Atlas A3 推理系列产品</term>和<term>Atlas 推理系列产品</term>上实现有所区别。
+本op在<term>Atlas A2系列产品</term>、<term>Atlas A3系列产品</term>和<term>Atlas推理系列产品</term>上实现有所区别。
 
 ### 场景说明
 
 提供demo分别对应，编译运行时需要对应更改build脚本：
 
 1. 基础场景：
-    - linear_demo.cpp  
+    - linear_demo.cpp
 
-        默认编译脚本可编译运行，若未特别说明，则该demo支持在<term>Atlas A2 训练系列产品/Atlas A2 推理系列产品</term>、<term>Atlas A3 训练系列产品/Atlas A3 推理系列产品</term>和<term>Atlas 推理系列产品</term>上运行。  
+        默认编译脚本可编译运行，若未特别说明，则该demo支持在<term>Atlas A2系列产品</term>、<term>Atlas A3系列产品</term>和<term>Atlas推理系列产品</term>上运行。
 
         **参数设置**：
 
@@ -74,9 +74,9 @@
         | `bias`     | float16  | nd       | [1, 2]   | npu     |
         | `output`   | float16  | nd       | [2, 2]   | npu     |
 
-    - linear_ds_demo.cpp  
+    - linear_ds_demo.cpp
 
-        该demo仅支持在<term>Atlas A2 训练系列产品/Atlas A2 推理系列产品</term>、<term>Atlas A3 训练系列产品/Atlas A3 推理系列产品</term>上运行。 
+        该demo仅支持在<term>Atlas A2系列产品</term>、<term>Atlas A3系列产品</term>上运行。
 
         **参数设置**：
 
@@ -89,7 +89,7 @@
         | enAccum     | false              |
         | matmulType  | `MATMUL_UNDEFINED` |
 
-        **数据规格**：  
+        **数据规格**：
 
         | tensor名字 | 数据类型 | 数据格式  | 维度信息     | cpu/npu |
         | ---------- | -------- | -------- | ----------- | :------ |
@@ -97,9 +97,9 @@
         | `weight`   | float    | nd       | [256, 7168] | npu     |
         | `output`   | float    | nd       | [512, 256]  | npu     |
 
-    - linear_qwen_demo.cpp  
+    - linear_qwen_demo.cpp
 
-        该demo仅支持在<term>Atlas A2 训练系列产品/Atlas A2 推理系列产品</term>、<term>Atlas A3 训练系列产品/Atlas A3 推理系列产品</term>上运行。  
+        该demo仅支持在<term>Atlas A2系列产品</term>、<term>Atlas A3系列产品</term>上运行。
 
         **参数设置**：
 
@@ -112,7 +112,7 @@
         | enAccum     | false              |
         | matmulType  | `MATMUL_UNDEFINED` |
 
-        **数据规格**：  
+        **数据规格**：
 
         | tensor名字 | 数据类型  | 数据格式  | 维度信息      | cpu/npu |
         | ---------- | -------- | -------- | ------------ | :------ |
@@ -120,9 +120,9 @@
         | `weight`   | bf16     | nz       | [1728, 5120] | npu     |
         | `output`   | bf16     | nd       | [1, 5120]    | npu     |
 
-    - linear_qwen_bias_demo.cpp  
+    - linear_qwen_bias_demo.cpp
 
-        该demo仅支持在<term>Atlas A2 训练系列产品/Atlas A2 推理系列产品</term>、<term>Atlas A3 训练系列产品/Atlas A3 推理系列产品</term>上运行。  
+        该demo仅支持在<term>Atlas A2系列产品</term>、<term>Atlas A3系列产品</term>上运行。
 
         **参数设置**：
 
@@ -135,7 +135,7 @@
         | enAccum     | false              |
         | matmulType  | `MATMUL_UNDEFINED` |
 
-        **数据规格**：  
+        **数据规格**：
 
         | tensor名字 | 数据类型 | 数据格式 | 维度信息       | cpu/npu |
         | ---------- | -------- | -------- | ------------ |  ------ |
@@ -152,7 +152,7 @@
     `g++ -D_GLIBCXX_USE_CXX11_ABI=$cxx_abi -I "${ATB_HOME_PATH}/include" -I "${ASCEND_HOME_PATH}/include" -L "${ATB_HOME_PATH}/lib" -L "${ASCEND_HOME_PATH}/lib64" linear_einsum_demo.cpp demo_util.h -l atb -l ascendcl -o linear_einsum_demo`
     - 运行时调用：
     `./linear_einsum_demo`
-    - 该demo仅支持在<term>Atlas A2 训练系列产品/Atlas A2 推理系列产品</term>、<term>Atlas A3 训练系列产品/Atlas A3 推理系列产品</term>上运行
+    - 该demo仅支持在<term>Atlas A2系列产品</term>、<term>Atlas A3系列产品</term>上运行
     - linear_einsum_demo.cpp
 
         **参数设置**：
@@ -166,19 +166,19 @@
         | enAccum     | false              |
         | matmulType  | `MATMUL_EIN_SUM`   |
 
-        **数据规格**：  
+        **数据规格**：
 
         | tensor名字 | 数据类型  | 数据格式  |  维度信息        | cpu/npu |
         | ---------- | -------- | -------- | --------------- | ------- |
         | `x`        | float16  | nd       | [32, 128, 512]  | npu     |
         | `weight`   | float16  | nd       | [128, 512, 128] | npu     |
         | `output`   | float16  | nd       | [32, 128, 512]  | npu     |
-        
+
 3. 量化场景
 
-    - linear_dequant_demo.cpp  
+    - linear_dequant_demo.cpp
 
-        该demo仅支持在<term>Atlas A2 训练系列产品/Atlas A2 推理系列产品</term>、<term>Atlas A3 训练系列产品/Atlas A3 推理系列产品</term>上运行。
+        该demo仅支持在<term>Atlas A2系列产品</term>、<term>Atlas A3系列产品</term>上运行。
 
         **参数设置**：
 
@@ -191,7 +191,7 @@
         | enAccum     | false              |
         | matmulType  | `MATMUL_UNDEFINED` |
 
-        **数据规格**：  
+        **数据规格**：
 
         | tensor名字 | 数据类型  | 数据格式  | 维度信息 | cpu/npu |
         | ---------- | -------- | -------- | -------- |-------- |
@@ -201,9 +201,9 @@
         | `deqScale` | float    | nd       | [1, 2]   | npu     |
         | `output`   | bf16     | nd       | [2, 2]   | npu     |
 
-    - linear_dequant_ds_demo.cpp  
+    - linear_dequant_ds_demo.cpp
 
-        该demo支持在<term>Atlas A2 训练系列产品/Atlas A2 推理系列产品</term>、<term>Atlas A3 训练系列产品/Atlas A3 推理系列产品</term>和<term>Atlas 推理系列产品</term>上运行。  
+        该demo支持在<term>Atlas A2系列产品</term>、<term>Atlas A3系列产品</term>和<term>Atlas推理系列产品</term>上运行。
 
         **参数设置**：
 

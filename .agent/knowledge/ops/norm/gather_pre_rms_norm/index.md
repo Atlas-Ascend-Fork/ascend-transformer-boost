@@ -49,7 +49,7 @@ struct GatherPreRmsNormParam {
 |------|------|--------|------|
 | `epsilon` | float | 1e-5 | > 0 |
 
-**平台限制**: 仅 Atlas 800I A2 推理产品支持。
+**平台限制**: 仅Atlas A2系列产品支持。
 
 **输入**:
 - `ResIn`: Gather 索引源
@@ -77,13 +77,13 @@ stages:
 
 ```
 GatherPreRmsNormOperation::CreateRunner()
-  └── → GatherPreRmsNormOpsRunner（单一 OpsRunner，仅 A2）
+  └── → GatherPreRmsNormOpsRunner（单一 OpsRunner，仅Atlas A2系列产品）
          Kernel: gatherprermsnorm
 ```
 
 | 平台 | Runner | 限制 |
 |------|--------|------|
-| Atlas A2 | OpsRunner | **仅 A2** |
+| Atlas A2 | OpsRunner | **仅Atlas A2系列产品** |
 
 ## 6. Kernel Dependencies
 
@@ -95,7 +95,7 @@ GatherPreRmsNormOperation::CreateRunner()
 
 | # | 问题 | 状态 |
 |---|------|------|
-| 1 | 仅 Atlas A2 推理产品支持 | lim |
+| 1 | 仅Atlas A2系列产品支持 | lim |
 | 2 | 参数极少（仅 epsilon），三阶段融合 | 注意 |
 
 ## 9. Related Ops

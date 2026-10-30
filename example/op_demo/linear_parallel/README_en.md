@@ -43,7 +43,7 @@ tests/apitest/opstest/python/operations/linear/
 
 ## Supported Products
 
-This OP supports only Atlas A2 training/inference products and Atlas A3 training/inference products.
+This OP supports only Atlas A2 products and Atlas A3 products.
 
 ### Scenarios
 

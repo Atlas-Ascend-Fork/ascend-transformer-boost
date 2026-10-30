@@ -53,7 +53,7 @@ struct LaserAttentionParam {
 | `inputLayout` | string | "BNSD" | "BNSD" / "SBH" |
 | `scaleValue` | float | 0.0884 | (0, 1] |
 
-**平台限制**: 仅 Atlas 800I A2 推理产品支持。
+**平台限制**: 仅Atlas A2系列产品支持。
 
 ## 4. Computation Pipeline
 
@@ -80,7 +80,7 @@ LaserAttentionOperation::CreateRunner()
 
 | # | 问题 | 状态 |
 |---|------|------|
-| 1 | 仅 A2 推理产品支持 | lim |
+| 1 | 仅Atlas A2系列产品支持 | lim |
 | 2 | LaserAttention 是训练侧算子 | 注意 |
 
 ## 9. Related Ops

@@ -9,9 +9,9 @@
 - 首先source 对应的CANN和nnal包的安装路径
     1. source [cann安装路径]/set_env.sh
         默认：source /usr/local/Ascend/ascend-toolkit/set_env.sh
-    2. source [nnal安装路径]/set_env.sh  
-        默认：source /usr/local/Ascend/nnal/atb/set_env.sh  
-        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh  
+    2. source [nnal安装路径]/set_env.sh
+        默认：source /usr/local/Ascend/nnal/atb/set_env.sh
+        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh
         例如： source ./ascend-transformer-boost/output/atb/set_env.sh
 
 - 运行demo
@@ -42,4 +42,4 @@ tests/apitest/opstest/python/operations/rms_norm_backward/
 
 ## 产品支持情况
 
-rms_norm_backward_demo.cpp仅支持Atlas A2/A3系列
+rms_norm_backward_demo.cpp仅支持Atlas A2/A3系列产品

@@ -9,9 +9,9 @@
 - 首先source 对应的CANN和nnal包的安装路径
     1. source [cann安装路径]/set_env.sh
         默认：source /usr/local/Ascend/ascend-toolkit/set_env.sh
-    2. source [nnal安装路径]/set_env.sh  
-        默认：source /usr/local/Ascend/nnal/atb/set_env.sh  
-        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh  
+    2. source [nnal安装路径]/set_env.sh
+        默认：source /usr/local/Ascend/nnal/atb/set_env.sh
+        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh
         例如： source ./ascend-transformer-boost/output/atb/set_env.sh
 
 - 运行demo
@@ -48,7 +48,7 @@ tests/apitest/opstest/python/operations/self_attention/
 
 ## 产品支持情况
 
-SelfAttention在Atlas A2/A3系列仅支持部分场景，且Encoder场景在Atlas 推理系列产品上调用与Atlas A2/A3有所区别
+SelfAttention在Atlas A2/A3系列产品仅支持部分场景，且Encoder场景在Atlas推理系列产品上调用与Atlas A2/A3系列产品有所区别
 
 ### 场景说明
 
@@ -58,7 +58,7 @@ SelfAttention在Atlas A2/A3系列仅支持部分场景，且Encoder场景在Atla
 
 + 场景：FA Encoder基础场景，分开传入key，CacheK，value和CacheV
 + 默认编译脚本可编译运行
-+ 该demo仅支持在Atlas A2/A3上运行
++ 该demo仅支持在Atlas A2/A3系列产品上运行
 + demo中使用全量的上三角mask演示
 
 **参数设置**：
@@ -126,7 +126,7 @@ SelfAttention在Atlas A2/A3系列仅支持部分场景，且Encoder场景在Atla
 
 + 场景：FA使用PA Encoder的场景，使用FA输入，只需传入key，value
   + 传入不同的headNum，kvHeadNum且headNum可以被kvHeadNum整除时开启GQA（Grouped Query Attention）。
-+ 该demo仅支持在Atlas A2/A3系列上运行
++ 该demo仅支持在Atlas A2/A3系列产品上运行
 + demo中使用全量的上三角mask演示
 
 **参数设置**：
@@ -156,7 +156,7 @@ SelfAttention在Atlas A2/A3系列仅支持部分场景，且Encoder场景在Atla
 
 + 场景：FA使用PA Encoder的场景，使用FA输入，只需传入key，value
   + 传入不同的headNum，kvHeadNum且headNum可以被kvHeadNum整除时，开启GQA（Grouped Query Attention）。
-+ 该demo仅支持在Atlas A2/A3系列上运行
++ 该demo仅支持在Atlas A2/A3系列产品上运行
 + demo中为了应对长序列的情况，使用压缩上三角mask演示
 
 **参数设置**：
@@ -188,7 +188,7 @@ SelfAttention在Atlas A2/A3系列仅支持部分场景，且Encoder场景在Atla
 + 场景：FA使用Prefix Encoder的场景，传入PA的依据blockTables存放的key，value
   + 此场景支持q和kv不等长，但是要求：
     $$\forall i \lt len(seqLen)，kvSeqLen[i] - seqLen[i] = 0 \ (mod \ 128) $$
-+ 该demo仅支持在Atlas A2/A3系列上运行
++ 该demo仅支持在Atlas A2/A3系列产品上运行
 + demo中使用Alibi上三角mask叠加bias slopes演示
 
 **参数设置**：

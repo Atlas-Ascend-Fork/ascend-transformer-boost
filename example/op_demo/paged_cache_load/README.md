@@ -2,17 +2,17 @@
 
 ## 介绍
 
-该目录下为加速库PagedCacheLoadOperation C++调用示例，以下示例仅适用于Atlas A2/A3训练系列产品、Atlas 800I A2推理产品、Atlas A3 推理系列产品。
+该目录下为加速库PagedCacheLoadOperation C++调用示例，以下示例仅适用于Atlas A2/A3系列产品。
 
 ## 使用说明
 
 - 首先source 对应的CANN和nnal包的安装路径
     1. source [cann安装路径]/set_env.sh
         默认：source /usr/local/Ascend/ascend-toolkit/set_env.sh
-    2. source [nnal安装路径]/set_env.sh  
-        默认：source /usr/local/Ascend/nnal/atb/set_env.sh  
-        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh  
-        例如： source ./ascend-transformer-boost/output/atb/set_env.sh
+    2. source [nnal安装路径]/set_env.sh
+        默认：source /usr/local/Ascend/nnal/atb/set_env.sh
+        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh
+        例如：source ./ascend-transformer-boost/output/atb/set_env.sh
 
 - 运行demo
 
@@ -32,7 +32,7 @@
         ```sh
         g++ -D_GLIBCXX_USE_CXX11_ABI=1 -I ...
         ```
-        
+
     - 提供的build脚本仅用于编译和运行paged_cache_load_demo.cpp，如需编译其他demo，需要替换“paged_cache_load_demo”为对应的cpp文件名
 
 ## 额外说明

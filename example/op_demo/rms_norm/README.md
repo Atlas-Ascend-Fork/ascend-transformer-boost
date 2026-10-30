@@ -9,9 +9,9 @@
 - 首先source 对应的CANN和nnal包的安装路径
     1. source [cann安装路径]/set_env.sh
         默认：source /usr/local/Ascend/ascend-toolkit/set_env.sh
-    2. source [nnal安装路径]/set_env.sh  
-        默认：source /usr/local/Ascend/nnal/atb/set_env.sh  
-        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh  
+    2. source [nnal安装路径]/set_env.sh
+        默认：source /usr/local/Ascend/nnal/atb/set_env.sh
+        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh
         例如： source ./ascend-transformer-boost/output/atb/set_env.sh
 
 - 运行demo
@@ -74,7 +74,7 @@ tests/apitest/opstest/python/operations/rms_norm/
 - **rms_norm_qwen_demo_0.cpp**
 
     【注】：编译脚本内替换 rms_norm_demo.cpp 为 rms_norm_qwen_demo_0.cpp 可编译运行；
-           该示例仅适用于Atlas A2/A3训练系列产品、Atlas 800I A2推理产品、Atlas A3 推理系列产品。
+           该示例仅适用于Atlas A2/A3系列产品。
     **参数设置**
 
     |        Param        |                        value                         |
@@ -101,7 +101,7 @@ tests/apitest/opstest/python/operations/rms_norm/
 - **rms_norm_qwen_demo_1.cpp**
 
     【注】：编译脚本内替换 rms_norm_demo.cpp 为 rms_norm_qwen_demo_1.cpp 可编译运行；
-           该示例仅适用于Atlas A2/A3训练系列产品、Atlas 800I A2推理产品、Atlas A3 推理系列产品。
+           该示例仅适用于Atlas A2/A3系列产品。
     **参数设置**
 
     |        Param        |                        value                         |
@@ -128,7 +128,7 @@ tests/apitest/opstest/python/operations/rms_norm/
 - **rms_norm_qwen_demo_2.cpp**
 
     【注】：编译脚本内替换 rms_norm_demo.cpp 为 rms_norm_qwen_demo_2.cpp 可编译运行；
-           该示例仅适用于Atlas A2/A3训练系列产品、Atlas 800I A2推理产品、Atlas A3 推理系列产品。
+           该示例仅适用于Atlas A2/A3系列产品。
     **参数设置**
 
     |        Param        |                        value                         |
@@ -155,7 +155,7 @@ tests/apitest/opstest/python/operations/rms_norm/
 - **rms_norm_deepseek_demo_0.cpp**
 
     【注】：编译脚本内替换 rms_norm_demo.cpp 为 rms_norm_deepseek_demo_0.cpp 可编译运行；
-           该示例仅适用于Atlas A2/A3训练系列产品、Atlas 800I A2推理产品、Atlas A3 推理系列产品。
+           该示例仅适用于Atlas A2/A3系列产品。
     **参数设置**
 
     |        Param        |                        value                         |
@@ -182,7 +182,7 @@ tests/apitest/opstest/python/operations/rms_norm/
 - **rms_norm_deepseek_demo_1.cpp**
 
     【注】：编译脚本内替换 rms_norm_demo.cpp 为 rms_norm_deepseek_demo_1.cpp 可编译运行；
-           该示例仅适用于Atlas A2/A3训练系列产品、Atlas 800I A2推理产品、Atlas A3 推理系列产品。
+           该示例仅适用于Atlas A2/A3系列产品。
     **参数设置**
 
     |        Param        |                        value                         |

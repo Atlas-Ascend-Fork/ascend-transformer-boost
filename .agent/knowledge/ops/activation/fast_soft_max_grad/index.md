@@ -8,7 +8,7 @@ source:
 knowledge: {status: "complete", last_extracted: "2026-07-06"}
 ```
 ## 1. Source: 4 文件 — operation + ops_runner（FastSoftMaxGrad）
-## 2. Fast Softmax 反向传播（梯度计算），仅 A2 推理产品
+## 2. Fast Softmax 反向传播（梯度计算），仅Atlas A2系列产品
 ## 3. Param: `headNum` (int32), `qSeqLen` (vector<int32>, ≤ 32)
 ## 4. Pipeline: grad output → Softmax backward → grad input
 ## 5. Related: `fast_soft_max` (前向), `self_attention` (梯度流经)

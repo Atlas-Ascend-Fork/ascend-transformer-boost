@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This directory contains the C++ call sample of PagedCacheLoadOperation. The following samples apply only to Atlas A2/A3 training products, Atlas 800I A2 inference products, and Atlas A3 inference products.
+This directory contains the C++ call sample of PagedCacheLoadOperation. The following samples apply only to Atlas A2/A3 products.
 
 ## Instruction
 

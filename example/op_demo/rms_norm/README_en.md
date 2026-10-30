@@ -74,7 +74,7 @@ The provided demos correspond to the following scenarios. You need to modify the
 - **rms_norm_qwen_demo_0.cpp**
 
     Note: Replace `rms_norm_demo.cpp` with `rms_norm_qwen_demo_0.cpp` in the build script to build and run the demo.
-           This sample applies only to Atlas A2/A3 training products, Atlas 800I A2 inference products, and Atlas A3 inference products.
+           This sample applies only to Atlas A2/A3 products.
     **Parameter settings**
 
     |        Parameter       |                        Value                        |
@@ -101,7 +101,7 @@ The provided demos correspond to the following scenarios. You need to modify the
 - **rms_norm_qwen_demo_1.cpp**
 
     Note: Replace `rms_norm_demo.cpp` with `rms_norm_qwen_demo_1.cpp` in the build script to build and run the demo.
-           This sample applies only to Atlas A2/A3 training products, Atlas 800I A2 inference products, and Atlas A3 inference products.
+           This sample applies only to Atlas A2/A3 products.
     **Parameter settings**
 
     |        Parameter       |                        Value                        |
@@ -128,7 +128,7 @@ The provided demos correspond to the following scenarios. You need to modify the
 - **rms_norm_qwen_demo_2.cpp**
 
     Note: Replace `rms_norm_demo.cpp` with `rms_norm_qwen_demo_2.cpp` in the build script to build and run the demo.
-           This sample applies only to Atlas A2/A3 training products, Atlas 800I A2 inference products, and Atlas A3 inference products.
+           This sample applies only to Atlas A2/A3 products.
     **Parameter settings**
 
     |        Parameter       |                        Value                        |
@@ -155,7 +155,7 @@ The provided demos correspond to the following scenarios. You need to modify the
 - **rms_norm_deepseek_demo_0.cpp**
 
     Note: Replace `rms_norm_demo.cpp` with `rms_norm_deepseek_demo_0.cpp` in the build script to build and run the demo.
-           This sample applies only to Atlas A2/A3 training products, Atlas 800I A2 inference products, and Atlas A3 inference products.
+           This sample applies only to Atlas A2/A3 products.
     **Parameter settings**
 
     |        Parameter       |                        Value                        |
@@ -182,7 +182,7 @@ The provided demos correspond to the following scenarios. You need to modify the
 - **rms_norm_deepseek_demo_1.cpp**
 
     Note: Replace `rms_norm_demo.cpp` with `rms_norm_deepseek_demo_1.cpp` in the build script to build and run the demo.
-           This sample applies only to Atlas A2/A3 training products, Atlas 800I A2 inference products, and Atlas A3 inference products.
+           This sample applies only to Atlas A2/A3 products.
     **Parameter settings**
 
     |        Parameter       |                        Value                        |

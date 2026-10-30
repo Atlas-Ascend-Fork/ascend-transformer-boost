@@ -51,7 +51,7 @@ struct LaserAttentionGradParam {
 | `headNum` | int32 | 0 | > 0 |
 | `qSeqLen` | vector<int32> | — | 元素数 ≤ batchSize ≤ 32 |
 
-**平台限制**: 仅 Atlas 800I A2 推理产品支持。
+**平台限制**: 仅Atlas A2系列产品支持。
 
 ## 4. Computation Pipeline
 
@@ -78,7 +78,7 @@ LaserAttentionGradOperation::CreateRunner()
 
 | # | 问题 | 状态 |
 |---|------|------|
-| 1 | 仅 A2 支持 | lim |
+| 1 | 仅Atlas A2系列产品支持 | lim |
 
 ## 9. Related Ops
 

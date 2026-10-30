@@ -47,7 +47,7 @@ tests/apitest/opstest/python/operations/ring_mla/
 
 ## 产品支持情况
 
-RingMLA仅Atlas A2/A3系列
+RingMLA仅Atlas A2/A3系列产品
 
 ### 场景说明
 
@@ -55,7 +55,7 @@ RingMLA仅Atlas A2/A3系列
     + 基础场景，对于query，key分别传入带与不带rope转置的矩阵
     + 传入固定shape，512x512的上三角mask
     + 默认编译脚本可编译运行
-    + 该demo仅支持在Atlas A2/A3系列上运行
+    + 该demo仅支持在Atlas A2/A3系列产品上运行
 
 #### Demo分段参数/tensor规格设置
 

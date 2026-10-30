@@ -53,7 +53,7 @@ struct NormRopeReshapeParam {
 | `rotaryCoeff` | uint32 | 2 | RoPE 旋转系数 |
 | `epsilon` | float | 1e-5 | > 0 |
 
-**平台限制**: 仅 Atlas 800I A2 推理产品支持。
+**平台限制**: 仅Atlas A2系列产品支持。
 
 ## 4. Computation Pipeline
 
@@ -79,7 +79,7 @@ NormRopeReshapeOperation::CreateRunner()
 
 | 平台 | Runner | 限制 |
 |------|--------|------|
-| Atlas A2 | OpsRunner | **仅 A2**，其他平台不支持 |
+| Atlas A2 | OpsRunner | **仅Atlas A2系列产品**，其他平台不支持 |
 
 ## 6. Kernel Dependencies
 
@@ -91,7 +91,7 @@ NormRopeReshapeOperation::CreateRunner()
 
 | # | 问题 | 状态 |
 |---|------|------|
-| 1 | 仅 Atlas A2 支持 | lim |
+| 1 | 仅Atlas A2系列产品支持 | lim |
 | 2 | 三阶段融合，Golden 生成需匹配中间 dtype | 注意 |
 
 ## 9. Related Ops

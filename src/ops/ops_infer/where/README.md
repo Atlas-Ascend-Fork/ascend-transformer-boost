@@ -11,35 +11,35 @@
 </th>
 </tr>
 </thead>
-<tbody><tr id="row15287165034214"><td class="cellrowborder" valign="top" width="45.24%" headers="mcps1.1.4.1.1 "><p id="p111531916378"><a name="p111531916378"></a><a name="p111531916378"></a><span id="ph15628135164314"><a name="ph15628135164314"></a><a name="ph15628135164314"></a><term id="zh-cn_topic_0000001230434678_term12348114314426"><a name="zh-cn_topic_0000001230434678_term12348114314426"></a><a name="zh-cn_topic_0000001230434678_term12348114314426"></a>Atlas A3 推理系列产品</term>/<term id="zh-cn_topic_0000001230434678_term038111499426"><a name="zh-cn_topic_0000001230434678_term038111499426"></a><a name="zh-cn_topic_0000001230434678_term038111499426"></a>Atlas A3 训练系列产品</term></span></p>
+<tbody><tr id="row15287165034214"><td class="cellrowborder" valign="top" width="45.24%" headers="mcps1.1.4.1.1 "><p id="p111531916378"><a name="p111531916378"></a><a name="p111531916378"></a><span id="ph15628135164314"><a name="ph15628135164314"></a><a name="ph15628135164314"></a><term id="zh-cn_topic_0000001230434678_term12348114314426"><a name="zh-cn_topic_0000001230434678_term12348114314426"></a><a name="zh-cn_topic_0000001230434678_term12348114314426"></a>Atlas A3系列产品</term></span></p>
 </td>
 <td class="cellrowborder" align="center" valign="top" width="13.68%" headers="mcps1.1.4.1.2 "><p id="p911285084910"><a name="p911285084910"></a><a name="p911285084910"></a>√</p>
 </td>
 <td class="cellrowborder" valign="top" width="41.08%" headers="mcps1.1.4.1.3 "><p id="p8910410111611"><a name="p8910410111611"></a><a name="p8910410111611"></a>-</p>
 </td>
 </tr>
-<tr id="row828714503428"><td class="cellrowborder" valign="top" width="45.24%" headers="mcps1.1.4.1.1 "><p id="p1360215120359"><a name="p1360215120359"></a><a name="p1360215120359"></a><span id="ph17606808269"><a name="ph17606808269"></a><a name="ph17606808269"></a><term id="zh-cn_topic_0000001094307702_term9707131642"><a name="zh-cn_topic_0000001094307702_term9707131642"></a><a name="zh-cn_topic_0000001094307702_term9707131642"></a>Atlas A2 训练系列产品</term>/<term id="zh-cn_topic_0000001094307702_term9562134225910"><a name="zh-cn_topic_0000001094307702_term9562134225910"></a><a name="zh-cn_topic_0000001094307702_term9562134225910"></a>Atlas 800I A2 推理产品</term></span></p>
+<tr id="row828714503428"><td class="cellrowborder" valign="top" width="45.24%" headers="mcps1.1.4.1.1 "><p id="p1360215120359"><a name="p1360215120359"></a><a name="p1360215120359"></a><span id="ph17606808269"><a name="ph17606808269"></a><a name="ph17606808269"></a><term id="zh-cn_topic_0000001094307702_term9707131642"><a name="zh-cn_topic_0000001094307702_term9707131642"></a><a name="zh-cn_topic_0000001094307702_term9707131642"></a>Atlas A2系列产品</term></span></p>
 </td>
 <td class="cellrowborder" align="center" valign="top" width="13.68%" headers="mcps1.1.4.1.2 "><p id="p51131550124919"><a name="p51131550124919"></a><a name="p51131550124919"></a>√</p>
 </td>
 <td class="cellrowborder" valign="top" width="41.08%" headers="mcps1.1.4.1.3 "><p id="p18910210181618"><a name="p18910210181618"></a><a name="p18910210181618"></a>-</p>
 </td>
 </tr>
-<tr id="row06710463459"><td class="cellrowborder" valign="top" width="45.24%" headers="mcps1.1.4.1.1 "><p id="p6310134510488"><a name="p6310134510488"></a><a name="p6310134510488"></a><span id="ph129281671814"><a name="ph129281671814"></a><a name="ph129281671814"></a><term id="zh-cn_topic_0000001094307702_term148541578017"><a name="zh-cn_topic_0000001094307702_term148541578017"></a><a name="zh-cn_topic_0000001094307702_term148541578017"></a>Atlas 训练系列产品</term></span></p>
+<tr id="row06710463459"><td class="cellrowborder" valign="top" width="45.24%" headers="mcps1.1.4.1.1 "><p id="p6310134510488"><a name="p6310134510488"></a><a name="p6310134510488"></a><span id="ph129281671814"><a name="ph129281671814"></a><a name="ph129281671814"></a><term id="zh-cn_topic_0000001094307702_term148541578017"><a name="zh-cn_topic_0000001094307702_term148541578017"></a><a name="zh-cn_topic_0000001094307702_term148541578017"></a>Atlas训练系列产品</term></span></p>
 </td>
 <td class="cellrowborder" align="center" valign="top" width="13.68%" headers="mcps1.1.4.1.2 "><p id="p147261358131511"><a name="p147261358131511"></a><a name="p147261358131511"></a>√</p>
 </td>
 <td class="cellrowborder" valign="top" width="41.08%" headers="mcps1.1.4.1.3 "><p id="p18910201012161"><a name="p18910201012161"></a><a name="p18910201012161"></a>-</p>
 </td>
 </tr>
-<tr id="row6681646104519"><td class="cellrowborder" valign="top" width="45.24%" headers="mcps1.1.4.1.1 "><p id="p1515318113710"><a name="p1515318113710"></a><a name="p1515318113710"></a><span id="ph51531311373"><a name="ph51531311373"></a><a name="ph51531311373"></a><term id="zh-cn_topic_0000001094307702_term750195114015"><a name="zh-cn_topic_0000001094307702_term750195114015"></a><a name="zh-cn_topic_0000001094307702_term750195114015"></a>Atlas 推理系列产品</term></span></p>
+<tr id="row6681646104519"><td class="cellrowborder" valign="top" width="45.24%" headers="mcps1.1.4.1.1 "><p id="p1515318113710"><a name="p1515318113710"></a><a name="p1515318113710"></a><span id="ph51531311373"><a name="ph51531311373"></a><a name="ph51531311373"></a><term id="zh-cn_topic_0000001094307702_term750195114015"><a name="zh-cn_topic_0000001094307702_term750195114015"></a><a name="zh-cn_topic_0000001094307702_term750195114015"></a>Atlas推理系列产品</term></span></p>
 </td>
 <td class="cellrowborder" align="center" valign="top" width="13.68%" headers="mcps1.1.4.1.2 "><p id="p27261758151510"><a name="p27261758151510"></a><a name="p27261758151510"></a>√</p>
 </td>
 <td class="cellrowborder" valign="top" width="41.08%" headers="mcps1.1.4.1.3 "><p id="p19910191081610"><a name="p19910191081610"></a><a name="p19910191081610"></a>不支持bf16数据类型。</p>
 </td>
 </tr>
-<tr id="row44335016457"><td class="cellrowborder" valign="top" width="45.24%" headers="mcps1.1.4.1.1 "><p id="p1496968132715"><a name="p1496968132715"></a><a name="p1496968132715"></a><span id="ph185255349386"><a name="ph185255349386"></a><a name="ph185255349386"></a><term id="zh-cn_topic_0000001094307702_term19362048506"><a name="zh-cn_topic_0000001094307702_term19362048506"></a><a name="zh-cn_topic_0000001094307702_term19362048506"></a>Atlas 200I/500 A2 推理产品</term></span></p>
+<tr id="row44335016457"><td class="cellrowborder" valign="top" width="45.24%" headers="mcps1.1.4.1.1 "><p id="p1496968132715"><a name="p1496968132715"></a><a name="p1496968132715"></a><span id="ph185255349386"><a name="ph185255349386"></a><a name="ph185255349386"></a><term id="zh-cn_topic_0000001094307702_term19362048506"><a name="zh-cn_topic_0000001094307702_term19362048506"></a><a name="zh-cn_topic_0000001094307702_term19362048506"></a>Atlas 200I/500 A2推理产品</term></span></p>
 </td>
 <td class="cellrowborder" align="center" valign="top" width="13.68%" headers="mcps1.1.4.1.2 "><p id="p719415459494"><a name="p719415459494"></a><a name="p719415459494"></a>√</p>
 </td>
@@ -63,7 +63,7 @@
 
     **y**：当条件为0时，选择的第二个输入张量。
 
-- **输出**：输出张量的每个元素根据对应位置的条件从x或y中选取，返回一个和x、y形状相同的张量。  z = \(cond == 1 ? x : y\)
+- **输出**：输出张量的每个元素根据对应位置的条件从x或y中选取，返回一个和x、y形状相同的张量。z = \(cond == 1 ? x : y\)
 
 ## 定义<a name="section2067518173415"></a>
 
@@ -187,7 +187,7 @@ struct WhereParam {
 **输入：**
 
 ```text
-cond = [[1, 0], 
+cond = [[1, 0],
         [0, 1]]
    x = [[1, 2],
         [3, 4]]

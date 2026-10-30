@@ -59,8 +59,8 @@ struct RmsNormWithStrideParam {
 | `rmsNormType` | NORM/PRENORM/POSTNORM |
 | `precisionMode` | HIGH_PRECISION(fp32) / HIGH_PERFORMANCE(fp16) |
 | `modelType` | LLAMA / GEMMA（不同 rmsnorm 公式） |
-| `rstd` | true 时使用训练版 rmsnormforward，仅 A2 推理产品 |
-| bf16 | Atlas 推理系列产品不支持 |
+| `rstd` | true 时使用训练版 rmsnormforward，仅Atlas A2系列产品 |
+| bf16 | Atlas推理系列产品不支持 |
 
 ## 4. Computation Pipeline
 

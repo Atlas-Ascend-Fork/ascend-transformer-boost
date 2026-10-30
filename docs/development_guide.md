@@ -187,7 +187,7 @@ Note: The following sections will use adding a new fused operator `fastsoftmax` 
     //!
     //! \struct FastSoftMaxParam
     //!
-    //! \brief Performs Softmax on the result of multiplying the unpad-processed matrix Q and matrix K. Currently, only Atlas A2/A3 inference and training products are supported.
+    //! \brief Performs Softmax on the result of multiplying the unpad-processed matrix Q and matrix K. Currently, only Atlas A2/A3 products are supported.
     //!
     //! \warning The length of the seqLen array cannot exceed 32, and each element must be greater than 0.
     //!

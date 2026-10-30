@@ -9,10 +9,10 @@
 - 首先source 对应的CANN和nnal包的安装路径
     1. source [cann安装路径]/set_env.sh
         默认：source /usr/local/Ascend/ascend-toolkit/set_env.sh
-    2. source [nnal安装路径]/set_env.sh  
-        默认：source /usr/local/Ascend/nnal/atb/set_env.sh  
-        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh  
-        例如： source ./ascend-transformer-boost/output/atb/set_env.sh
+    2. source [nnal安装路径]/set_env.sh
+        默认：source /usr/local/Ascend/nnal/atb/set_env.sh
+        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh
+        例如：source ./ascend-transformer-boost/output/atb/set_env.sh
 
 - 运行demo
 
@@ -64,7 +64,7 @@ tests/apitest/opstest/python/operations/rope/
     |    cos     | float16  |     nd     | [4,  8] |
     |    sin     | float16  |     nd     | [4,  8] |
     |   seqlen   |  uint32  |     nd     |   [1]   |
-    
+
     **输出**
 
     | TensorName | DataType | DataFormat |  Shape  |
@@ -77,7 +77,7 @@ tests/apitest/opstest/python/operations/rope/
 - **rope_qwen_demo_0.cpp**
 
     【注】：编译脚本内替换 rope_demo.cpp 为 rope_qwen_demo_0.cpp 可编译运行；
-           该示例仅适用于Atlas A2/A3训练系列产品、Atlas 800I A2推理产品、Atlas A3 推理系列产品。
+           该示例仅适用于Atlas A2/A3系列产品。
     **参数设置**
 
     |    Param    | value |
@@ -107,7 +107,7 @@ tests/apitest/opstest/python/operations/rope/
 - **rope_qwen_demo_1.cpp**
 
     【注】：编译脚本内替换 rope_demo.cpp 为 rope_qwen_demo_1.cpp 可编译运行；
-           该示例仅适用于Atlas A2/A3训练系列产品、Atlas 800I A2推理产品、Atlas A3 推理系列产品。
+           该示例仅适用于Atlas A2/A3系列产品。
     **参数设置**
 
     |    Param    | value |
@@ -116,7 +116,7 @@ tests/apitest/opstest/python/operations/rope/
     | rotaryCoeff |   2   |
 
     **输入**
-    
+
     | TensorName | DataType | DataFormat |  Shape   |
     | :--------: | :------: | :--------: | :------: |
     |   query    |   bf16   |     nd     | [1, 640] |
@@ -137,7 +137,7 @@ tests/apitest/opstest/python/operations/rope/
 - **rope_qwen_demo_2.cpp**
 
     【注】：编译脚本内替换 rope_demo.cpp 为 rope_qwen_demo_2.cpp 可编译运行；
-           该示例仅适用于Atlas A2/A3训练系列产品、Atlas 800I A2推理产品、Atlas A3 推理系列产品。
+           该示例仅适用于Atlas A2/A3系列产品。
     **参数设置**
 
     |    Param    | value |
@@ -154,11 +154,10 @@ tests/apitest/opstest/python/operations/rope/
     |    cos     |   bf16   |     nd     | [5, 128] |
     |    sin     |   bf16   |     nd     | [5, 128] |
     |   seqlen   |  uint32  |     nd     |   [1]    |
-    
+
     **输出**
-    
+
     | TensorName | DataType | DataFormat |  Shape   |
     | :--------: | :------: | :--------: | :------: |
     |   ropeQ    |   bf16   |     nd     | [5, 640] |
     |   ropeK    |   bf16   |     nd     | [5, 128] |
-    

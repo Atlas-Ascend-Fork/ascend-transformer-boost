@@ -9,10 +9,10 @@
 - 首先source 对应的CANN和nnal包的安装路径
     1. source [cann安装路径]/set_env.sh
         默认：source /usr/local/Ascend/ascend-toolkit/set_env.sh
-    2. source [nnal安装路径]/set_env.sh  
-        默认：source /usr/local/Ascend/nnal/atb/set_env.sh  
-        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh  
-        例如： source ./ascend-transformer-boost/output/atb/set_env.sh
+    2. source [nnal安装路径]/set_env.sh
+        默认：source /usr/local/Ascend/nnal/atb/set_env.sh
+        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh
+        例如：source ./ascend-transformer-boost/output/atb/set_env.sh
 
 - 运行demo
 
@@ -21,7 +21,7 @@
     ```
 
     **注意**：
-    
+
     - 使用cxx_abi=0（默认）时，设置`D_GLIBCXX_USE_CXX11_ABI`为0，即：
 
         ```sh
@@ -43,7 +43,7 @@ tests/apitest/opstest/python/operations/linear/
 
 ## 产品支持情况
 
-本op仅支持<term>Atlas A2 训练系列产品/Atlas A2 推理系列产品</term>、<term>Atlas A3 训练系列产品/Atlas A3 推理系列产品</term>。
+本op仅支持<term>Atlas A2系列产品</term>、<term>Atlas A3系列产品</term>。
 
 ### 场景说明
 

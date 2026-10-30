@@ -58,7 +58,7 @@ struct LayerNormWithStrideParam {
 | `quantType` | QUANT_UNQUANT / QUANT_INT8 |
 | `epsilon` | ≥ 2e-38 |
 | Shape | 最后维对齐 32B（量化模式） |
-| bf16 | Atlas 推理系列产品不支持 |
+| bf16 | Atlas推理系列产品不支持 |
 
 ## 4. Computation Pipeline
 
@@ -90,7 +90,7 @@ LayerNormWithStrideOperation::CreateRunner()
 | # | 问题 | 状态 |
 |---|------|------|
 | 1 | 无 ACLNN 加速路径 | lim |
-| 2 | Atlas 推理产品不支持 bf16 | lim |
+| 2 | Atlas推理产品不支持 bf16 | lim |
 
 ## 8. Test Coverage
 

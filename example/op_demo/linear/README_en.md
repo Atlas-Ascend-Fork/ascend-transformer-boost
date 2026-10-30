@@ -42,7 +42,7 @@ The data generated in the example does not represent the actual outputs. For det
 
 ## Supported Products
 
-The implementation of this OP varies on the Atlas A2 training/inference products, Atlas A3 training/inference products, and other Atlas inference products.
+The implementation of this OP varies on the Atlas A2 products, Atlas A3 products, and other Atlas inference products.
 
 ### Description
 
@@ -51,7 +51,7 @@ The provided demos correspond to the following scenarios. You need to modify the
 1. Basic scenario:
     - linear_demo.cpp
 
-        The default build script can build and run the demo. Unless otherwise specified, the demo can run on the Atlas A2 training/inference products, Atlas A3 training/inference products, and Atlas inference products.
+        The default build script can build and run the demo. Unless otherwise specified, the demo can run on the Atlas A2 products, Atlas A3 products, and Atlas inference products.
 
         **Parameter settings**
 
@@ -75,7 +75,7 @@ The provided demos correspond to the following scenarios. You need to modify the
 
     - linear_ds_demo.cpp
 
-        This demo can run only on the Atlas A2 training/inference products and Atlas A3 training/inference products.
+        This demo can run only on the Atlas A2 products and Atlas A3 products.
 
         **Parameter settings**
 
@@ -98,7 +98,7 @@ The provided demos correspond to the following scenarios. You need to modify the
 
     - linear_qwen_demo.cpp
 
-        This demo can run only on the Atlas A2 training/inference products and Atlas A3 training/inference products.
+        This demo can run only on the Atlas A2 products and Atlas A3 products.
 
         **Parameter settings**
 
@@ -121,7 +121,7 @@ The provided demos correspond to the following scenarios. You need to modify the
 
     - linear_qwen_bias_demo.cpp
 
-        This demo can run only on the Atlas A2 training/inference products and Atlas A3 training/inference products.
+        This demo can run only on the Atlas A2 products and Atlas A3 products.
 
         **Parameter settings**
 
@@ -151,7 +151,7 @@ The provided demos correspond to the following scenarios. You need to modify the
     `g++ -D_GLIBCXX_USE_CXX11_ABI=$cxx_abi -I "${ATB_HOME_PATH}/include" -I "${ASCEND_HOME_PATH}/include" -L "${ATB_HOME_PATH}/lib" -L "${ASCEND_HOME_PATH}/lib64" linear_einsum_demo.cpp demo_util.h -l atb -l ascendcl -o linear_einsum_demo`
     - Runtime calling:
     `./linear_einsum_demo`
-    - This demo can run only on the Atlas A2 training/inference products and Atlas A3 training/inference products.
+    - This demo can run only on the Atlas A2 products and Atlas A3 products.
     - linear_einsum_demo.cpp
 
         **Parameter settings**
@@ -177,7 +177,7 @@ The provided demos correspond to the following scenarios. You need to modify the
 
     - linear_dequant_demo.cpp
 
-        This demo can run only on the Atlas A2 training/inference products and Atlas A3 training/inference products.
+        This demo can run only on the Atlas A2 products and Atlas A3 products.
 
         **Parameter settings**
 
@@ -203,7 +203,7 @@ The provided demos correspond to the following scenarios. You need to modify the
 
     - linear_dequant_ds_demo.cpp
 
-        This demo can run on the Atlas A2 training/inference products, Atlas A3 training/inference products, and Atlas inference products.
+        This demo can run on the Atlas A2 products, Atlas A3 products, and Atlas inference products.
 
         **Parameter settings**
 

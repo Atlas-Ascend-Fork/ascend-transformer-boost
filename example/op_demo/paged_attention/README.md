@@ -9,10 +9,10 @@
 - 首先source 对应的CANN和nnal包的安装路径
     1. source [cann安装路径]/set_env.sh
         默认：source /usr/local/Ascend/ascend-toolkit/set_env.sh
-    2. source [nnal安装路径]/set_env.sh  
-        默认：source /usr/local/Ascend/nnal/atb/set_env.sh  
-        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh  
-        例如： source ./ascend-transformer-boost/output/atb/set_env.sh
+    2. source [nnal安装路径]/set_env.sh
+        默认：source /usr/local/Ascend/nnal/atb/set_env.sh
+        ①. 如果使用加速库源码编译，source [加速库源码路径]/output/atb/set_env.sh
+        例如：source ./ascend-transformer-boost/output/atb/set_env.sh
 
 - 运行demo
 
@@ -42,17 +42,17 @@ tests/apitest/opstest/python/operations/paged_attention/
 
 ## 产品支持情况
 
-本op在Atlas A2/A3系列和Atlas 推理系列产品上实现有所区别
+本op在Atlas A2/A3系列产品和Atlas推理系列产品上实现有所区别
 
 ## 场景说明
 
-提供demo编译运行时需要对应更改build脚本：  
+提供demo编译运行时需要对应更改build脚本：
 
 1. 不开启并行解码且带mask场景：
 
-    - paged_attention_demo.cpp  
+    - paged_attention_demo.cpp
 
-        默认编译脚本可编译运行，该demo仅支持在Atlas A2/A3系列上运行。  
+        默认编译脚本可编译运行，该demo仅支持在Atlas A2/A3系列产品上运行。
 
         **参数设置**：
 
@@ -68,7 +68,7 @@ tests/apitest/opstest/python/operations/paged_attention/
         | compressType   | `COMPRESS_TYPE_UNDEFINED` |
         | maskType       | `MASK_TYPE_NORM`          |
         | mlaVHeadSize   | 0                         |
-        
+
         **数据规格**：
 
         | tensor名字    | 数据类型 | 数据格式   | 维度信息            | cpu/npu |
@@ -81,10 +81,10 @@ tests/apitest/opstest/python/operations/paged_attention/
         | `mask`        | int32    | nd       | [2, 1, 1024]       | npu     |
         | `attnOut`     | float16  | nd       | [2, 32, 128]       | npu     |
 
-    - paged_attention_qwen_demo.cpp  
+    - paged_attention_qwen_demo.cpp
 
-        该demo仅支持在Atlas A2/A3系列上运行。  
-        
+        该demo仅支持在Atlas A2/A3系列产品上运行。
+
         **参数设置**：
 
         | 成员名称        | 取值                      |
@@ -112,8 +112,8 @@ tests/apitest/opstest/python/operations/paged_attention/
         | `attnOut`     | bf16     | nd       | [1, 5, 128]      | npu     |
 
 2. 不带mask：
-    - paged_attention_inference_demo.cpp  
-    该demo仅支持在Atlas推理系列产品上运行。  
+    - paged_attention_inference_demo.cpp
+    该demo仅支持在Atlas推理系列产品上运行。
     **参数设置**：
 
         | 成员名称        | 取值                      |
