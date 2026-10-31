@@ -230,7 +230,7 @@ class TensorBinFile:
         elif self.dtype == 27:  # bfloat16
             dtype = torch.bfloat16
         else:
-            logging.error("error, unsupport dtype:", self.dtype)
+            logging.error("error, unsupport dtype: %s", self.dtype)
             pass
         if dtype == torch.bfloat16:
             tensor = torch.frombuffer(bytearray(self.obj_buffer), dtype=dtype)
@@ -1438,7 +1438,7 @@ class GatherOperation(DataGen):
                     dim2 *= in_tensors[0].shape[i]
                 # inputFlatten = in_tensors[0].clone().reshape(-1)
                 indicesFlatten = in_tensors[1].clone().reshape(-1)
-                logging.debug("outputSize", outputSize)
+                logging.debug("outputSize: %s", outputSize)
 
                 golden_result = torch.zeros(outputSize, dtype=in_tensors[0].dtype, device=in_tensors[0].device).reshape(
                     -1
