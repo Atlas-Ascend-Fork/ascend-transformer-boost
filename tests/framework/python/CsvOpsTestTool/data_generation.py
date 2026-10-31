@@ -3324,8 +3324,9 @@ class RmsNormOperation(DataGen):
                     gamma_shape = gamma_shape[idx:] if idx < len(gamma_shape) else [1]
                     gamma_new = gamma.reshape(gamma_shape)
                     rms_norm = torch.nn.RMSNorm(gamma_new.size(), eps=eps)
-                    rms_norm.weight = torch.nn.Parameter(gamma_new)
-                    golden_result = rms_norm(x)
+                    rms_norm.weight = torch.nn.Parameter(gamma_new, requires_grad=False)
+                    with torch.no_grad():
+                        golden_result = rms_norm(x)
                     return [golden_result]
 
         x = in_tensors[0].float()
