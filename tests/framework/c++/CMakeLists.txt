@@ -9,18 +9,19 @@
 #
 
 file(GLOB_RECURSE TEST_UTILS_SOURCE_FILES "${CMAKE_CURRENT_LIST_DIR}/test_utils/*.cpp")
- 
+
 add_library(atb_test_utils ${TEST_UTILS_SOURCE_FILES})
 target_include_directories(atb_test_utils PUBLIC ${PROJECT_SOURCE_DIR}/tests/framework/c++)
 target_compile_options(atb_test_utils PUBLIC "-Wno-unused-parameter" "-Wno-unused-variable" "-Wno-unused-function")
 target_compile_options(atb_test_utils PUBLIC "-Wno-maybe-uninitialized" "-Wno-missing-field-initializers")
 target_compile_options(atb_test_utils PUBLIC "-Wno-sign-compare" "-Wno-enum-compare" "-Wno-attributes")
 target_link_libraries(atb_test_utils PUBLIC atb atb_train torch torch_cpu c10)
- 
+
 file(GLOB_RECURSE ATB_TORCH_SOURCE_FILES "${CMAKE_CURRENT_LIST_DIR}/atb_torch/*.cpp")
 file(GLOB_RECURSE ATB_LAYER_OPERATION "${CMAKE_CURRENT_LIST_DIR}/layer_ops/*.cpp")
 add_library(atb_test_framework SHARED ${ATB_TORCH_SOURCE_FILES} ${ATB_LAYER_OPERATION})
 target_include_directories(atb_test_framework PUBLIC ${PROJECT_SOURCE_DIR}/tests/framework/c++/layer_ops)
+target_include_directories(atb_test_framework PRIVATE $ENV{PYTORCH_NPU_INSTALL_PATH}/include)
 target_link_libraries(atb_test_framework PUBLIC atb_test_utils)
 target_link_libraries(atb_test_framework PUBLIC torch_python torch_npu)
 install(TARGETS atb_test_framework DESTINATION lib)

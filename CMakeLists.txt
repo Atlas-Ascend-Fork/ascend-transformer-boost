@@ -95,7 +95,6 @@ include_directories(
     $ENV{PYTHON_INCLUDE_PATH}
     $ENV{PYTORCH_INSTALL_PATH}/include
     $ENV{PYTORCH_INSTALL_PATH}/include/torch/csrc/api/include
-    $ENV{PYTORCH_NPU_INSTALL_PATH}/include
     $ENV{ASCEND_HOME_PATH}/${ARCH}-linux/include/hccl/)
 
 link_directories(
