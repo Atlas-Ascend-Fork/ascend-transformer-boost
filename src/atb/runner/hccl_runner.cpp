@@ -12,10 +12,12 @@
 #include <mki/utils/file_system/file_system.h>
 #include <atb/utils/log.h>
 #include <mki/utils/share_memory/share_memory.h>
+#include "atb/utils/comm_pool.h"
 #include "atb/utils.h"
 #include "atb/utils/log.h"
 #include "atb/utils/config.h"
 #include "atb/utils/common_utils.h"
+#include "atb/utils/singleton.h"
 #include "atb/utils/operation_register.h"
 
 namespace atb {
@@ -68,11 +70,12 @@ HcclCommSharedPtr HcclRunner::GetHcclCommSharedPtr() const
 
 void HcclRunner::Init()
 {
-    hcclComm_ = CreateHcclComm();
+    hcclComm_ = GetSingleton<CommPool<void>>().GetComm(std::to_string(rank_) + "_" + commDomain_,
+                                                       std::bind(&HcclRunner::CreateHcclComm, this));
     if (hcclComm_) {
-        ATB_LOG(INFO) << GetLogPrefix() << "create hccl comm success by rank:" << rank_;
+        ATB_LOG(INFO) << GetLogPrefix() << "get hccl comm success by rank:" << rank_;
     } else {
-        ATB_LOG(ERROR) << GetLogPrefix() << "create hccl comm fail by rank:" << rank_;
+        ATB_LOG(ERROR) << GetLogPrefix() << "get hccl comm fail by rank:" << rank_;
     }
 }
 
@@ -112,13 +115,13 @@ HcclCommSharedPtr HcclRunner::CreateHcclCommInMulitProcessByRankFile() const
 #else
     ATB_LOG(INFO) << GetLogPrefix() << "HcclCommInitClusterInfo success, rank:" << rank_ << ", rankSize:" << rankSize_;
 #endif
-    return HcclCommSharedPtr(newHcclComm, [](void *hcclComm) {
-        auto ret = HcclCommDestroy(static_cast<HcclComm>(hcclComm));
-        if (ret != HCCL_SUCCESS) {
-            ATB_LOG(ERROR) << "HcclCommDestroy fail, error:" << ret;
-        } else {
-            ATB_LOG(INFO) << "HcclCommDestroy success";
-        }
+    return HcclCommSharedPtr(newHcclComm, [=](void *hcclComm) {
+        (void)hcclComm;
+#ifdef _DEBUG
+        ATB_LOG(INFO) << "destroy hcclComm, but not call HcclCommDestroy hcclComm:" << hcclComm;
+#else
+        ATB_LOG(INFO) << "destroy hcclComm, but not call HcclCommDestroy";
+#endif
     });
 }
 
@@ -143,13 +146,13 @@ HcclCommSharedPtr HcclRunner::CreateHcclCommInMulitProcessByRootInfo()
     ATB_LOG(INFO) << GetLogPrefix() << "HcclCommInitRootInfo success, rank:" << rank_ << ", rankSize:" << rankSize_;
 #endif
 
-    return HcclCommSharedPtr(newHcclComm, [](void *hcclComm) {
-        auto ret = HcclCommDestroy(static_cast<HcclComm>(hcclComm));
-        if (ret != HCCL_SUCCESS) {
-            ATB_LOG(ERROR) << "HcclCommDestroy fail, error:" << ret;
-        } else {
-            ATB_LOG(INFO) << "HcclCommDestroy success";
-        }
+    return HcclCommSharedPtr(newHcclComm, [=](void *hcclComm) {
+        (void)hcclComm;
+#ifdef _DEBUG
+        ATB_LOG(INFO) << "destroy hcclComm, but not call HcclCommDestroy hcclComm:" << hcclComm;
+#else
+        ATB_LOG(INFO) << "destroy hcclComm, but not call HcclCommDestroy";
+#endif
     });
 }
 
