@@ -12,17 +12,17 @@ mkdir 3rdparty && cd 3rdparty
 wget https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/ascend-cann/3rdparty/$(arch)/v1.13.0.tar.gz
 tar -zxf v1.13.0.tar.gz
 mv google-googletest-b796f7d googletest
- 
+
 wget https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/ascend-cann/3rdparty/$(arch)/doxygen-1.9.3.src.tar.gz
-tar -zxf doxygen-1.9.3.src.tar.gz 
+tar -zxf doxygen-1.9.3.src.tar.gz
 mv doxygen-1.9.3 doxygen
 
-wget https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/ascend-cann/3rdparty/$(arch)/nlohmann-json-v3.11.3.zip
-unzip -q nlohmann-json-v3.11.3.zip 
-mv nlohmann-json-v3.11.3 nlohmannJson
+wget https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/ascend-cann/3rdparty/$(arch)/nlohmann-json-v3.12.0.zip
+unzip -q nlohmann-json-v3.12.0.zip
+mv nlohmann-json-v3.12.0 nlohmannJson
 
 wget https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/ascend-cann/3rdparty/$(arch)/release-2.4.2.tar.gz
-tar -zxf release-2.4.2.tar.gz 
+tar -zxf release-2.4.2.tar.gz
 mv makeself-release-2.4.2 makeself
 
 wget https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/ascend-cann/3rdparty/$(arch)/cpp-stub.tar.gz
@@ -35,13 +35,13 @@ cd ${WORKSPACE}/3rdparty/
 git clone --branch ${TARGET_BRANCH} --depth 1 https://gitcode.com/cann/ascend-boost-comm.git Mind-KernelInfra
 cd ${WORKSPACE}/3rdparty/Mind-KernelInfra
 mkdir 3rdparty && cd 3rdparty
-unzip -q ${WORKSPACE}/3rdparty/nlohmann-json-v3.11.3.zip && mv nlohmann-json-v3.11.3 nlohmannJson
+unzip -q ${WORKSPACE}/3rdparty/nlohmann-json-v3.12.0.zip && mv nlohmann-json-v3.12.0 nlohmannJson
 
 cd ${WORKSPACE}/3rdparty/
 git clone --branch ${TARGET_BRANCH} --depth 1 https://gitcode.com/cann/ascend-boost-comm.git
 cd ${WORKSPACE}/3rdparty/ascend-boost-comm
 mkdir 3rdparty && cd 3rdparty
-unzip -q ${WORKSPACE}/3rdparty/nlohmann-json-v3.11.3.zip && mv nlohmann-json-v3.11.3 nlohmannJson
+unzip -q ${WORKSPACE}/3rdparty/nlohmann-json-v3.12.0.zip && mv nlohmann-json-v3.12.0 nlohmannJson
 
 cd ${WORKSPACE}
 [ -d /usr/local/Ascend/nnal ] && rm -rf /usr/local/Ascend/nnal

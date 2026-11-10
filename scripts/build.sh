@@ -207,7 +207,7 @@ function fn_build_nlohmann_json()
         return 0
     fi
     cd $THIRD_PARTY_DIR
-    git clone --branch v3.11.3 --depth 1 https://gitcode.com/GitHub_Trending/js/json.git
+    git clone --branch v3.12.0 --depth 1 https://gitcode.com/GitHub_Trending/js/json.git
     mv json nlohmannJson
 }
 

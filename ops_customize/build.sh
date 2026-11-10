@@ -86,7 +86,7 @@ function fn_load_nlohmann_json()
         return 0
     fi
     cd $THIRD_PARTY_DIR
-    git clone --branch v3.11.3 --depth 1 https://github.com/nlohmann/json.git
+    git clone --branch v3.12.0 --depth 1 https://github.com/nlohmann/json.git
     mv json nlohmannJson
 }
 
@@ -177,7 +177,7 @@ function fn_main()
         if [[ "$cfg_flag" == 1 ]]; then
             arg1="default"
         else
-            echo "argument $1 is unknown, please type build.sh help for more imformation"
+            echo "argument $1 is unknown, please type build.sh help for more information"
             exit 1
         fi
     fi
