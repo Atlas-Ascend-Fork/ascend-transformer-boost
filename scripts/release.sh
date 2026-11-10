@@ -87,7 +87,7 @@ function fn_build_nlohmann_json()
     [[ ! -d "$CACHE_DIR" ]] && mkdir $CACHE_DIR
     [[ ! -d "$THIRD_PARTY_DIR" ]] && mkdir $THIRD_PARTY_DIR
     cd $CACHE_DIR
-    git clone --branch v3.11.3 --depth 1 https://github.com/nlohmann/json.git
+    git clone --branch v3.12.0 --depth 1 https://github.com/nlohmann/json.git
     mv json nlohmannJson
     mv ./nlohmannJson $THIRD_PARTY_DIR
 }

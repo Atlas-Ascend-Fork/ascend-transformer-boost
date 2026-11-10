@@ -7,7 +7,7 @@ doxygen:
   version: 1.9.6
   type: plugin
 json:
-  version: v3.11.3
+  version: v3.12.0
   type: build
 pybind11:
   version: v2.13.6
