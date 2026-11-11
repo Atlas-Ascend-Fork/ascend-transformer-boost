@@ -922,7 +922,7 @@ python tests/framework/python/CsvOpsTestTool/atb_csv_ops_test.py -i tests/apites
 You can also run the following command to execute specific rows:
 
 ```
-python tests/framework/python/CsvOpsTestTool/atb_csv_ops_test.py -i tests/apitest/opstest/csv/fast_soft_max.csv -n 1  // The number indicates executing the first test cases.
+python tests/framework/python/CsvOpsTestTool/atb_csv_ops_test.py -i tests/apitest/opstest/csv/fast_soft_max.csv -n 1  # Run the first CSV data row.
 ```
 
 #### Performance Test
