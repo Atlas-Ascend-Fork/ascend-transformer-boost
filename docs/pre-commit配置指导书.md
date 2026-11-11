@@ -107,8 +107,8 @@ pre-commit install
 步骤 4: 验证安装（可选）
 
 ```bash
-# 测试 hook（不会真正提交）
-git commit --allow-empty -m "test pre-commit"
+# 确认钩子安装成功后运行检查，不创建 Git 提交；检查可能自动修正文件
+pre-commit install && pre-commit run --all-files
 ```
 
 后续在提交代码前会自动进行代码格式化处理及触发OAT检查。
