@@ -204,7 +204,7 @@ When encountering precision issues in the entire network, to locate the problema
     }
    ```
 
-   For details about the dump parameters, see the dump configuration file parameters in [Parameters](https://gitcode.com/Ascend/msprobe/blob/master/docs/en/dump/atb_data_dump_instruct.md#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E).
+   For details about the dump parameters, see the dump configuration file parameters in [Parameters](https://gitcode.com/Ascend/MindStudio-Probe/blob/master/docs/en/user_guide/dump/atb_data_dump_instruct.md#parameters).
 2. Collect data.
    Run `pip show mindstudio-probe` to determine the installation path of msProbe. Assume that the installation path is `/usr/local/lib/python3.11/site-packages`. Run the following command to load the dump module:
 
@@ -215,7 +215,7 @@ When encountering precision issues in the entire network, to locate the problema
    cd ${home_path}/example/op_demo/mla_preprocess && bash build.sh
    ```
 
-    For details about the command line parameters, see the command line parameter description in [Parameters](https://gitcode.com/Ascend/msprobe/blob/master/docs/en/dump/atb_data_dump_instruct.md#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E).
+    For details about the command line parameters, see the command line parameter description in [Parameters](https://gitcode.com/Ascend/MindStudio-Probe/blob/master/docs/en/user_guide/dump/atb_data_dump_instruct.md#parameters).
 3. View the data.
 
    * For the collected dump data, the directory structure corresponds to the ATB graph structure. The numbers before the operation name indicate the corresponding layer number of the model (e.g., `62_LmHead` indicates LmHead at layer 62). Subdirectories store all operations used in this layer, with numbers indicating the order (e.g., `0_GatherOperation` indicates the 0th operation in this layer is GatherOperation). The next level of subdirectories stores the operator kernels called by the operations, with numbers indicating the order (e.g., `0_Gather16I64Kernel` indicates the 0th operator called by this operation is Gather16I64Kernel).
