@@ -13,8 +13,9 @@
 #### 安装CANN
 
 ```shell
-chmod +x Ascend-cann-toolkit_$(version)_linux-$(arch).run
-./Ascend-cann-toolkit_$(version)_linux-$(arch).run --install
+VERSION=9.2.0  # 替换为已下载的 Toolkit 与 NNAL 配套版本
+chmod +x Ascend-cann-toolkit_${VERSION}_linux-$(arch).run
+./Ascend-cann-toolkit_${VERSION}_linux-$(arch).run --install
 ```
 
 #### 安装后配置
@@ -23,13 +24,14 @@ chmod +x Ascend-cann-toolkit_$(version)_linux-$(arch).run
 
 ```shell
 source ${HOME}/Ascend/ascend-toolkit/set_env.sh
-```  
+```
 
 #### 安装NNAL
 
 ```shell
-chmod +x Ascend-cann-nnal_$(version)_linux-$(arch).run
-./Ascend-cann-nnal_$(version)_linux-$(arch).run --install
+VERSION=9.2.0  # 替换为与已安装 Toolkit 配套的 NNAL 版本
+chmod +x Ascend-cann-nnal_${VERSION}_linux-$(arch).run
+./Ascend-cann-nnal_${VERSION}_linux-$(arch).run --install
 ```
 
 #### 安装后配置

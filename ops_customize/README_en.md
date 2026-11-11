@@ -13,8 +13,9 @@ The following uses the customize_block_copy operation as an example.
 #### Installing CANN
 
 ```shell
-chmod +x Ascend-cann-toolkit_$(version)_linux-$(arch).run
-./Ascend-cann-toolkit_$(version)_linux-$(arch).run --install
+VERSION=9.2.0  # Replace with the matching Toolkit and NNAL version you downloaded.
+chmod +x Ascend-cann-toolkit_${VERSION}_linux-$(arch).run
+./Ascend-cann-toolkit_${VERSION}_linux-$(arch).run --install
 ```
 
 #### Post-installation Configuration
@@ -28,8 +29,9 @@ source ${HOME}/Ascend/ascend-toolkit/set_env.sh
 #### Installing NNAL
 
 ```shell
-chmod +x Ascend-cann-nnal_$(version)_linux-$(arch).run
-./Ascend-cann-nnal_$(version)_linux-$(arch).run --install
+VERSION=9.2.0  # Replace with the NNAL version matching your installed Toolkit.
+chmod +x Ascend-cann-nnal_${VERSION}_linux-$(arch).run
+./Ascend-cann-nnal_${VERSION}_linux-$(arch).run --install
 ```
 
 #### Post-installation Configuration
