@@ -365,10 +365,29 @@ class CumsumOperation(DataGen):
     @staticmethod
     def golden(in_tensors, op_params):
         json_data = json.loads(op_params)
+        axis = json_data['axes'][0]
         if in_tensors[0].dtype == torch.bfloat16:
-            golden_result = torch.cumsum(in_tensors[0].float(), axis=json_data['axes'][0])
+            golden_result = torch.cumsum(in_tensors[0].float(), axis=axis)
+        elif in_tensors[0].dtype == torch.float16:
+            # The Ascend fp16 kernel accumulates in fp16, so emulate per-step
+            # fp16 rounding along the axis; a plain torch.cumsum accumulates in
+            # fp32 and is unattainable for long fp16 accumulation chains.
+            x = in_tensors[0]
+            perm = list(range(x.ndim))
+            perm.pop(axis)
+            perm.append(axis)
+            xt = x.permute(perm)
+            acc = torch.zeros(xt.shape[:-1], dtype=torch.float16)
+            steps = []
+            for i in range(xt.shape[-1]):
+                acc = (acc + xt[..., i]).to(torch.float16)
+                steps.append(acc)
+            inv_perm = [0] * x.ndim
+            for j, p in enumerate(perm):
+                inv_perm[p] = j
+            golden_result = torch.stack(steps, dim=-1).permute(inv_perm)
         else:
-            golden_result = torch.cumsum(in_tensors[0], axis=json_data['axes'][0])
+            golden_result = torch.cumsum(in_tensors[0], axis=axis)
         return [golden_result]
 
     @staticmethod
