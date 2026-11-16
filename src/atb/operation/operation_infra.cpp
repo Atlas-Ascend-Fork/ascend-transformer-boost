@@ -23,8 +23,11 @@ OperationInfra::OperationInfra(const OperationInfra &other)
     *(impl_) = *(other.impl_);
 }
 
-OperationInfra& OperationInfra::operator = (const OperationInfra &other)
+OperationInfra &OperationInfra::operator=(const OperationInfra &other)
 {
+    if (this == &other) {
+        return *this;
+    }
     impl_ = std::make_unique<OperationImpl>();
     *(impl_) = *(other.impl_);
     return *this;
@@ -55,4 +58,4 @@ aclrtStream OperationInfra::GetExecuteStream(Context *context)
     }
     return streams.at(streamId);
 }
-}
+} // namespace atb
