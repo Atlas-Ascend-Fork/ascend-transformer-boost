@@ -41,7 +41,7 @@ static constexpr uint32_t PREFIX_128MASK_ENCODER_IN_TENSOR_NUM = 7;
 static constexpr uint32_t FUSION_OUT_TENSOR_NUM = 1;
 static constexpr uint32_t NOFUSION_OUT_TENSOR_NUM = 3;
 static constexpr uint32_t MAX_HEAD_SIZE_MLA_KERNEL = 1024; // mla kernel max
-static constexpr uint32_t MAX_HEAD_SIZE_MLA = 576; // mla bypass max
+static constexpr uint32_t MAX_HEAD_SIZE_MLA = 576;         // mla bypass max
 static constexpr uint32_t MAX_HEAD_SIZE = 256;
 static const int BATCH_BIT = 0x00001;
 static const int SLOPES_BIT = 0x00002;
@@ -232,8 +232,7 @@ bool BNSDParamCheck(const infer::SelfAttentionParam &opParam)
 
 bool DeviceParamCheck(const infer::SelfAttentionParam &opParam)
 {
-    if (opParam.maskType == infer::SelfAttentionParam::MASK_TYPE_NORM_COMPRESS &&
-        GetSingleton<Config>().Is310P()) {
+    if (opParam.maskType == infer::SelfAttentionParam::MASK_TYPE_NORM_COMPRESS && GetSingleton<Config>().Is310P()) {
         if (opParam.quantType != infer::SelfAttentionParam::TYPE_QUANT_UNDEFINED) {
             ATB_LOG(ERROR) << "MASK_TYPE_NORM_COMPRESS does not support quantization";
             return false;
@@ -569,13 +568,12 @@ void SelfAttentionOperation::InitMlaFaOpIni()
 SelfAttentionOperation::SelfAttentionOperation(const infer::SelfAttentionParam &param)
     : OperationBase("SelfAttentionOperation"), param_(param)
 {
-    if (param_.maskType == infer::SelfAttentionParam::MASK_TYPE_NORM_COMPRESS &&
-        GetSingleton<Config>().Is310P()) {
+    if (param_.maskType == infer::SelfAttentionParam::MASK_TYPE_NORM_COMPRESS && GetSingleton<Config>().Is310P()) {
         param_.isTriuMask = 1;
     }
     isMla_ = param_.mlaVHeadSize > 0;
-    hasMask_ = (param_.maskType != infer::SelfAttentionParam::MASK_TYPE_UNDEFINED
-                && param_.maskType != infer::SelfAttentionParam::MASK_TYPE_CAUSAL_MASK) &&
+    hasMask_ = (param_.maskType != infer::SelfAttentionParam::MASK_TYPE_UNDEFINED &&
+                param_.maskType != infer::SelfAttentionParam::MASK_TYPE_CAUSAL_MASK) &&
                !(param_.calcType == infer::SelfAttentionParam::DECODER &&
                  param_.maskType == infer::SelfAttentionParam::MASK_TYPE_SLIDING_WINDOW_NORM);
     kvHeadNum_ = (param_.kvHeadNum > 0) ? param_.kvHeadNum : param_.headNum;
@@ -822,7 +820,7 @@ Status SelfAttentionOperation::BypassInferShapeImpl910B(const SVector<TensorDesc
         outTensorDescs.at(0).shape.dims[0] = inTensorDescs.at(0).shape.dims[0];
         outTensorDescs.at(0).shape.dims[1] = inTensorDescs.at(0).shape.dims[1];
         outTensorDescs.at(0).shape.dims[2] = param_.headNum * vHeadSize; // 2: valueCache, 3: hiddenSize
-    } else { // q shape: [BS,ND]
+    } else {                                                             // q shape: [BS,ND]
         outTensorDescs.at(0).shape.dims[1] = param_.headNum * vHeadSize;
     }
     return NO_ERROR;
@@ -881,7 +879,7 @@ Status SelfAttentionOperation::InferShapeImpl910B(const SVector<TensorDesc> &inT
 Status SelfAttentionOperation::InferShapeImpl(const SVector<TensorDesc> &inTensorDescs,
                                               SVector<TensorDesc> &outTensorDescs) const
 {
-    if (GetSingleton<Config>().Is910B() || 
+    if (GetSingleton<Config>().Is910B() ||
         Mki::PlatformInfo::Instance().GetPlatformType() == Mki::PlatformType::ASCEND_950) {
         return InferShapeImpl910B(inTensorDescs, outTensorDescs);
     } else {
@@ -950,9 +948,10 @@ Status SelfAttentionOperation::InferShapeCheckImpl(const SVector<TensorDesc> &in
             return st;
         }
     } else { // BSND
-        st = (GetSingleton<Config>().Is910B() || 
-            Mki::PlatformInfo::Instance().GetPlatformType() == Mki::PlatformType::ASCEND_950) ?
-            HeadSizeDimCheck910B(inTensorDescs) : HeadSizeDimCheck310P(inTensorDescs);
+        st = (GetSingleton<Config>().Is910B() ||
+              Mki::PlatformInfo::Instance().GetPlatformType() == Mki::PlatformType::ASCEND_950) ?
+                 HeadSizeDimCheck910B(inTensorDescs) :
+                 HeadSizeDimCheck310P(inTensorDescs);
         if (st != NO_ERROR) {
             return st;
         }
@@ -1011,9 +1010,10 @@ Status SelfAttentionOperation::SetupCheckImpl(const SVector<Tensor> &inTensors, 
         return st;
     }
     if (param_.inputLayout == atb::infer::InputLayout::TYPE_BSND) {
-        st = (GetSingleton<Config>().Is910B() || 
-            Mki::PlatformInfo::Instance().GetPlatformType() == Mki::PlatformType::ASCEND_950) ?
-            HeadSizeDimCheck910B(inTensorDescs) : HeadSizeDimCheck310P(inTensorDescs);
+        st = (GetSingleton<Config>().Is910B() ||
+              Mki::PlatformInfo::Instance().GetPlatformType() == Mki::PlatformType::ASCEND_950) ?
+                 HeadSizeDimCheck910B(inTensorDescs) :
+                 HeadSizeDimCheck310P(inTensorDescs);
         if (st != NO_ERROR) {
             return st;
         }
@@ -1035,14 +1035,14 @@ Status SelfAttentionOperation::SetupCheckImpl(const SVector<Tensor> &inTensors, 
     return NO_ERROR;
 }
 
-bool SelfAttentionOperation::SetupTensorDimCheckImpl95(const SVector<Tensor> &inTensors, const SVector<Tensor> &outTensors) const
+bool SelfAttentionOperation::SetupTensorDimCheckImpl95(const SVector<Tensor> &inTensors,
+                                                       const SVector<Tensor> &outTensors) const
 {
     int32_t nTokens = CalSeqLenSum(inTensors, inTensors.size() - 1);
     auto headNum = inTensors[0].desc.shape.dims[1];
     auto vHeadSize = inTensors[2].desc.shape.dims[2];
     // Q/K/V check
-    if (inTensors[0].desc.shape.dims[0] != nTokens &&
-        inTensors[1].desc.shape.dims[0] != nTokens &&
+    if (inTensors[0].desc.shape.dims[0] != nTokens && inTensors[1].desc.shape.dims[0] != nTokens &&
         inTensors[2].desc.shape.dims[0] != nTokens) {
         ATB_LOG(ERROR) << GetLogPrefix() << "The nTokens does not match, please check.";
         return false;
@@ -1172,8 +1172,9 @@ Status SelfAttentionOperation::InferShapeDimCheck(const SVector<TensorDesc> &inT
     }
     // nd格式kvcache shape除最后一维外相同，nz格式kvcache shape相同
     int64_t kvCacheRange = (GetSingleton<Config>().Is910B() ||
-    Mki::PlatformInfo::Instance().GetPlatformType() == Mki::PlatformType::ASCEND_950) ?
-    inTensorDescs.at(kcacheId_).shape.dimNum - 1 : 5; // 5: nz kvcache dimNum
+                            Mki::PlatformInfo::Instance().GetPlatformType() == Mki::PlatformType::ASCEND_950) ?
+                               inTensorDescs.at(kcacheId_).shape.dimNum - 1 :
+                               5; // 5: nz kvcache dimNum
     for (int64_t i = 0; i < kvCacheRange; i++) {
         if (inTensorDescs.at(kcacheId_).shape.dims[i] != inTensorDescs.at(kcacheId_ + 1).shape.dims[i]) {
             ATB_LOG(ERROR) << "invalid kvcache shape";
@@ -1239,8 +1240,7 @@ Status SelfAttentionOperation::InferShapePADimCheck(const SVector<TensorDesc> &i
     return NO_ERROR;
 }
 
-bool SelfAttentionOperation::InferShapeInTensorDimCheckImpl(
-    const SVector<TensorDesc> &inTensorDesc) const
+bool SelfAttentionOperation::InferShapeInTensorDimCheckImpl(const SVector<TensorDesc> &inTensorDesc) const
 {
     auto headNum = inTensorDesc[0].shape.dims[1];
     auto headSize = inTensorDesc[0].shape.dims[2];
@@ -1311,7 +1311,8 @@ Status SelfAttentionOperation::InferShapePADimCheckBNSD(const SVector<TensorDesc
         return ERROR_INVALID_TENSOR_DIM;
     }
     if (inTensorDescs.at(0).shape.dims[1] != param_.headNum) {
-        ATB_LOG(ERROR) << GetLogPrefix() << "2nd dim of query should be same as param headNum when inputLayout is TYPE_BNSD";
+        ATB_LOG(ERROR) << GetLogPrefix()
+                       << "2nd dim of query should be same as param headNum when inputLayout is TYPE_BNSD";
         return ERROR_INVALID_TENSOR_DIM;
     }
     if (inTensorDescs.at(1).shape.dims[1] != kvHeadNum_) {
@@ -1346,8 +1347,8 @@ Status SelfAttentionOperation::NormMaskDimCheck(const SVector<TensorDesc> &inTen
             // 310P legacy: [1, 8, 128, 16]; 310P long window: [1, 128, 2048, 16]
             const bool legacy128 = (dims[0] == 1 && dims[1] == COMPRESS_MASK_SIZE / BYTE2_ALIGN &&
                                     dims[2] == COMPRESS_MASK_SIZE && dims[3] == BYTE2_ALIGN);
-            const bool long2048 = (dims[0] == 1 && dims[1] == LONG_COMPRESS_NZ_DIM1 &&
-                                   dims[2] == LONG_COMPRESS_LEN && dims[3] == BYTE2_ALIGN);
+            const bool long2048 = (dims[0] == 1 && dims[1] == LONG_COMPRESS_NZ_DIM1 && dims[2] == LONG_COMPRESS_LEN &&
+                                   dims[3] == BYTE2_ALIGN);
             if (!legacy128 && !long2048) {
                 ATB_LOG(ERROR) << GetLogPrefix() << "invalid compress mask shape, expect [1,8,128,16] or [1,"
                                << LONG_COMPRESS_NZ_DIM1 << "," << LONG_COMPRESS_LEN << ",16]";
@@ -1365,7 +1366,7 @@ Status SelfAttentionOperation::NormMaskDimCheck(const SVector<TensorDesc> &inTen
                     return ERROR_INVALID_TENSOR_DTYPE;
                 }
                 if (param_.scaleType != infer::SelfAttentionParam::SCALE_TYPE_TOR) {
-                    ATB_LOG(ERROR) << GetLogPrefix() 
+                    ATB_LOG(ERROR) << GetLogPrefix()
                                    << "MASK_TYPE_NORM_COMPRESS long 2048 mask only supports SCALE_TYPE_TOR";
                     return ERROR_INVALID_PARAM;
                 }
@@ -1557,10 +1558,10 @@ Status SelfAttentionOperation::HeadSizeDimCheck910B(const SVector<TensorDesc> &i
         if (headSize != headSizeV) {
             ATB_LOG(INFO) << GetLogPrefix() << "headSizes is different from headSizeV. The MLA function is enabled.";
             if (headSize != 192 || headSizeV != 128) {
-                ATB_LOG(ERROR) << GetLogPrefix()
-                            << "When the MLA function is active, headSize should be 192, and headSizeV should be 128. "
-                            << "However, the actual headSize is " << headSize << ", and headSizeV is " << headSizeV
-                            << ".";
+                ATB_LOG(ERROR)
+                    << GetLogPrefix()
+                    << "When the MLA function is active, headSize should be 192, and headSizeV should be 128. "
+                    << "However, the actual headSize is " << headSize << ", and headSizeV is " << headSizeV << ".";
                 return ERROR_INVALID_TENSOR_DIM;
             }
         }
@@ -1629,9 +1630,9 @@ Status SelfAttentionOperation::HeadSizeDimCheck310P(const SVector<TensorDesc> &i
     } else {
         // bsnd + dimNum == 3, shape: [bs, n, d]
         uint32_t lastDimPos = inTensorDescs.at(1).shape.dimNum - 1; // 1: cacheK
-        headSizeK = inTensorDescs.at(1).shape.dims[lastDimPos]; // 1: cacheK
-        lastDimPos = inTensorDescs.at(2).shape.dimNum - 1;      // 2: cacheV
-        headSizeV = inTensorDescs.at(2).shape.dims[lastDimPos]; // 2: cacheV
+        headSizeK = inTensorDescs.at(1).shape.dims[lastDimPos];     // 1: cacheK
+        lastDimPos = inTensorDescs.at(2).shape.dimNum - 1;          // 2: cacheV
+        headSizeV = inTensorDescs.at(2).shape.dims[lastDimPos];     // 2: cacheV
     }
     if (param_.maskType == infer::SelfAttentionParam::MASK_TYPE_ALIBI_COMPRESS ||
         param_.maskType == infer::SelfAttentionParam::MASK_TYPE_ALIBI_COMPRESS_SQRT ||
@@ -1895,13 +1896,13 @@ Status SelfAttentionOperation::InferShapeDimNumCheck(const SVector<TensorDesc> &
 Status SelfAttentionOperation::InferShapePADimNumCheckBNSD(const SVector<TensorDesc> &inTensorDescs) const
 {
     if (inTensorDescs.at(0).shape.dimNum != 4) { // 4: [batch, head_num, seq_len, head_size]
-        ATB_LOG(ERROR) << GetLogPrefix() << "dimNum of query should be 4, bot got: "
-                       << inTensorDescs.at(0).shape.dimNum;
+        ATB_LOG(ERROR) << GetLogPrefix()
+                       << "dimNum of query should be 4, bot got: " << inTensorDescs.at(0).shape.dimNum;
         return ERROR_INVALID_TENSOR_DIM_NUM;
     }
     if (inTensorDescs.at(kcacheId_).shape.dimNum != 4) { // 4: [batch, head_num, seq_len, head_size]
-        ATB_LOG(ERROR) << GetLogPrefix() << "dimNum of key should be 4, bot got: "
-                       << inTensorDescs.at(kcacheId_).shape.dimNum;
+        ATB_LOG(ERROR) << GetLogPrefix()
+                       << "dimNum of key should be 4, bot got: " << inTensorDescs.at(kcacheId_).shape.dimNum;
         return ERROR_INVALID_TENSOR_DIM_NUM;
     }
     uint64_t seqLenDimNum = inTensorDescs.at(tokenOffsetId_).shape.dimNum;
@@ -1914,23 +1915,26 @@ Status SelfAttentionOperation::InferShapePADimNumCheckBNSD(const SVector<TensorD
 
 Status SelfAttentionOperation::InferShapePADimNumCheck(const SVector<TensorDesc> &inTensorDescs) const
 {
-    if (isMla_) { // mla combine cache
+    if (isMla_) {                                      // mla combine cache
         if ((inTensorDescs.at(0).shape.dimNum != 2 &&  // 0: q 2: 2 [nTokens, hiddenSize]
              inTensorDescs.at(0).shape.dimNum != 3 &&  // 0: q 3: [nTokens, head_num, head_size]
              inTensorDescs.at(0).shape.dimNum != 4)) { // 0: q 4: [batch, seq_len, head_num, head_size]
-            ATB_LOG(ERROR) << GetLogPrefix() << "dimNum of query should be 2, 3 or 4, but got: " << inTensorDescs.at(0).shape.dimNum;
+            ATB_LOG(ERROR) << GetLogPrefix()
+                           << "dimNum of query should be 2, 3 or 4, but got: " << inTensorDescs.at(0).shape.dimNum;
             return ERROR_INVALID_TENSOR_SIZE;
         }
         if ((inTensorDescs.at(1).shape.dimNum != 2 &&  // 1: k 2: 2 [nTokens, hiddenSize]
              inTensorDescs.at(1).shape.dimNum != 3 &&  // 1: k 3: [nTokens, head_num, head_size]
              inTensorDescs.at(1).shape.dimNum != 4)) { // 1: k 4: [batch, seq_len, head_num, head_size]
-            ATB_LOG(ERROR) << GetLogPrefix() << "dimNum of key should be 2, 3 or 4, but got: " << inTensorDescs.at(1).shape.dimNum;
+            ATB_LOG(ERROR) << GetLogPrefix()
+                           << "dimNum of key should be 2, 3 or 4, but got: " << inTensorDescs.at(1).shape.dimNum;
             return ERROR_INVALID_TENSOR_SIZE;
         }
     } else {
         if (inTensorDescs.at(0).shape.dimNum != 2 && // 0: q 2: 2 [nTokens, hiddenSize]
             inTensorDescs.at(0).shape.dimNum != 3) { // 0: q 3: [nTokens, head_num, head_size]
-            ATB_LOG(ERROR) << GetLogPrefix() << "dimNum of query should be 2, 3, but got: " << inTensorDescs.at(0).shape.dimNum;
+            ATB_LOG(ERROR) << GetLogPrefix()
+                           << "dimNum of query should be 2, 3, but got: " << inTensorDescs.at(0).shape.dimNum;
             return ERROR_INVALID_TENSOR_SIZE;
         }
         if (inTensorDescs.at(0).shape.dimNum != inTensorDescs.at(1).shape.dimNum) { // 0: q 1: K
@@ -2045,7 +2049,7 @@ Status SelfAttentionOperation::InferShapePrefixDimCheck910B(const SVector<Tensor
     if (st != NO_ERROR) {
         return st;
     }
-    // blockSize * headSize <= kMaxHeadSize ​* kMaxHeadSize
+    // blockSize * headSize <= kMaxHeadSize * kMaxHeadSize
     int32_t blockSize = static_cast<int32_t>(inTensorDescs.at(1).shape.dims[kBlockSizeIndex]);
     uint64_t kvDimNum = inTensorDescs.at(1).shape.dimNum;
     int32_t headSize = static_cast<int32_t>(inTensorDescs.at(1).shape.dims[kvDimNum - 1]);
@@ -2118,7 +2122,8 @@ std::shared_ptr<Runner> SelfAttentionOperation::CreateRunner(Context &context) c
                             std::make_shared<SelfAttentionEncoderFusionOpsRunner910A>(param_);
         } else if (param_.kvcacheCfg == atb::infer::SelfAttentionParam::K_BYPASS_V_BYPASS) {
             if (param_.inputLayout == atb::infer::InputLayout::TYPE_BNSD) {
-                int64_t runnerTypeIdx = RunnerTypeRegister::GetRunnerTypeIdx("SelfAttentionFusionBypassOpsRunnerBNSD910A");
+                int64_t runnerTypeIdx =
+                    RunnerTypeRegister::GetRunnerTypeIdx("SelfAttentionFusionBypassOpsRunnerBNSD910A");
                 RunnerPool &pool = contextBase->GetRunnerPool(runnerTypeIdx);
                 Runner *runner =
                     pool.MallocRunner<SelfAttentionFusionBypassOpsRunnerBNSD910A, infer::SelfAttentionParam>(param_);

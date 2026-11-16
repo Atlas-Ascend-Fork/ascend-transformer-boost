@@ -1,4 +1,4 @@
-//! \struct atb::infer::AsStridedParam 
+//! \struct atb::infer::AsStridedParam
 //! <table class="ct">
 //! <caption id="astride">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                      <th class="ch">格式       <th class="ch">描述
@@ -21,7 +21,7 @@
 //! \endcode
 //!
 
-//! \struct atb::infer::MultinomialParam 
+//! \struct atb::infer::MultinomialParam
 //! <table class="ct">
 //! <caption id="MultinomialParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                        <th class="ch">格式       <th class="ch">描述
@@ -44,7 +44,7 @@
 //! \endcode
 //!
 
-//! \struct atb::infer::NonzeroParam 
+//! \struct atb::infer::NonzeroParam
 //! <table class="ct">
 //! <caption id="NonzeroParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                        <th class="ch">格式       <th class="ch">描述
@@ -54,7 +54,7 @@
 //! </table>
 //!
 
-//! \struct atb::infer::SwigluQuantParam 
+//! \struct atb::infer::SwigluQuantParam
 //! <table class="ct">
 //! <caption id="SwigluQuantParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                        <th class="ch">格式       <th class="ch">描述
@@ -64,7 +64,7 @@
 //! </table>
 //!
 
-//! \struct atb::infer::OnehotParam 
+//! \struct atb::infer::OnehotParam
 //! <table class="ct">
 //! <caption id="OnehotParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                        <th class="ch">格式       <th class="ch">描述
@@ -76,7 +76,7 @@
 //!
 
 
-//! \struct atb::infer::RopeParam 
+//! \struct atb::infer::RopeParam
 //! <table class="ct">
 //! <caption id="RopeParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数                 <th class="ch">维度                                                  <th class="ch">数据类型                                  <th class="ch">格式     <th class="ch">描述
@@ -90,7 +90,7 @@
 //! </table>
 //!
 
-//! \struct atb::infer::ReduceParam 
+//! \struct atb::infer::ReduceParam
 //! <table class="ct">
 //! <caption id="ReduceParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                        <th class="ch">格式       <th class="ch">描述
@@ -99,7 +99,7 @@
 //! </table>
 //!
 
-//! \struct atb::infer::SliceParam 
+//! \struct atb::infer::SliceParam
 //! <table class="ct">
 //! <caption id="SliceParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                                    <th class="ch">格式       <th class="ch">描述
@@ -108,7 +108,7 @@
 //! </table>
 //!
 
-//! \struct atb::infer::SoftmaxParam 
+//! \struct atb::infer::SoftmaxParam
 //! <table class="ct">
 //! <caption id="SoftmaxParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                        <th class="ch">格式       <th class="ch">描述
@@ -117,7 +117,7 @@
 //! </table>
 //!
 
-//! \struct atb::infer::CumsumParam 
+//! \struct atb::infer::CumsumParam
 //! <table class="ct">
 //! <caption id="cumsum">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                      <th class="ch">格式       <th class="ch">描述
@@ -125,15 +125,15 @@
 //! <tr><td class="cc">y            <td class="cc">[-1,…,-1]-1表示当前维度的大小没有约束。                                 <td class="cc">float16       <td class="cc">ND        <td class="cc">输出tensor
 //! </table>
 //!
-//! \struct atb::infer::GatherParam 
+//! \struct atb::infer::GatherParam
 //! <table class="ct">
 //! <caption id="GatherParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数   <th class="ch">维度        <th class="ch">数据类型        <th class="ch">格式  <th class="ch">描述
 //! <tr><td class="cc">x       <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束    <td class="cc">float16/float/bf16/int32/uint32 <td class="cc">ND <td class="cc">输入tensor
-//! <tr><td class="cc">indexs  <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束    <td class="cc">int64/int32/uint32 <td class="cc">ND <td class="cc">索引表,值必须在[0, x.shape[axis]]范围内,x与indexs的维数之和小于等于9,indexs的维数必须大于等于batchdims
+//! <tr><td class="cc">indices  <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束    <td class="cc">int64/int32/uint32 <td class="cc">ND <td class="cc">索引表,值必须在[0, x.shape[axis]]范围内,x与indices的维数之和小于等于9,indices的维数必须大于等于batchdims
 //! <tr><td class="cc">output  <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束    <td class="cc">float16/float/bf16/int32/uint32 <td class="cc">ND <td class="cc">输出tensor
 //! </table>
-//! 
+//!
 //! 示例用法：
 //! \code
 //! atb::infer::GatherParam param;
@@ -165,7 +165,7 @@
 //! \endcode
 //!
 
-//! \struct atb::infer::SelfAttentionParam 
+//! \struct atb::infer::SelfAttentionParam
 //! SelfAttentionParam内包含枚举CalcType：当calcType为PA_ENCODER时，为pa相应的全量阶段；其他为fa。其中，fa的tensor列表如下：
 //! <table class="ct">
 //! <caption id="SelfAttention">函数输入输出描述</caption>
@@ -250,7 +250,7 @@
 //! Atlas 训练系列产品只支持PA_ENCODER，仅支持基础功能，不支持动态batch，全量/增量分离，高精度，clamp缩放，压缩mask，kv-bypass，logN缩放，qkv全量化，BNSD维度输入，kv tensorlist格式输入，MLA合并输入kvcache功能，Sliding Window Attention <br>
 //! 动态batch不支持PA_ENCODER <br>
 //! 非PA ENCODER且非bypass场景下hiddensize必须为16的倍数<br>
-//! 
+//!
 //! 当在Atlas 推理系列产品上运行时，且kvcacheCfg配置为K_BYPASS_V_BYPASS时，且inputLayout为TYPE_BNSD时
 //! ENCODER和DECODER的tensor列表如下：
 //! <table class="ct">
@@ -288,7 +288,7 @@
 //! 开启压缩mask功能,maskType为MASK_TYPE_NORM_COMPRESS时，mask的维度：在Atlas 800I A2推理产品上为[128， 128]<br>
 //!
 
-//! \struct atb::infer::ReshapeAndCacheParam 
+//! \struct atb::infer::ReshapeAndCacheParam
 //! <table class="ct">
 //! <caption id="ReshapeAndCacheOperationKVhead不等长">当不开启多头压缩功能，即compressType为COMPRESS_TYPE_UNDEFINED时，算子的输入输出列表如下：</caption>
 //! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                                  <th class="ch">格式     <th class="ch">描述
@@ -378,7 +378,7 @@
 //! </table>
 //!
 
-//! \struct atb::infer::LinearSparseParam 
+//! \struct atb::infer::LinearSparseParam
 //! <table class="ct">
 //! <caption id="LinearSparseParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                      <th class="ch">格式       <th class="ch">描述
@@ -405,7 +405,7 @@
 //! </table>
 //!
 
-//! \struct atb::infer::AllGatherParam 
+//! \struct atb::infer::AllGatherParam
 //! <table class="ct">
 //! <caption id="AllGatherParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                      <th class="ch">格式       <th class="ch">描述
@@ -413,7 +413,7 @@
 //! <tr><td class="cc">output       <td class="cc">[rankSize, -1,…,-1]-1表示当前维度的大小没有约束                     <td class="cc">"hccl": float16/float/int8/int16/int32/int64/bf16<br>"lccl": float16/float/int8/int16/int32/int64/bf16      <td class="cc">ND        <td class="cc">输出tensor,维度小于等于8。输出output的维数比输入x的维数多一维。
 //! </table>
 //! \code
-//! >>> rank0 input 
+//! >>> rank0 input
 //! tensor([[2, 1 ,8],
             [4, 3, 7]], device='npu:0')  shape[2,3]
 //!  >>> rank1 input
@@ -463,7 +463,7 @@
 //! \endcode
 //!
 
-//! \struct atb::infer::AllReduceParam 
+//! \struct atb::infer::AllReduceParam
 //! <table class="ct">
 //! <caption id="AllReduceParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                      <th class="ch">格式       <th class="ch">描述
@@ -503,7 +503,7 @@
 //! 2. dstBlockIndices中的block index不重复，即不可能有两个不同的block拷贝到同一个block中。
 //!
 
-//! \struct atb::infer::BroadcastParam 
+//! \struct atb::infer::BroadcastParam
 //! <table class="ct">
 //! <caption id="BroadcastParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                      <th class="ch">格式       <th class="ch">描述
@@ -512,7 +512,7 @@
 //! </table>
 //!
 
-//! \struct atb::infer::ReduceScatterParam 
+//! \struct atb::infer::ReduceScatterParam
 //! <table class="ct">
 //! <caption id="ReduceScatterParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                      <th class="ch">格式       <th class="ch">描述
@@ -532,7 +532,7 @@
 //! <tr><td class="cc">output       <td class="cc">[n,-1]-1表示当前维度的大小没有约束                               <td class="cc">"hccl": float16/float/int8/int16/int32/bf16      <td class="cc">ND        <td class="cc">输出tensor,维度为2，首维度shape为y的shape。
 //!
 
-//! \struct atb::infer::PagedAttentionParam 
+//! \struct atb::infer::PagedAttentionParam
 //! <table class="ct">
 //! <caption id="PagedAttention">函数输入输出描述</caption>
 //! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                                  <th class="ch">格式     <th class="ch">设备    <th class="ch">描述
@@ -593,7 +593,7 @@
 //! </table>
 //!上表中Atlas 推理系列产品上max_seq_len应16对齐，且维度描述中的除法均为ceil div
 
-//! \struct atb::infer::DynamicNTKParam 
+//! \struct atb::infer::DynamicNTKParam
 //! <table class="ct">
 //! <caption id="DynamicNTKParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数                 <th class="ch">维度                                                  <th class="ch">数据类型                                  <th class="ch">格式     <th class="ch">描述
@@ -609,7 +609,7 @@
 //!InvFreqIn数组数据范围：[0,1), seqlens数组中数据大于0, 且数组和为ntokens <br>
 
 
-//! \struct atb::infer::ElewiseParam 
+//! \struct atb::infer::ElewiseParam
 //! <table class="ct">
 //! <caption id="ElewiseCast">ELEWISE_CAST输入输出描述</caption>
 //! <tr><th class="ch">参数               <th class="ch">维度                               <th class="ch">数据类型                                  <th class="ch">格式     <th class="ch">描述
@@ -746,9 +746,9 @@
 //! <tr><td class="cc">x                  <td class="cc">[-1, ..., -1]                     <td class="cc">float16/bf16                             <td class="cc">ND      <td class="cc">输入
 //! <tr><td class="cc">out                <td class="cc">[-1, ..., -1]                     <td class="cc">与x一致                             <td class="cc">ND      <td class="cc">输出
 //! </table>
-//! 
+//!
 //! 示例用法：
-//! 
+//!
 //! \code
 //! intensor0:
 //!  tensor([1, 2, 3, 4])
@@ -761,7 +761,7 @@
 //! \endcode
 //!
 
-//! \struct atb::infer::TransposeParam 
+//! \struct atb::infer::TransposeParam
 //! 改变输入Tensor的排列顺序，在多个维度上进行转置。
 //! <table class="ct">
 //! <caption id="Transpose">函数输入输出描述</caption>
@@ -769,9 +769,9 @@
 //! <tr><td class="cc">x                 <td class="cc">[-1, ..., -1]                                         <td class="cc">float16/bf16/int64/int8/int32                     <td class="cc">ND     <td class="cc">输入
 //! <tr><td class="cc">out               <td class="cc">[-1, ..., -1]                                         <td class="cc">float16/bf16/int64/int8/int32                     <td class="cc">ND     <td class="cc">输出
 //! </table>
-//! 
+//!
 //! 示例用法：
-//! 
+//!
 //! \code
 //! intensor0:
 //!  tensor([[0, 1],
@@ -794,35 +794,35 @@
 //! <tr><td class="cc">seqLen            <td class="cc">[batch]                                               <td class="cc">int32                                     <td class="cc">ND        <td class="cc">每batch上序列长度
 //! <tr><td class="cc">present           <td class="cc">[layer, batch, maxSeqLen, hiddenSize]                 <td class="cc">float16/int8                              <td class="cc">ND        <td class="cc">cache后的key或value，作为输出。输出present与输入past指向同一地址，即进行原地修改。
 //! </table>
-//! 
+//!
 
-//! \struct atb::infer::ConcatParam 
+//! \struct atb::infer::ConcatParam
 //! <table class="ct">
 //! <caption id="ConcatOperation">函数输入输出描述</caption>
-//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    
-//! <tr><td class="cc">x                 <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束                 <td class="cc">float16/bf16                    <td class="cc">ND 
-//! <tr><td class="cc">y                 <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束                 <td class="cc">float16/bf16                    <td class="cc">ND      
+//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式
+//! <tr><td class="cc">x                 <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束                 <td class="cc">float16/bf16                    <td class="cc">ND
+//! <tr><td class="cc">y                 <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束                 <td class="cc">float16/bf16                    <td class="cc">ND
 //! <tr><td class="cc">output          <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束                   <td class="cc">float16/bf16                   <td class="cc">ND
 //! </table>
 //!
 
-//! \struct atb::infer::FillParam 
+//! \struct atb::infer::FillParam
 //! <table class="ct">
 //! <caption id="FillOperation">函数输入输出描述</caption>
-//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述 
+//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述
 //! <tr><td class="cc">x                 <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束                 <td class="cc">float16/int32               <td class="cc">ND    <td class="cc">withMask = true时输入。
-//! <tr><td class="cc">mask                 <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束                 <td class="cc">int8/bool               <td class="cc">ND     <td class="cc">withMask = true时输入。    
+//! <tr><td class="cc">mask                 <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束                 <td class="cc">int8/bool               <td class="cc">ND     <td class="cc">withMask = true时输入。
 //! <tr><td class="cc">output          <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束                   <td class="cc">float16/int32              <td class="cc">ND     <td class="cc">输出的Shape，withMask = true时和输入相同; withMask = false时由outDim指定。withMask = false时，数据类型只能为float16。
 //! </table>
 
 //! \struct atb::infer::LayerNormParam
 //! <table class="ct">
 //! <caption id="LAYER_NORM_NORM">函数输入输出描述(LAYER_NORM_NORM)</caption>
-//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述 
+//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述
 //! <tr><td class="cc">x                 <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束                 <td class="cc">float16/float/bf16               <td class="cc">ND     <td class="cc">quantType = QUANT_INT8时，数据类型为float16或bf16，最后一维的大小要32字节对齐。quantType = QUANT_UNDEFINED时，数据类型为float16或float或bf16。
 //! <tr><td class="cc">gamma                 <td class="cc">[beginNormAxis:] Or [1,-1]-1表示当前维度的大小没有约束。  <td class="cc">float16/float/bf16            <td class="cc">ND      <td class="cc">quantType = QUANT_UNDEFINED时，根据beginNormAxis确定其余维度。quantType = QUANT_INT8时，维度为[1,-1]，最后一维的大小要32字节对齐。
 //! <tr><td class="cc">beta                 <td class="cc">[beginNormAxis:] Or [1,-1]-1表示当前维度的大小没有约束。   <td class="cc">float16/float/bf16                <td class="cc">ND     <td class="cc">quantType = QUANT_UNDEFINED时，根据beginNormAxis确定其余维度。quantType = QUANT_INT8时，维度为[1,-1]，最后一维的大小要32字节对齐。
-//! <tr><td class="cc">scale                 <td class="cc">[1]                                              <td class="cc">float16/bf16                <td class="cc">ND      <td class="cc">quantType = QUANT_INT8时才输入。  
+//! <tr><td class="cc">scale                 <td class="cc">[1]                                              <td class="cc">float16/bf16                <td class="cc">ND      <td class="cc">quantType = QUANT_INT8时才输入。
 //! <tr><td class="cc">offset                 <td class="cc">[1]                                              <td class="cc">int8                         <td class="cc">ND      <td class="cc">quantType = QUANT_INT8时才输入。
 //! <tr><td class="cc">output             <td class="cc">[-1,…,-1]                                             <td class="cc">float16/float/int8/bf16         <td class="cc">ND     <td class="cc">quantType = QUANT_INT8时数据类型为int8，quantType = QUANT_UNDEFINED时数据类型为float16或float或bf16
 //! </table>
@@ -838,22 +838,22 @@
 //! </table>
 //! <table class="ct">
 //! <caption id="LAYER_NORM_PRENORM">函数输入输出描述(LAYER_NORM_PRENORM)</caption>
-//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述 
+//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述
 //! <tr><td class="cc">x                 <td class="cc">[-1,…,n]-1表示当前维度的大小没有约束。                    <td class="cc">float16                 <td class="cc">ND     <td class="cc">最后一维的大小要32字节对齐。
 //! <tr><td class="cc">residual_in                 <td class="cc">[-1,…,n]-1表示当前维度的大小没有约束。              <td class="cc">float16               <td class="cc">ND     <td class="cc">最后一维的大小要32字节对齐。
-//! <tr><td class="cc">gamma                 <td class="cc">[1,n]                                             <td class="cc">float16                 <td class="cc">ND      <td class="cc">最后一维的大小要32字节对齐。  
+//! <tr><td class="cc">gamma                 <td class="cc">[1,n]                                             <td class="cc">float16                 <td class="cc">ND      <td class="cc">最后一维的大小要32字节对齐。
 //! <tr><td class="cc">beta                 <td class="cc">[1,n]                                              <td class="cc">float16                  <td class="cc">ND     <td class="cc">最后一维的大小要32字节对齐。
 //! <tr><td class="cc">output             <td class="cc">[-1,…,n]                                             <td class="cc">float16                   <td class="cc">ND     <td class="cc">
 //! <tr><td class="cc">residual_out             <td class="cc">[-1,…,n]                                             <td class="cc">float16                   <td class="cc">ND     <td class="cc">Norm前的输出（等于 x + residual_in * zoom_scale）
 //! </table>
 //! <table class="ct">
 //! <caption id="LAYER_NORM_POSTNORM">函数输入输出描述(LAYER_NORM_POSTNORM)</caption>
-//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述 
+//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述
 //! <tr><td class="cc">x                 <td class="cc">[-1,…,n]-1表示当前维度的大小没有约束。                    <td class="cc">float16                 <td class="cc">ND     <td class="cc">最后一维的大小要32字节对齐。
 //! <tr><td class="cc">residual                 <td class="cc">[-1,…,n]-1表示当前维度的大小没有约束。              <td class="cc">float16               <td class="cc">ND     <td class="cc">最后一维的大小要32字节对齐。
-//! <tr><td class="cc">gamma                 <td class="cc">[1,n]                                             <td class="cc">float16                 <td class="cc">ND      <td class="cc">最后一维的大小要32字节对齐。  
+//! <tr><td class="cc">gamma                 <td class="cc">[1,n]                                             <td class="cc">float16                 <td class="cc">ND      <td class="cc">最后一维的大小要32字节对齐。
 //! <tr><td class="cc">beta                 <td class="cc">[1,n]                                              <td class="cc">float16                  <td class="cc">ND     <td class="cc">最后一维的大小要32字节对齐。
-//! <tr><td class="cc">scale                 <td class="cc">[1]                                             <td class="cc">float16                   <td class="cc">ND      <td class="cc">quantType = QUANT_INT8时才输入。  
+//! <tr><td class="cc">scale                 <td class="cc">[1]                                             <td class="cc">float16                   <td class="cc">ND      <td class="cc">quantType = QUANT_INT8时才输入。
 //! <tr><td class="cc">offset                 <td class="cc">[1]                                              <td class="cc">int8                         <td class="cc">ND      <td class="cc">quantType = QUANT_INT8时才输入。
 //! <tr><td class="cc">output             <td class="cc">[-1,…,n]                                             <td class="cc">float16                   <td class="cc">ND     <td class="cc">
 //! <tr><td class="cc">outputQuant          <td class="cc">[-1,…,n]                                             <td class="cc">int8                   <td class="cc">ND     <td class="cc">quantType = QUANT_INT8时才输出。
@@ -862,11 +862,11 @@
 //! \struct atb::infer::RmsNormParam
 //! <table class="ct">
 //! <caption id="RMS_NORM_NORM">函数输入输出描述(RMS_NORM_NORM)</caption>
-//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述 
-//! <tr><td class="cc">x                 <td class="cc">[d_0,…,d_n-1,d_n]                  <td class="cc">float16/float/bf16               <td class="cc">ND     <td class="cc">float数据类型仅在rstd为true时支持，且rstd为true时只能使用float数据类型。所有Tensor最后一维的d_n大小需保持一致，其他维度的大小没有约束。 
-//! <tr><td class="cc">gamma                 <td class="cc">[1,d_n] / [d_i,...,d_n] (0 <= i <= n)                                <td class="cc">float16/float/bf16           <td class="cc">ND      <td class="cc">最后一维的大小需进行32字节对齐。rstd为true时，维度数需要大于0，并小于x的维度数，gamma的维度从最后一维向前，每一维都需要和x保持一致。rstd为false时，维度为[1,d_n]   
+//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述
+//! <tr><td class="cc">x                 <td class="cc">[d_0,…,d_n-1,d_n]                  <td class="cc">float16/float/bf16               <td class="cc">ND     <td class="cc">float数据类型仅在rstd为true时支持，且rstd为true时只能使用float数据类型。所有Tensor最后一维的d_n大小需保持一致，其他维度的大小没有约束。
+//! <tr><td class="cc">gamma                 <td class="cc">[1,d_n] / [d_i,...,d_n] (0 <= i <= n)                                <td class="cc">float16/float/bf16           <td class="cc">ND      <td class="cc">最后一维的大小需进行32字节对齐。rstd为true时，维度数需要大于0，并小于x的维度数，gamma的维度从最后一维向前，每一维都需要和x保持一致。rstd为false时，维度为[1,d_n]
 //! <tr><td class="cc">beta                 <td class="cc">[1,d_n]                               <td class="cc">float16/float/bf16               <td class="cc">ND     <td class="cc">quantType = INT8时输入。最后一维的大小要32字节对齐。
-//! <tr><td class="cc">scale                 <td class="cc">[1]                                              <td class="cc">float16/bf16               <td class="cc">ND      <td class="cc">quantType = QUANT_INT8时才输入。  
+//! <tr><td class="cc">scale                 <td class="cc">[1]                                              <td class="cc">float16/bf16               <td class="cc">ND      <td class="cc">quantType = QUANT_INT8时才输入。
 //! <tr><td class="cc">offset                 <td class="cc">[1]                                              <td class="cc">int8                         <td class="cc">ND      <td class="cc">quantType = QUANT_INT8时才输入。
 //! <tr><td class="cc">output             <td class="cc">[-1,…,-1,d_n]                                             <td class="cc">float16/float/int8/bf16        <td class="cc">ND     <td class="cc">quantType=INT8时输出int8。
 //! <tr><td class="cc">rstd             <td class="cc">[d_0,..,1]                                            <td class="cc">float16/float/bf16        <td class="cc">ND     <td class="cc">rstd为true时输出。第i维大于等于x的维度数减去gamma的维度数时，大小为1，否则和x中对应维度大小相等
@@ -883,7 +883,7 @@
 //! </table>
 //! <table class="ct">
 //! <caption id="RMS_NORM_PRENORM_QUANT">函数输入输出描述(RMS_NORM_PRENORM quantType = QUANT_UNDEFINED)</caption>
-//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述 
+//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述
 //! <tr><td class="cc">x                 <td class="cc">[-1,…,-1,n]-1表示当前维度的大小没有约束。                 <td class="cc">float16,bf16               <td class="cc">ND     <td class="cc">最后一维的大小要32字节对齐。所有Tensor最后一维的n大小需保持一致。
 //! <tr><td class="cc">beta                 <td class="cc">[1,n]                                            <td class="cc">float16,bf16               <td class="cc">ND      <td class="cc">当hasBias为True时输入。最后一维的大小要32字节对齐。
 //! <tr><td class="cc">residual                 <td class="cc">[-1,…,-1,n]-1表示当前维度的大小没有约束。        <td class="cc">float16,bf16              <td class="cc">ND        <td class="cc">最后一维的大小要32字节对齐。
@@ -893,7 +893,7 @@
 //! </table>
 //! <table class="ct">
 //! <caption id="RMS_NORM_PRENORM_QUANT_INT8">函数输入输出描述(RMS_NORM_PRENORM quantType = QUANT_INT8)</caption>
-//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述 
+//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述
 //! <tr><td class="cc">x                 <td class="cc">[-1,…,-1,n]-1表示当前维度的大小没有约束。                 <td class="cc">float16               <td class="cc">ND     <td class="cc">最后一维的大小要32字节对齐。所有Tensor最后一维的n大小需保持一致。
 //! <tr><td class="cc">residual                 <td class="cc">[-1,…,-1,n]-1表示当前维度的大小没有约束。        <td class="cc">float16              <td class="cc">ND        <td class="cc">最后一维的大小要32字节对齐。
 //! <tr><td class="cc">gamma                 <td class="cc">[1,n]                                               <td class="cc">float16          <td class="cc">ND       <td class="cc">最后一维的大小要32字节对齐。
@@ -905,7 +905,7 @@
 //! </table>
 //! <table class="ct">
 //! <caption id="RMS_NORM_POSTNORM">函数输入输出描述(RMS_NORM_POSTNORM quantType = QUANT_UNDEFINED)</caption>
-//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述 
+//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述
 //! <tr><td class="cc">x                 <td class="cc">[-1,…,-1,n]-1表示当前维度的大小没有约束。                 <td class="cc">float16,bf16               <td class="cc">ND     <td class="cc">当前支持quantType = QUANT_UNDEFINED。最后一维的大小要32字节对齐。
 //! <tr><td class="cc">beta                 <td class="cc">[1,n]                                            <td class="cc">float16,bf16               <td class="cc">ND      <td class="cc">当hasBias为True时输入。最后一维的大小要32字节对齐。
 //! <tr><td class="cc">residual                 <td class="cc">[-1,…,-1,n]-1表示当前维度的大小没有约束。        <td class="cc">float16,bf16              <td class="cc">ND        <td class="cc">最后一维的大小要32字节对齐。
@@ -914,7 +914,7 @@
 //! </table>
 //! <table class="ct">
 //! <caption id="RMS_NORM_POSTNORM_QUANT_INT8">函数输入输出描述(RMS_NORM_POSTNORM quantType = QUANT_INT8)</caption>
-//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述 
+//! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式    <th class="ch">描述
 //! <tr><td class="cc">x                 <td class="cc">[-1,…,-1,n]-1表示当前维度的大小没有约束。                 <td class="cc">float16,bf16               <td class="cc">ND     <td class="cc">输入tensor0，最后一维的大小要32字节对齐。所有Tensor最后一维的n大小需保持一致。
 //! <tr><td class="cc">residual                 <td class="cc">[-1,…,-1,n]-1表示当前维度的大小没有约束。        <td class="cc">float16,bf16              <td class="cc">ND        <td class="cc">输入tensor1，最后一维的大小要32字节对齐。
 //! <tr><td class="cc">gamma                 <td class="cc">[1,n]                                               <td class="cc">float16,bf16          <td class="cc">ND       <td class="cc">最后一维的大小要32字节对齐。
@@ -924,7 +924,7 @@
 //! <tr><td class="cc">output             <td class="cc">[-1,…,-1,n]                                             <td class="cc">float16,bf16        <td class="cc">ND          <td class="cc">输出tensor1，维度数与x一致。
 //! </table>
 
-//! \struct atb::infer::TopkToppSamplingParam 
+//! \struct atb::infer::TopkToppSamplingParam
 //! <table class="ct">
 //! <caption id="SingleTopkToppSampling">非batch级随机种子、topk取样</caption>
 //! <tr><th class="ch">参数                 <th class="ch">维度                                                  <th class="ch">数据类型                    <th class="ch">格式           <th class="ch">描述
@@ -953,7 +953,7 @@
 //! <tr><td class="cc">sampled_probs            <td class="cc">[batch, 1]                  <td class="cc">float16                   <td class="cc">ND     <td class="cc">输出，取样的值
 //! </table>
 
-//! \struct atb::infer::PadParam 
+//! \struct atb::infer::PadParam
 //! <table class="ct">
 //! <caption id="PadParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数            <th class="ch">维度                       <th class="ch">数据类型        <th class="ch">格式  <th class="ch">描述
@@ -964,7 +964,7 @@
 //! <tr><td class="cc">output          <td class="cc">[batch, hidden_dim]      <td class="cc">float16         <td class="cc">ND     <td class="cc">取出的每个batch最后一个有效token的embedding向量
 //! </table>
 
-//! \struct atb::infer::UnpadParam 
+//! \struct atb::infer::UnpadParam
 //! <table class="ct">
 //! <caption id="UnpadParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数             <th class="ch">维度                       <th class="ch">数据类型        <th class="ch">格式  <th class="ch">描述
@@ -977,7 +977,7 @@
 //! <tr><td class="cc">padding_offset   <td class="cc">[1, batch * max_seq_len]   <td class="cc">int32         <td class="cc">ND     <td class="cc">输出tensor:由seq_len和cum_offsets_out组合计算得到
 //! </table>
 
-//! \struct atb::infer::SetValueParam 
+//! \struct atb::infer::SetValueParam
 //! <table class="ct">
 //! <caption id="SetValueOperation">函数输入输出描述</caption>
 //! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                            <th class="ch">格式    <th class="ch">描述
@@ -986,7 +986,7 @@
 //! <tr><td class="cc">dst          <td class="cc">[-1,…,-1]<br>-1表示当前维度的大小没有约束                   <td class="cc">float16/float/int32/int64             <td class="cc">ND     <td class="cc">输出tensor。
 //! </table>
 
-//! \struct atb::infer::SortParam 
+//! \struct atb::infer::SortParam
 //! <table class="ct">
 //! <caption id="SortOperation">函数输入输出描述</caption>
 //! <tr><th class="ch">参数               <th class="ch">维度                                                  <th class="ch">数据类型                            <th class="ch">格式    <th class="ch">描述
@@ -995,7 +995,7 @@
 //! <tr><td class="cc">indices          <td class="cc">[-1,…,num]<br>-1表示当前维度的大小没有约束                   <td class="cc">int32             <td class="cc">ND     <td class="cc">输出tensor。最大的num个元素对应的原索引。
 //! </table>
 
-//! \struct atb::infer::ActivationParam 
+//! \struct atb::infer::ActivationParam
 //! <table class="ct">
 //! <caption id="ActivationRELUParam">RELU</caption>
 //! <tr><th class="ch">参数            <th class="ch">维度                                            <th class="ch">数据类型                   <th class="ch">格式   <th class="ch">描述
@@ -1046,7 +1046,7 @@
 //! <tr><td class="cc">output          <td class="cc">[-1,....,-1]<br>-1表示当前维度的大小没有约束      <td class="cc">float16/float/bf16        <td class="cc">ND     <td class="cc">输出，和x1的维度/类型/格式相同，其dim维所对应的大小是输入x1的2倍。
 //! </table>
 
-//! \struct atb::infer::RepeatParam 
+//! \struct atb::infer::RepeatParam
 //! <table class="ct">
 //! <caption id="RepeatParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数            <th class="ch">维度                                            <th class="ch">数据类型        <th class="ch">格式   <th class="ch">描述
@@ -1054,7 +1054,7 @@
 //! <tr><td class="cc">output          <td class="cc">[-1,....,-1]<br>-1表示当前维度的大小没有约束      <td class="cc">float16/bf16        <td class="cc">ND    <td class="cc">输出，和输入的数据类型一致
 //! </table>
 
-//! \struct atb::infer::SplitParam 
+//! \struct atb::infer::SplitParam
 //! <table class="ct">
 //! <caption id="SplitParamBinOutput">splitNum=2时输入输出</caption>
 //! <tr><th class="ch">参数             <th class="ch">维度                                            <th class="ch">数据类型                   <th class="ch">格式    <th class="ch">描述
@@ -1097,8 +1097,8 @@
 //! \endcode
 //!
 
- 
-//! \struct atb::infer::WhereParam 
+
+//! \struct atb::infer::WhereParam
 //! <table class="ct">
 //! <caption id="WhereParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数       <th class="ch">维度                                            <th class="ch">数据类型     <th class="ch">格式
@@ -1107,8 +1107,8 @@
 //! <tr><td class="cc">y          <td class="cc">[-1,....,-1]<br>-1表示当前维度的大小没有约束      <td class="cc">float16     <td class="cc">ND
 //! <tr><td class="cc">z          <td class="cc">[-1,....,-1]<br>-1表示当前维度的大小没有约束      <td class="cc">float16     <td class="cc">ND
 //! </table>
- 
-//! \struct atb::infer::TransdataParam 
+
+//! \struct atb::infer::TransdataParam
 //! <table class="ct">
 //! <caption id="TransdataParamND-NZ">ND转NZ</caption>
 //! <tr><th class="ch">参数     <th class="ch">维度                              <th class="ch">数据类型         <th class="ch">格式     <th class="ch">描述
@@ -1122,7 +1122,7 @@
 //! <tr><td class="cc">y        <td class="cc">[batch, m, n]                    <td class="cc">float16          <td class="cc">ND    <td class="cc">输出
 //! </table>
 
-//! \struct atb::infer::IndexAddParam 
+//! \struct atb::infer::IndexAddParam
 //! <table class="ct">
 //! <caption id="IndexAddParam-INDEX_ADD">函数输入输出描述</caption>
 //! <tr><th class="ch">参数     <th class="ch">维度             <th class="ch">数据类型  <th class="ch">格式 <th class="ch">描述
@@ -1182,7 +1182,7 @@
 //! tokenNum表示token个数，tokenNum = batch * seqlen。
 
 //! \struct atb::train::FastSoftMaxParam
-//! \f[ nSquareTokens = headNum \sum_{i=0}^{\text{batchSize} - 1} (qSeqLen[i])^2 \f] 
+//! \f[ nSquareTokens = headNum \sum_{i=0}^{\text{batchSize} - 1} (qSeqLen[i])^2 \f]
 //! <table class="ct">
 //! <caption id="FastSoftMaxParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数       <th class="ch">维度                  <th class="ch">数据类型     <th class="ch">格式  <th class="ch">描述
@@ -1191,7 +1191,7 @@
 //! </table>
 
 //! \struct atb::train::FastSoftMaxGradParam
-//! \f[ nSquareTokens = headNum \sum_{i=0}^{\text{batchSize} - 1} (qSeqLen[i])^2 \f] 
+//! \f[ nSquareTokens = headNum \sum_{i=0}^{\text{batchSize} - 1} (qSeqLen[i])^2 \f]
 //! <table class="ct">
 //! <caption id="FastSoftMaxGradParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数       <th class="ch">维度                  <th class="ch">数据类型     <th class="ch">格式  <th class="ch">描述
@@ -1201,7 +1201,7 @@
 //! </table>
 
 //! \struct atb::train::GenAttentionMaskParam
-//! \f[ nSquareTokens = headNum \sum_{i=0}^{\text{batchSize} - 1} (qSeqLen[i])^2 \f]  
+//! \f[ nSquareTokens = headNum \sum_{i=0}^{\text{batchSize} - 1} (qSeqLen[i])^2 \f]
 //! <table class="ct">
 //! <caption id="GenAttentionMaskParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数       <th class="ch">维度                                      <th class="ch">数据类型     <th class="ch">格式  <th class="ch">描述
@@ -1210,7 +1210,7 @@
 //! </table>
 
 //! \struct atb::train::PadWithHiddenStateParam
-//! \f[ nTokens = \sum_{i=0}^{\text{batchSize} - 1} qSeqLen[i] \f] 
+//! \f[ nTokens = \sum_{i=0}^{\text{batchSize} - 1} qSeqLen[i] \f]
 //! <table class="ct">
 //! <caption id="PadWithHiddenStateParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数       <th class="ch">维度                                 <th class="ch">数据类型     <th class="ch">格式  <th class="ch">描述
@@ -1231,7 +1231,7 @@
 //! </table>
 
 //! \struct atb::train::RopeGradParam
-//! \f[ nTokens = \sum_{i=0}^{\text{batchSize} - 1} qSeqLen[i] \f] 
+//! \f[ nTokens = \sum_{i=0}^{\text{batchSize} - 1} qSeqLen[i] \f]
 //! <table class="ct">
 //! <caption id="RopeGradParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数             <th class="ch">维度                                <th class="ch">数据类型      <th class="ch">格式          <th class="ch">描述
@@ -1252,7 +1252,7 @@
 //! <tr><td class="cc">output         <td class="cc">[outdims]                                                                                          <td class="cc">float16     <td class="cc">ND <td class="cc">结果向量
 //! </table>
 
-//! \struct atb::train::UnpadWithHiddenStateParam 
+//! \struct atb::train::UnpadWithHiddenStateParam
 //! <table class="ct">
 //! <caption id="UnpadWithHiddenStateParam ">函数输入输出描述</caption>
 //! <tr><th class="ch">参数       <th class="ch">维度                  <th class="ch">数据类型     <th class="ch">格式  <th class="ch">描述
@@ -1260,7 +1260,7 @@
 //! <tr><td class="cc">output          <td class="cc">[nTokens, hiddenSize]     <td class="cc">float16     <td class="cc">ND <td class="cc">unpad后，不带冗余的tensor，与pad输入shape一致。nTokens为qSeqlen数组的元素和
 //! </table>
 
-//! \struct atb::infer::SendParam 
+//! \struct atb::infer::SendParam
 //! <table class="ct">
 //! <caption id="SendParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                      <th class="ch">格式       <th class="ch">描述
@@ -1268,7 +1268,7 @@
 //! </table>
 //!
 
-//! \struct atb::infer::RecvParam 
+//! \struct atb::infer::RecvParam
 //! <table class="ct">
 //! <caption id="RecvParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                      <th class="ch">格式       <th class="ch">描述
@@ -1277,7 +1277,7 @@
 //! </table>
 //!
 
-//! \struct atb::infer::AllToAllParam 
+//! \struct atb::infer::AllToAllParam
 //! <table class="ct">
 //! <caption id="AllToAllParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                      <th class="ch">格式       <th class="ch">描述
@@ -1286,7 +1286,7 @@
 //! </table>
 //!
 
-//! \struct atb::infer::AllToAllVParam 
+//! \struct atb::infer::AllToAllVParam
 //! <table class="ct">
 //! <caption id="AllToAllVParam">函数输入输出描述</caption>
 //! <tr><th class="ch">参数         <th class="ch">维度                                                              <th class="ch">数据类型                      <th class="ch">格式       <th class="ch">描述
@@ -1409,7 +1409,7 @@
 //! tensor([[0.3, 0.3, 0.0, 0.0],[0.0, 0.0, 0.7, 0.8]])
 //! \endcode
 
-//! 
+//!
 //! \struct atb::infer::GroupedMatmulWithRoutingParam
 //! <table class="ct">
 //! <caption id="GroupedMatmulWithRoutingUpNoQuant">Up非量化场景输入输出描述</caption>
@@ -1480,7 +1480,7 @@
 //! kvHeadNum为零或者小于等于headNum且headNum为kvHeadNum的整数倍。<br>
 //! maskType当前只支持MASK_TYPE_UNDEFINED，故attentionMask为预留接口，必须传入且仅限制其数据类型。<br>
 
-//! 
+//!
 //! \struct atb::infer::CohereLayerNormParam
 //! <table class="ct">
 //! <caption id="CohereLayerNormParam">CohereLayerNormParam输入输出描述</caption>
@@ -1491,7 +1491,7 @@
 //! </table>
 //! 该算子仅支持Atlas 800I A2产品
 
-//! 
+//!
 //! \struct atb::infer::GatherPreRmsNormParam
 //! <table class="ct">
 //! <caption id="GatherPreRmsNormParam">GatherPreRmsNormParam输入输出描述</caption>
@@ -1509,23 +1509,23 @@
 //! \struct atb::common::EventParam
 //! 该算子没有输入和输出 <br>
 
-//! 
+//!
 //! \struct atb::infer::NormRopeReshapeParam
 //! <table class="ct">
 //! <caption id="NormRopeReshapeParam">NormRopeReshapeParam输入输出描述</caption>
 //! <tr><th class="ch">参数 <th class="ch">维度 <th class="ch">数据类型 <th class="ch">格式 <th class="ch">描述
-//! <tr><td class="cc">x <td class="cc">[ntokens​, 1, headDim_x] <td class="cc">float16 <td class="cc">ND <td class="cc">输入tensor0，headDim_x的长度不能超过65536
+//! <tr><td class="cc">x <td class="cc">[ntokens, 1, headDim_x] <td class="cc">float16 <td class="cc">ND <td class="cc">输入tensor0，headDim_x的长度不能超过65536
 //! <tr><td class="cc">gamma <td class="cc">[headDim_x] <td class="cc">float16 <td class="cc">ND <td class="cc">输入tensor1
-//! <tr><td class="cc">keyRope <td class="cc">[ntokens​, hiddenSizeK] <td class="cc">float16 <td class="cc">ND <td class="cc">输入tensor2，[ntokens, hiddenSizeK] hiddenSizeK = headNum * headDim(这里headNum=1)，hiddenSizeK的范围不能超过65536
-//! <tr><td class="cc">cos <td class="cc">[ntokens​, headDim​​] <td class="cc">float16 <td class="cc">ND <td class="cc">输入tensor3， [ntokens, headDim],headDim的范围不能超过65536，大小与hiddenSizeK一致（headNum=1）
-//! <tr><td class="cc">sin <td class="cc">[ntokens​, headDim​​] <td class="cc">float16 <td class="cc">ND <td class="cc">输入tensor4，同cos
-//! <tr><td class="cc">slotMapping <td class="cc">[d_1_slot] <td class="cc">int32 <td class="cc">ND <td class="cc">输入tensor5，dn​slot​大小不能超过blockNum * blockSize
-//! <tr><td class="cc">keycacheIn <td class="cc">[blockNum, blockSize​, 1,dn​rac] <td class="cc">float16 <td class="cc">ND <td class="cc">输入tensor6
-//! <tr><td class="cc">keycacheOut <td class="cc">[blockNum, blockSize​, 1,dn​rac] <td class="cc">float16 <td class="cc">ND <td class="cc">输出tensor0
+//! <tr><td class="cc">keyRope <td class="cc">[ntokens, hiddenSizeK] <td class="cc">float16 <td class="cc">ND <td class="cc">输入tensor2，[ntokens, hiddenSizeK] hiddenSizeK = headNum * headDim(这里headNum=1)，hiddenSizeK的范围不能超过65536
+//! <tr><td class="cc">cos <td class="cc">[ntokens, headDim] <td class="cc">float16 <td class="cc">ND <td class="cc">输入tensor3， [ntokens, headDim],headDim的范围不能超过65536，大小与hiddenSizeK一致（headNum=1）
+//! <tr><td class="cc">sin <td class="cc">[ntokens, headDim] <td class="cc">float16 <td class="cc">ND <td class="cc">输入tensor4，同cos
+//! <tr><td class="cc">slotMapping <td class="cc">[d_1_slot] <td class="cc">int32 <td class="cc">ND <td class="cc">输入tensor5，dnslot大小不能超过blockNum * blockSize
+//! <tr><td class="cc">keycacheIn <td class="cc">[blockNum, blockSize, 1,dnrac] <td class="cc">float16 <td class="cc">ND <td class="cc">输入tensor6
+//! <tr><td class="cc">keycacheOut <td class="cc">[blockNum, blockSize, 1,dnrac] <td class="cc">float16 <td class="cc">ND <td class="cc">输出tensor0
 //! </table>
 //! 该算子仅支持Atlas 800I A2产品
 
-//! 
+//!
 //! \struct atb::infer::MlaPreprocessParam
 //! <table class="ct">
 //! <caption id="MlaPreprocessOperation">MlaPreprocessOperation输入输出描述</caption>
@@ -1554,7 +1554,7 @@
 //! </table>
 //! 该算子仅支持Atlas 800I A2产品
 
-//! 
+//!
 //! \struct atb::infer::ReshapeAndCacheOmniParam
 //! <table class="ct">
 //! <caption id="ReshapeAndCacheOmniOperation">ReshapeAndCacheOmniOperation输入输出描述</caption>
