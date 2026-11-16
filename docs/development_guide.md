@@ -564,6 +564,8 @@ atb::Status CheckInTensorDescs(const atb::SVector<atb::TensorDesc> &inTensorDesc
 // Validation function, which directly returns the result.
 atb::Status CheckInTensors(const atb::SVector<atb::Tensor> &inTensors, const atb::train::FastSoftMaxParam &param)
 {
+    atb::SVector<atb::TensorDesc> inTensorDescs;
+    atb::OperationUtil::InTensorsToInTensorDescs(inTensors, inTensorDescs);
     return CheckInTensorDescs(inTensorDescs, param);
 }
 // Validation function, which directly returns the result.
