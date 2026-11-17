@@ -51,6 +51,9 @@ stages:
         container:
           image: swr.cn-north-4.myhuaweicloud.com/ci_cann/ubuntu20.04.05_x86:k8s_v1.1006
       JOB_pre:
+        permissions:
+          repository: read
+          id-token: write
         name: Test_PreBuild
         uses: cann/.gitcode/.gitcode/workflows/pre_action.yml@master
     pre:
@@ -60,36 +63,54 @@ stages:
     name: Compile
     jobs:
       JOB_Compile_X86:
+        permissions:
+          repository: read
+          id-token: write
         name: Compile_X86
         uses: .gitcode/workflows/x86_compile_action.yml
         with:
           task_name: 'Compile_X86'
           image_version: ${{ jobs.JOB_image.outputs.Compile_Ascend_X86 }}
       JOB_Compile_ARM:
+        permissions:
+          repository: read
+          id-token: write
         name: Compile_ARM
         uses: .gitcode/workflows/arm_compile_action.yml
         with:
           task_name: 'Compile_ARM'
           image_version: ${{ jobs.JOB_image.outputs.Compile_Ascend_ARM }}
       JOB_Compile_UT_X86:
+        permissions:
+          repository: read
+          id-token: write
         name: Compile_UT_X86
         uses: .gitcode/workflows/x86_compile_ut.yml
         with:
           task_name: 'Compile_UT_X86'
           image_version: ${{ jobs.JOB_image.outputs.Compile_Ascend_X86 }}
       JOB_Compile_UT_ARM:
+        permissions:
+          repository: read
+          id-token: write
         name: Compile_UT_ARM
         uses: .gitcode/workflows/arm_compile_ut.yml
         with:
-          task_name: 'Compile_UT_ARM' 
+          task_name: 'Compile_UT_ARM'
           image_version: ${{ jobs.JOB_image.outputs.Compile_Ascend_ARM }}
       JOB_codecheck_action:
+        permissions:
+          repository: read
+          id-token: write
         name: CodeCheck
         uses: .gitcode/workflows/codecheck_action.yml
         with:
           precommit_image_version: ${{ jobs.JOB_image.outputs.precommit }}
           codecheck_image_version: ${{ jobs.JOB_image.outputs.codecheck }}
       JOB_staticcheck_md_check:
+        permissions:
+          repository: read
+          id-token: write
         name: CodeCheck_staticcheck_md_check
         uses: .gitcode/workflows/staticcheck_action.yml
         with:
@@ -100,13 +121,19 @@ stages:
     fail-fast: true
   stage3:
     name: UT
-    jobs: 
+    jobs:
       JOB_UT_ARM_910B:
+        permissions:
+          repository: read
+          id-token: write
         name: UT_ARM_910B
         uses: .gitcode/workflows/arm_ut_action.yml
         with:
           image_version: ${{ jobs.JOB_image.outputs.Compile_Ascend_ARM }}
       JOB_UT_Test:
+        permissions:
+          repository: read
+          id-token: write
         name: x86_310p_UT
         uses: .gitcode/workflows/x86_ut_action.yml
         with:
