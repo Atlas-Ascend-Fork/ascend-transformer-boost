@@ -17,7 +17,7 @@
 #include "kernel_operator.h"
 #include "kernels/matmul/tiling/tiling_data.h"
 #include "kernels/utils/kernel/common.h"
-#include "kernels/utils/kernel/layout.h" 
+#include "kernels/utils/kernel/layout.h"
 #include "kernels/utils/kernel/mem.h"
 #include "kernels/utils/kernel/iterator.h"
 #include "kernels/utils/kernel/mma.h"
@@ -167,7 +167,7 @@ public:
         SET_FLAG(MTE1, MTE2, EVENT_ID7);
         uint32_t m_idx = 0;
         uint32_t n_idx = 0;
-        uint64_t workspace_offset = core_idx * RoundUp32(m0) * RoundUp32(n0);
+        uint64_t workspace_offset = static_cast<uint64_t>(core_idx) * RoundUp32(m0) * RoundUp32(n0);
         for (uint32_t loop_idx = core_idx; loop_idx < core_loop; loop_idx += core_num) {
             GetBlockIdx(loop_idx, m_idx, n_idx);
             uint64_t batch_idx = loop_idx / n_loop / m_loop;
@@ -177,7 +177,8 @@ public:
             uint64_t offset_scalar;
             uint64_t offset_a_next;
             uint64_t offset_b_next;
-            uint64_t offset_c = batch_idx * m * n + m_idx * m0 * n + n_idx * n0;
+            uint64_t offset_c = batch_idx * m * n + static_cast<uint64_t>(m_idx) * m0 * n +
+                                static_cast<uint64_t>(n_idx) * n0;
             uint32_t m_actual = (m_idx == (m_loop - 1)) ? (m - m_idx * m0) : m0;
             uint32_t n_actual = (n_idx == (n_loop - 1)) ? (n - n_idx * n0) : n0;
             uint32_t bias_n_round = RoundUp8(n_actual);
@@ -204,11 +205,11 @@ public:
             if constexpr (transA) {
                 offset_a = batch_idx * m * k + m_idx * m0 + shuffle_k * k0 * m;
             } else {
-                offset_a = batch_idx * m * k + m_idx * m0 * k + shuffle_k * k0;
+                offset_a = batch_idx * m * k + static_cast<uint64_t>(m_idx) * m0 * k + shuffle_k * k0;
             }
             if constexpr (transB) {
                 if constexpr (FormatB != DataFormat::NZ) {
-                    offset_b = batch_idx * k * n + n_idx * n0 * k + shuffle_k * k0;
+                    offset_b = batch_idx * k * n + static_cast<uint64_t>(n_idx) * n0 * k + shuffle_k * k0;
                 } else {
                     offset_b =
                         batch_idx * RoundUp16(n) * RoundUp32(k) + shuffle_k * k0 * RoundUp16(n) + n_idx * n0 * CONST_32;
@@ -217,8 +218,8 @@ public:
                 if constexpr (FormatB != DataFormat::NZ) {
                     offset_b = batch_idx * k * n + n_idx * n0 + shuffle_k * k0 * n;
                 } else {
-                    offset_b =
-                        batch_idx * RoundUp16(k) * RoundUp32(n) + n_idx * n0 * RoundUp16(k) + shuffle_k * k0 * CONST_32;
+                    offset_b = batch_idx * RoundUp16(k) * RoundUp32(n) +
+                               static_cast<uint64_t>(n_idx) * n0 * RoundUp16(k) + shuffle_k * k0 * CONST_32;
                 }
             }
             offset_bias = batch_idx * n + n_idx * n0;
@@ -302,12 +303,12 @@ public:
                     if constexpr (transA) {
                         offset_a_next = batch_idx * m * k + m_idx * m0 + shuffle_k_next * k0 * m;
                     } else {
-                        offset_a_next = batch_idx * m * k + m_idx * m0 * k + shuffle_k_next * k0;
+                        offset_a_next = batch_idx * m * k + static_cast<uint64_t>(m_idx) * m0 * k + shuffle_k_next * k0;
                     }
 
                     if constexpr (transB) {
                         if constexpr (FormatB != DataFormat::NZ) {
-                            offset_b_next = batch_idx * k * n + n_idx * n0 * k + shuffle_k_next * k0;
+                            offset_b_next = batch_idx * k * n + static_cast<uint64_t>(n_idx) * n0 * k + shuffle_k_next * k0;
                         } else {
                             offset_b_next = batch_idx * RoundUp16(n) * RoundUp32(k) + shuffle_k_next * k0 * RoundUp16(n)+
                                             n_idx * n0 * CONST_32;
@@ -316,8 +317,9 @@ public:
                         if constexpr (FormatB != DataFormat::NZ) {
                             offset_b_next = batch_idx * k * n + n_idx * n0 + shuffle_k_next * k0 * n;
                         } else {
-                            offset_b_next = batch_idx * RoundUp16(k) * RoundUp32(n) + n_idx * n0 * RoundUp16(k) +
-                                        shuffle_k_next * k0 * CONST_32;
+                            offset_b_next = batch_idx * RoundUp16(k) * RoundUp32(n) +
+                                            static_cast<uint64_t>(n_idx) * n0 * RoundUp16(k) +
+                                            shuffle_k_next * k0 * CONST_32;
                         }
                     }
 
@@ -494,7 +496,7 @@ public:
                                 0);                                              // dstGap
                             SET_FLAG(MTE1, MTE2, EVENT_ID7); // bias ready, mte2 can begin move A/B or scale
                             SET_FLAG(MTE1, M, EVENT_ID7);    // bias ready, mmad can begin
-                            WAIT_FLAG(MTE1, M, EVENT_ID7);   // wait move bias fron L1 to BT
+                            WAIT_FLAG(MTE1, M, EVENT_ID7);   // wait move bias from L1 to BT
                             mmad<ArchType::ASCEND_V220, InDtype, InDtype, BiasDtype, false>(l0c_buf,             // c
                                                                                             l0a_buf,             // a
                                                                                             l0b_buf,             // b
@@ -867,7 +869,7 @@ public:
         SET_FLAG(V, MTE2, EVENT_ID0);
         SET_FLAG(MTE3, V, EVENT_ID0);
         SET_FLAG(MTE3, MTE2, EVENT_ID0);
-        uint64_t workspace_offset = core_idx * RoundUp32(m0) * RoundUp32(n0);
+        uint64_t workspace_offset = static_cast<uint64_t>(core_idx) * RoundUp32(m0) * RoundUp32(n0);
         for (uint32_t loop_idx = core_idx; loop_idx < core_loop; loop_idx += core_num) {
             GetBlockIdx(loop_idx, m_idx, n_idx);
             uint64_t batch_idx = loop_idx / n_loop / m_loop;
@@ -879,7 +881,8 @@ public:
             uint64_t offset_pertoken_scalar;
             uint64_t offset_a_next;
             uint64_t offset_b_next;
-            uint64_t offset_c = batch_idx * m * n + m_idx * m0 * n + n_idx * n0;
+            uint64_t offset_c = batch_idx * m * n + static_cast<uint64_t>(m_idx) * m0 * n +
+                                static_cast<uint64_t>(n_idx) * n0;
             uint32_t m_actual = (m_idx == (m_loop - 1)) ? (m - m_idx * m0) : m0;
             uint32_t n_actual = (n_idx == (n_loop - 1)) ? (n - n_idx * n0) : n0;
             uint32_t m_round = 0;
@@ -887,17 +890,17 @@ public:
             n_round = RoundUp8(n_actual);
             uint32_t n_round16 = RoundUp16(n_actual);
             uint32_t m_actual_per_vec = m_actual / 2;
-            uint32_t workspace_offset_ = workspace_offset;
+            uint64_t workspace_offset_ = workspace_offset;
             if (GetSubBlockidx() != 0) {
-                offset_c += m_actual_per_vec * n;
-                workspace_offset_ += m_actual_per_vec * RoundUp32(n0);
+                offset_c += static_cast<uint64_t>(m_actual_per_vec) * n;
+                workspace_offset_ += static_cast<uint64_t>(m_actual_per_vec) * RoundUp32(n0);
                 m_actual_per_vec = m_actual - m_actual_per_vec;
             }
             m_round = RoundUp8(m_actual_per_vec);
 
             if (m_actual_per_vec == 0) {
                 WaitFlagDev(AIC_WRITE_FINISH_FLAG_ID);
-                if(loop_idx + core_num < core_loop) { 
+                if(loop_idx + core_num < core_loop) {
                     FftsCrossCoreSync<PIPE_MTE2, SYNC_MODE>(AIV_READ_FINISH_FLAG_ID);
                 }
                 continue;
