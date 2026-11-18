@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/norm_rope_reshape/index.md`](../ops/norm_rope_reshape/index.md)
+> 详细知识条目: [`ops/norm_rope_reshape/index.md`](../ops/norm/norm_rope_reshape/index.md)
 
 ## 6. 快速导航
 

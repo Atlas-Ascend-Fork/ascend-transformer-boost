@@ -34,7 +34,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/fused_add_topk_div/index.md`](../ops/fused_add_topk_div/index.md)
+> 详细知识条目: [`ops/fused_add_topk_div/index.md`](../ops/other/fused_add_topk_div/index.md)
 
 ## 6. 快速导航
 

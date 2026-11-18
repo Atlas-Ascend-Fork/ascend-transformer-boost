@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/reshape_and_cache_with_stride/index.md`](../ops/reshape_and_cache_with_stride/index.md)
+> 详细知识条目: [`ops/reshape_and_cache_with_stride/index.md`](../ops/other/reshape_and_cache_with_stride/index.md)
 
 ## 6. 快速导航
 

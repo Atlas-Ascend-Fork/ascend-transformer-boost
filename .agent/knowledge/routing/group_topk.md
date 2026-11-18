@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/group_topk/index.md`](../ops/group_topk/index.md)
+> 详细知识条目: [`ops/group_topk/index.md`](../ops/other/group_topk/index.md)
 
 ## 6. 快速导航
 

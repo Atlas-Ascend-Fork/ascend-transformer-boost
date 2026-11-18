@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/kv_cache/index.md`](../ops/kv_cache/index.md)
+> 详细知识条目: [`ops/kv_cache/index.md`](../ops/other/kv_cache/index.md)
 
 ## 6. 快速导航
 

@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/topk_topp_sampling/index.md`](../ops/topk_topp_sampling/index.md)
+> 详细知识条目: [`ops/topk_topp_sampling/index.md`](../ops/other/topk_topp_sampling/index.md)
 
 ## 6. 快速导航
 

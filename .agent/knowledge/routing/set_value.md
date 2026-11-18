@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/set_value/index.md`](../ops/set_value/index.md)
+> 详细知识条目: [`ops/set_value/index.md`](../ops/other/set_value/index.md)
 
 ## 6. 快速导航
 

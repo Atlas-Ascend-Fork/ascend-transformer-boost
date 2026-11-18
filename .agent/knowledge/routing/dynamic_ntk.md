@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/dynamic_ntk/index.md`](../ops/dynamic_ntk/index.md)
+> 详细知识条目: [`ops/dynamic_ntk/index.md`](../ops/other/dynamic_ntk/index.md)
 
 ## 6. 快速导航
 

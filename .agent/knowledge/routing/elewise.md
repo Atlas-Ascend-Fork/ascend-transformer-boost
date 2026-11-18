@@ -44,7 +44,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/elewise/index.md`](../ops/elewise/index.md)
+> 详细知识条目: [`ops/elewise/index.md`](../ops/other/elewise/index.md)
 
 ## 6. 快速导航
 

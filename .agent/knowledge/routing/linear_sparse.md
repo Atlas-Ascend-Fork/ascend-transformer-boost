@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/linear_sparse/index.md`](../ops/linear_sparse/index.md)
+> 详细知识条目: [`ops/linear_sparse/index.md`](../ops/other/linear_sparse/index.md)
 
 ## 6. 快速导航
 

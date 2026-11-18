@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/split/index.md`](../ops/split/index.md)
+> 详细知识条目: [`ops/split/index.md`](../ops/other/split/index.md)
 
 ## 6. 快速导航
 

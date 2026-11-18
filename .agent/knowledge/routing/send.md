@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/send/index.md`](../ops/send/index.md)
+> 详细知识条目: [`ops/send/index.md`](../ops/communication/send/index.md)
 
 ## 6. 快速导航
 

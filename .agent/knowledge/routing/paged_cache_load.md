@@ -34,7 +34,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/paged_cache_load/index.md`](../ops/paged_cache_load/index.md)
+> 详细知识条目: [`ops/paged_cache_load/index.md`](../ops/other/paged_cache_load/index.md)
 
 ## 6. 快速导航
 

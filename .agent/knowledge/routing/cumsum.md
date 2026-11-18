@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/cumsum/index.md`](../ops/cumsum/index.md)
+> 详细知识条目: [`ops/cumsum/index.md`](../ops/other/cumsum/index.md)
 
 ## 6. 快速导航
 

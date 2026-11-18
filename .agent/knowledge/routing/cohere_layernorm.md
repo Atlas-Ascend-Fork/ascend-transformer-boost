@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/cohere_layernorm/index.md`](../ops/cohere_layernorm/index.md)
+> 详细知识条目: [`ops/cohere_layernorm/index.md`](../ops/norm/cohere_layernorm/index.md)
 
 ## 6. 快速导航
 

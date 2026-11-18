@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/block_copy/index.md`](../ops/block_copy/index.md)
+> 详细知识条目: [`ops/block_copy/index.md`](../ops/other/block_copy/index.md)
 
 ## 6. 快速导航
 

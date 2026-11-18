@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/transdata/index.md`](../ops/transdata/index.md)
+> 详细知识条目: [`ops/transdata/index.md`](../ops/other/transdata/index.md)
 
 ## 6. 快速导航
 

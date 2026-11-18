@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/mm_deq_swiglu_quant_mm_deq/index.md`](../ops/mm_deq_swiglu_quant_mm_deq/index.md)
+> 详细知识条目: [`ops/mm_deq_swiglu_quant_mm_deq/index.md`](../ops/activation/mm_deq_swiglu_quant_mm_deq/index.md)
 
 ## 6. 快速导航
 

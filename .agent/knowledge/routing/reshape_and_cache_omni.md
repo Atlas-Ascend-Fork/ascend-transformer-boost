@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/reshape_and_cache_omni/index.md`](../ops/reshape_and_cache_omni/index.md)
+> 详细知识条目: [`ops/reshape_and_cache_omni/index.md`](../ops/other/reshape_and_cache_omni/index.md)
 
 ## 6. 快速导航
 

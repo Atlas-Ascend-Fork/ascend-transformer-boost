@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/laser_attention_grad/index.md`](../ops/laser_attention_grad/index.md)
+> 详细知识条目: [`ops/laser_attention_grad/index.md`](../ops/attention/laser_attention_grad/index.md)
 
 ## 6. 快速导航
 

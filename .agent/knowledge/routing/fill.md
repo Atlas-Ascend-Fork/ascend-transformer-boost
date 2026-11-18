@@ -40,7 +40,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/fill/index.md`](../ops/fill/index.md)
+> 详细知识条目: [`ops/fill/index.md`](../ops/other/fill/index.md)
 
 ## 6. 快速导航
 

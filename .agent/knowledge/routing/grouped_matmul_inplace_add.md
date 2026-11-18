@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/grouped_matmul_inplace_add/index.md`](../ops/grouped_matmul_inplace_add/index.md)
+> 详细知识条目: [`ops/grouped_matmul_inplace_add/index.md`](../ops/other/grouped_matmul_inplace_add/index.md)
 
 ## 6. 快速导航
 

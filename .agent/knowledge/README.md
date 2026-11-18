@@ -423,7 +423,7 @@ src/ops/ops_{category}/{op_name}/
 | 16 | event_operation | common | S | 4 | no |  | [📄](routing/event_operation.md) | ⏳ |
 | 17 | fast_soft_max | train | S | 4 | no |  | [📄](routing/fast_soft_max.md) | ⏳ |
 | 18 | fast_soft_max_grad | train | S | 4 | no |  | [📄](routing/fast_soft_max_grad.md) | ⏳ |
-| 19 | faupdate | infer | S | 4 | no |  | [📄](routing/faupdate.md) | [✅](ops/attention/faupdate/index.md) |
+| 19 | faupdate | infer | S | 4 | no |  | [📄](routing/faupdate.md) | [✅](ops/other/faupdate/index.md) |
 | 20 | fill | infer | M | 8 | yes | ⚠️ | [📄](routing/fill.md) | ⏳ |
 | 21 | fused_add_topk_div | infer | M | 5 | no | ⚠️ | [📄](routing/fused_add_topk_div.md) | ⏳ |
 | 22 | gather | infer | M | 6 | yes | ⚠️ | [📄](routing/gather.md) | ⏳ |

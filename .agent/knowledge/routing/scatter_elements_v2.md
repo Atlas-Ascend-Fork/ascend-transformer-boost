@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/scatter_elements_v2/index.md`](../ops/scatter_elements_v2/index.md)
+> 详细知识条目: [`ops/scatter_elements_v2/index.md`](../ops/other/scatter_elements_v2/index.md)
 
 ## 6. 快速导航
 

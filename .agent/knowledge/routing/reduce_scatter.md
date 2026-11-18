@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/reduce_scatter/index.md`](../ops/reduce_scatter/index.md)
+> 详细知识条目: [`ops/reduce_scatter/index.md`](../ops/communication/reduce_scatter/index.md)
 
 ## 6. 快速导航
 

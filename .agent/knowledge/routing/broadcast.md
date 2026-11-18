@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/broadcast/index.md`](../ops/broadcast/index.md)
+> 详细知识条目: [`ops/broadcast/index.md`](../ops/communication/broadcast/index.md)
 
 ## 6. 快速导航
 

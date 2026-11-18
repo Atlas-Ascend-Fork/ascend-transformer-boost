@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/gather_pre_rms_norm/index.md`](../ops/gather_pre_rms_norm/index.md)
+> 详细知识条目: [`ops/gather_pre_rms_norm/index.md`](../ops/norm/gather_pre_rms_norm/index.md)
 
 ## 6. 快速导航
 

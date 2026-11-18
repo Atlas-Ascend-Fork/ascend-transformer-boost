@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/faupdate/index.md`](../ops/faupdate/index.md)
+> 详细知识条目: [`ops/faupdate/index.md`](../ops/other/faupdate/index.md)
 
 ## 6. 快速导航
 

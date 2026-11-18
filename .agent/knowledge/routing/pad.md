@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/pad/index.md`](../ops/pad/index.md)
+> 详细知识条目: [`ops/pad/index.md`](../ops/other/pad/index.md)
 
 ## 6. 快速导航
 

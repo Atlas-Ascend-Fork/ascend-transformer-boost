@@ -49,7 +49,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/linear_parallel/index.md`](../ops/linear_parallel/index.md)
+> 详细知识条目: [`ops/linear_parallel/index.md`](../ops/other/linear_parallel/index.md)
 
 ## 6. 快速导航
 

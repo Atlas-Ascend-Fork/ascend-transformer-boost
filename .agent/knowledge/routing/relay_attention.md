@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/relay_attention/index.md`](../ops/relay_attention/index.md)
+> 详细知识条目: [`ops/relay_attention/index.md`](../ops/attention/relay_attention/index.md)
 
 ## 6. 快速导航
 

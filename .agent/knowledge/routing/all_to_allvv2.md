@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/all_to_allvv2/index.md`](../ops/all_to_allvv2/index.md)
+> 详细知识条目: [`ops/all_to_allvv2/index.md`](../ops/communication/all_to_allvv2/index.md)
 
 ## 6. 快速导航
 

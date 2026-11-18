@@ -44,7 +44,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/linear/index.md`](../ops/linear/index.md)
+> 详细知识条目: [`ops/linear/index.md`](../ops/other/linear/index.md)
 
 ## 6. 快速导航
 

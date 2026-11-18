@@ -44,7 +44,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/activation/index.md`](../ops/activation/index.md)
+> 详细知识条目: [`ops/activation/index.md`](../ops/activation/activation/index.md)
 
 ## 6. 快速导航
 

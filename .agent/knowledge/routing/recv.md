@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/recv/index.md`](../ops/recv/index.md)
+> 详细知识条目: [`ops/recv/index.md`](../ops/communication/recv/index.md)
 
 ## 6. 快速导航
 

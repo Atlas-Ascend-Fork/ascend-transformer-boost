@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/multinomial/index.md`](../ops/multinomial/index.md)
+> 详细知识条目: [`ops/multinomial/index.md`](../ops/other/multinomial/index.md)
 
 ## 6. 快速导航
 

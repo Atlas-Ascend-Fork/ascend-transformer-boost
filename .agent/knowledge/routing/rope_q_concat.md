@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/rope_q_concat/index.md`](../ops/rope_q_concat/index.md)
+> 详细知识条目: [`ops/rope_q_concat/index.md`](../ops/other/rope_q_concat/index.md)
 
 ## 6. 快速导航
 

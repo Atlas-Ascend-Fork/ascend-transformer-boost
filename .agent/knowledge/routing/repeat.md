@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/repeat/index.md`](../ops/repeat/index.md)
+> 详细知识条目: [`ops/repeat/index.md`](../ops/other/repeat/index.md)
 
 ## 6. 快速导航
 

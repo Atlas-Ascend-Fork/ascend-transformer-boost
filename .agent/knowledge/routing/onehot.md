@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/onehot/index.md`](../ops/onehot/index.md)
+> 详细知识条目: [`ops/onehot/index.md`](../ops/other/onehot/index.md)
 
 ## 6. 快速导航
 

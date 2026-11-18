@@ -91,7 +91,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/self_attention/index.md`](../ops/self_attention/index.md)
+> 详细知识条目: [`ops/self_attention/index.md`](../ops/attention/self_attention/index.md)
 
 ## 6. 快速导航
 

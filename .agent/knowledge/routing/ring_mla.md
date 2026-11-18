@@ -38,7 +38,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/ring_mla/index.md`](../ops/ring_mla/index.md)
+> 详细知识条目: [`ops/ring_mla/index.md`](../ops/attention/ring_mla/index.md)
 
 ## 6. 快速导航
 

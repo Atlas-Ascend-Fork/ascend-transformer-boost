@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/index_add/index.md`](../ops/index_add/index.md)
+> 详细知识条目: [`ops/index_add/index.md`](../ops/other/index_add/index.md)
 
 ## 6. 快速导航
 

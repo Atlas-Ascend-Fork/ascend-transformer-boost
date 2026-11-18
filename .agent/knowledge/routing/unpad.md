@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/unpad/index.md`](../ops/unpad/index.md)
+> 详细知识条目: [`ops/unpad/index.md`](../ops/other/unpad/index.md)
 
 ## 6. 快速导航
 

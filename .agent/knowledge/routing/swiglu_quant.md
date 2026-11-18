@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/swiglu_quant/index.md`](../ops/swiglu_quant/index.md)
+> 详细知识条目: [`ops/swiglu_quant/index.md`](../ops/activation/swiglu_quant/index.md)
 
 ## 6. 快速导航
 

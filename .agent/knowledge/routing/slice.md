@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/slice/index.md`](../ops/slice/index.md)
+> 详细知识条目: [`ops/slice/index.md`](../ops/other/slice/index.md)
 
 ## 6. 快速导航
 

@@ -42,7 +42,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/multi_latent_attention/index.md`](../ops/multi_latent_attention/index.md)
+> 详细知识条目: [`ops/multi_latent_attention/index.md`](../ops/attention/multi_latent_attention/index.md)
 
 ## 6. 快速导航
 

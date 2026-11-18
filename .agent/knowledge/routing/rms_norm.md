@@ -44,7 +44,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/rms_norm/index.md`](../ops/rms_norm/index.md)
+> 详细知识条目: [`ops/rms_norm/index.md`](../ops/norm/rms_norm/index.md)
 
 ## 6. 快速导航
 

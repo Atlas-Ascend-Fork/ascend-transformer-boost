@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/where/index.md`](../ops/where/index.md)
+> 详细知识条目: [`ops/where/index.md`](../ops/other/where/index.md)
 
 ## 6. 快速导航
 

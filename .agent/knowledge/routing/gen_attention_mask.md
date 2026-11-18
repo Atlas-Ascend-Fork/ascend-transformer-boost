@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/gen_attention_mask/index.md`](../ops/gen_attention_mask/index.md)
+> 详细知识条目: [`ops/gen_attention_mask/index.md`](../ops/attention/gen_attention_mask/index.md)
 
 ## 6. 快速导航
 

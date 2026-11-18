@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/softmax/index.md`](../ops/softmax/index.md)
+> 详细知识条目: [`ops/softmax/index.md`](../ops/other/softmax/index.md)
 
 ## 6. 快速导航
 

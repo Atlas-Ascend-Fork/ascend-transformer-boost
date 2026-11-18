@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/gating/index.md`](../ops/gating/index.md)
+> 详细知识条目: [`ops/gating/index.md`](../ops/other/gating/index.md)
 
 ## 6. 快速导航
 

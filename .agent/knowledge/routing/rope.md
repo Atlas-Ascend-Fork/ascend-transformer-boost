@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/rope/index.md`](../ops/rope/index.md)
+> 详细知识条目: [`ops/rope/index.md`](../ops/other/rope/index.md)
 
 ## 6. 快速导航
 

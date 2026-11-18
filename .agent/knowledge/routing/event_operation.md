@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/event_operation/index.md`](../ops/event_operation/index.md)
+> 详细知识条目: [`ops/event_operation/index.md`](../ops/communication/event_operation/index.md)
 
 ## 6. 快速导航
 

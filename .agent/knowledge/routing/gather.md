@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/gather/index.md`](../ops/gather/index.md)
+> 详细知识条目: [`ops/gather/index.md`](../ops/other/gather/index.md)
 
 ## 6. 快速导航
 

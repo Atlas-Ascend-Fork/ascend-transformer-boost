@@ -36,7 +36,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/all_reduce/index.md`](../ops/all_reduce/index.md)
+> 详细知识条目: [`ops/all_reduce/index.md`](../ops/communication/all_reduce/index.md)
 
 ## 6. 快速导航
 

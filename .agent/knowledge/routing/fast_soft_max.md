@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/fast_soft_max/index.md`](../ops/fast_soft_max/index.md)
+> 详细知识条目: [`ops/fast_soft_max/index.md`](../ops/activation/fast_soft_max/index.md)
 
 ## 6. 快速导航
 

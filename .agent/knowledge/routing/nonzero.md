@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/nonzero/index.md`](../ops/nonzero/index.md)
+> 详细知识条目: [`ops/nonzero/index.md`](../ops/other/nonzero/index.md)
 
 ## 6. 快速导航
 

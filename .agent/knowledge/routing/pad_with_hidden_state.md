@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/pad_with_hidden_state/index.md`](../ops/pad_with_hidden_state/index.md)
+> 详细知识条目: [`ops/pad_with_hidden_state/index.md`](../ops/train/pad_with_hidden_state/index.md)
 
 ## 6. 快速导航
 

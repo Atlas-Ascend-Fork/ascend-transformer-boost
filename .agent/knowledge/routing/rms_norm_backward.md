@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/rms_norm_backward/index.md`](../ops/rms_norm_backward/index.md)
+> 详细知识条目: [`ops/rms_norm_backward/index.md`](../ops/norm/rms_norm_backward/index.md)
 
 ## 6. 快速导航
 

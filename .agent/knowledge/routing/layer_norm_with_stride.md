@@ -32,7 +32,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/layer_norm_with_stride/index.md`](../ops/layer_norm_with_stride/index.md)
+> 详细知识条目: [`ops/layer_norm_with_stride/index.md`](../ops/norm/layer_norm_with_stride/index.md)
 
 ## 6. 快速导航
 

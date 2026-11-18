@@ -42,7 +42,7 @@
 
 ## 5. 知识条目
 
-> 详细知识条目: [`ops/mla_preprocess/index.md`](../ops/mla_preprocess/index.md)
+> 详细知识条目: [`ops/mla_preprocess/index.md`](../ops/attention/mla_preprocess/index.md)
 
 ## 6. 快速导航
 
