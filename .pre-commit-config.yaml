@@ -92,3 +92,15 @@ repos:
           - "--verbose"
           - "-i"
         exclude: ^build/|tests/third_party/
+
+  # OAT 合规性检查 (Open Source Audit Tool)
+  - repo: local
+    hooks:
+      - id: oat-check
+        name: OAT Compliance Check
+        entry: bash scripts/oat_check.sh
+        language: system
+        pass_filenames: true
+        types: [file]
+        stages: [commit]
+        verbose: true
