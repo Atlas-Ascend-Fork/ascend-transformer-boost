@@ -378,11 +378,9 @@ int64_t OperationUtil::GetYTensorK(const TensorDesc &yTensorDesc, bool transpose
 
 /**
  * input/weight TensorDesc维度大小校验
- * @param inputTensorDesc
- * @param weightTensorDesc
- * @param matmulOpEnum
+ * @param inTensorDescs
  * @param logPrefix
- * @param transposeA
+ * @param param
  * @return
  */
 bool OperationUtil::MatmulInputWeightDimNumCheck(const SVector<TensorDesc> &inTensorDescs, const std::string &logPrefix,
@@ -510,7 +508,8 @@ bool OperationUtil::MatmulInputWeightShapeCheck(const SVector<TensorDesc> &inTen
  * Linear bias/deqScale矩阵校验
  * @param biasDeqTensorDesc biasTensorDesc/deqScaleTensorDesc
  * @param logPrefix
- * @param n
+ * @param needLastDim
+ * @param needFirstDim
  * @param inTensorId
  * @return
  */
