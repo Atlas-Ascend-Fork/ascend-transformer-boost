@@ -62,9 +62,11 @@ function fn_build_googletest()
         return 0
     fi
     [[ ! -d "$THIRD_PARTY_DIR" ]] && mkdir $THIRD_PARTY_DIR
-    cd $THIRD_PARTY_DIR
-    [[ ! -d "googletest" ]] && git clone --branch v1.13.0 --depth 1 https://github.com/google/googletest.git
-    cd googletest
+    cd $THIRD_PARTY_DIR || return 1
+    if [[ ! -d "googletest" ]]; then
+        git clone --branch v1.13.0 --depth 1 https://github.com/google/googletest.git || return 1
+    fi
+    cd googletest || return 1
     sed -i '34d' CMakeLists.txt
     rm -rf build && mkdir build && cd build
     if [ "$USE_CXX11_ABI" == "ON" ]
@@ -85,8 +87,8 @@ function fn_load_nlohmann_json()
     if [ -d "$THIRD_PARTY_DIR/nlohmannJson" ]; then
         return 0
     fi
-    cd $THIRD_PARTY_DIR
-    git clone --branch v3.12.0 --depth 1 https://github.com/nlohmann/json.git
+    cd $THIRD_PARTY_DIR || return 1
+    git clone --branch v3.12.0 --depth 1 https://github.com/nlohmann/json.git || return 1
     mv json nlohmannJson
 }
 
