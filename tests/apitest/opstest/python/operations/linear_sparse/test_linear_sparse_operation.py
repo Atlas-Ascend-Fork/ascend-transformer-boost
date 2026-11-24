@@ -11,6 +11,8 @@ import os
 import sys
 import json
 import unittest
+import subprocess
+import builtins
 import torch
 import torch_npu
 import numpy as np
@@ -20,6 +22,7 @@ import operation_test  # NOQA: E402
 
 OP_NAME = "LinearSparseOperation"
 PARAM = {"transposeA": False, "transposeB": True, "tilingK": 8, "tilingN": 8}
+
 
 class TestLinearSparseOperation(operation_test.OperationTest):
     def golden_calc(self, in_tensors):
@@ -45,26 +48,60 @@ class TestLinearSparseOperation(operation_test.OperationTest):
         input3 = np.frombuffer(input3.numpy().tobytes(), dtype=np.uint32).astype(np.int64)
         input3 = torch.tensor(input3, dtype=torch.int64).npu()
 
-        sys.path.append("/usr/local/Ascend/ascend-toolkit/latest/tools/msmodelslim/pytorch/")
-        from weight_compression import CompressConfig, Compressor
+        try:
+            import msmodelslim
+            from msmodelslim.pytorch.weight_compression import CompressConfig, Compressor
+
+            package_root = os.path.dirname(os.path.abspath(msmodelslim.__file__))
+            compress_graph_path = os.path.join(package_root, "pytorch", "weight_compression", "compress_graph")
+        except ImportError:
+            ascend_home_path = os.getenv("ASCEND_HOME_PATH", "")
+            legacy_path = os.path.join(ascend_home_path, "tools", "msmodelslim", "pytorch")
+            sys.path.append(legacy_path)
+            from weight_compression import CompressConfig, Compressor
+
+            compress_graph_path = os.path.join(legacy_path, "weight_compression", "compress_graph")
+
+        compile_result_path = os.path.join(compress_graph_path, "build", "compress_excutor")
+        if not os.path.exists(compile_result_path):
+            result = subprocess.run(
+                ["bash", "build.sh", os.getenv("ASCEND_HOME_PATH", "")],
+                cwd=compress_graph_path,
+                check=False,
+            )
+            if result.returncode != 0 or not os.path.exists(compile_result_path):
+                raise RuntimeError("compile compress_weight tool failed")
+
         work_dir = os.path.join(os.getcwd(), "linear_sparse_weight")
-        weight_path = os.path.join(work_dir, f"weight_nd.npy")
-        tensor_dict = {"key": weight_npu.cpu()}
-        np.save(weight_path, tensor_dict)
-        compress_config = CompressConfig()
-        compressor = Compressor(compress_config, weight_path)
-        compress_weight, compress_idx, compress_info = compressor.run()
+        os.makedirs(work_dir, mode=0o700, exist_ok=True)
+        os.chmod(work_dir, 0o700)
+
+        def compress(weight, filename):
+            weight_path = os.path.join(work_dir, filename)
+            np.save(weight_path, {"key": weight.cpu()})
+            os.chmod(weight_path, 0o600)
+            compress_config = CompressConfig(record_detail_root=work_dir)
+            original_input = builtins.input
+
+            def input_yes(prompt=""):
+                if prompt == "Please enter 'yes' or 'no'\n":
+                    return "yes"
+                return original_input(prompt)
+
+            builtins.input = input_yes
+            try:
+                compressor = Compressor(compress_config, weight_path)
+                return compressor.run()
+            finally:
+                builtins.input = original_input
+
+        compress_weight, compress_idx, _ = compress(weight_npu, "weight_nd.npy")
         input1 = torch.tensor(compress_weight["key"].astype(np.int8)).npu()
         input4 = torch.tensor(compress_idx["key"].astype(np.int8)).npu()
         self.execute(OP_NAME, json.dumps(PARAM), [input0, input1, input2, input3, input4])
 
         weight_npu = torch_npu.npu_format_cast(weight_npu, 29)
-        weight_path = os.path.join(work_dir, f"weight_nz.npy")
-        tensor_dict = {"key": weight_npu.cpu()}
-        np.save(weight_path, tensor_dict)
-        compress_config = CompressConfig()
-        compressor = Compressor(compress_config, weight_path)
-        compress_weight, compress_idx, compress_info = compressor.run()
+        compress_weight, compress_idx, _ = compress(weight_npu, "weight_nz.npy")
         input1 = torch.tensor(compress_weight["key"].astype(np.int8)).npu()
         input4 = torch.tensor(compress_idx["key"].astype(np.int8)).npu()
         self.execute(OP_NAME, json.dumps(PARAM), [input0, input1, input2, input3, input4])

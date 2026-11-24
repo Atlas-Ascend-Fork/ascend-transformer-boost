@@ -20,6 +20,7 @@ from ctypes import CDLL
 import math
 import sys
 import shutil
+import subprocess
 import logging
 import re
 from enum import Enum, IntEnum
@@ -1097,46 +1098,81 @@ class LinearParallelOperation(DataGen):
 class LinearSparseOperation(DataGen):
     case_num = 1
     compress_index = None
-    # bash compress_weight tool
-    ascend_home_path = os.getenv("ASCEND_HOME_PATH")
-    compress_graph_path = f"{ascend_home_path}/tools/msmodelslim/pytorch/weight_compression/compress_graph"
-    compile_result_path = f"{compress_graph_path}/build/compress_excutor"
 
     def __init__(self):
         pass
 
     @staticmethod
+    def _load_msmodelslim():
+        try:
+            import msmodelslim
+            from msmodelslim.pytorch.weight_compression import CompressConfig, Compressor
+
+            package_root = os.path.dirname(os.path.abspath(msmodelslim.__file__))
+            compress_graph_path = os.path.join(package_root, "pytorch", "weight_compression", "compress_graph")
+            return CompressConfig, Compressor, compress_graph_path
+        except ImportError:
+            pass
+
+        ascend_home_path = os.getenv("ASCEND_HOME_PATH", "")
+        legacy_path = os.path.join(ascend_home_path, "tools", "msmodelslim", "pytorch")
+        if os.path.isdir(legacy_path):
+            if legacy_path not in sys.path:
+                sys.path.append(legacy_path)
+            try:
+                from weight_compression import CompressConfig, Compressor
+
+                compress_graph_path = os.path.join(legacy_path, "weight_compression", "compress_graph")
+                return CompressConfig, Compressor, compress_graph_path
+            except ImportError:
+                pass
+        return None, None, None
+
+    @staticmethod
     def case_preprocess(op_params, operation, input_tensor_list):
         if len(input_tensor_list[1].size()) != 2:
             return
-        if not os.path.exists(LinearSparseOperation.compile_result_path):
-            os.chdir(LinearSparseOperation.compress_graph_path)
-            command = f'bash build.sh {LinearSparseOperation.ascend_home_path}'
-            if os.system(command) != 0:
-                logging.error("compile compress_weight tool failed")
-                exit(1)
+        compress_config_cls, compressor_cls, compress_graph_path = LinearSparseOperation._load_msmodelslim()
+        if compressor_cls is None:
+            raise RuntimeError(
+                "LinearSparse cases require msmodelslim, install it from https://gitcode.com/Ascend/msmodelslim"
+            )
+
+        compile_result_path = os.path.join(compress_graph_path, "build", "compress_excutor")
+        if not os.path.exists(compile_result_path):
+            build_script = os.path.join(compress_graph_path, "build.sh")
+            if not os.path.exists(build_script):
+                raise RuntimeError(f"compress_excutor not found and build.sh missing in {compress_graph_path}")
+            ascend_home_path = os.getenv("ASCEND_HOME_PATH", "")
+            result = subprocess.run(["bash", build_script, ascend_home_path], cwd=compress_graph_path, check=False)
+            if result.returncode != 0 or not os.path.exists(compile_result_path):
+                raise RuntimeError("compile compress_weight tool failed")
+
+        original_input = builtins.input
 
         def input_yes(prompt=""):
             if prompt == "Please enter 'yes' or 'no'\n":
                 return "yes"
-            return builtins.input(prompt)
+            return original_input(prompt)
 
         builtins.input = input_yes
-        sys.path.append(f"{LinearSparseOperation.ascend_home_path}/tools/msmodelslim/pytorch/")
-        from weight_compression import CompressConfig, Compressor
-
-        work_dir = os.path.join(os.getcwd(), "atb_temp/linear_sparse_weight")
-        if LinearSparseOperation.case_num == 1:
-            if os.path.exists(work_dir):
-                shutil.rmtree(work_dir)
-            os.makedirs(work_dir)
-        weight_path = os.path.join(work_dir, f"case{LinearSparseOperation.case_num}.npy")
-        LinearSparseOperation.case_num = LinearSparseOperation.case_num + 1
-        tensor_dict = {"key": input_tensor_list[1].cpu()}
-        np.save(weight_path, tensor_dict)
-        compress_config = CompressConfig()
-        compressor = Compressor(compress_config, weight_path)
-        compress_weight, LinearSparseOperation.compress_index, compress_info = compressor.run()
+        try:
+            work_dir = os.path.join(os.getcwd(), "atb_temp/linear_sparse_weight")
+            if LinearSparseOperation.case_num == 1:
+                if os.path.exists(work_dir):
+                    shutil.rmtree(work_dir)
+                os.makedirs(work_dir)
+            os.chmod(work_dir, 0o700)
+            weight_path = os.path.join(work_dir, f"case{LinearSparseOperation.case_num}.npy")
+            LinearSparseOperation.case_num = LinearSparseOperation.case_num + 1
+            tensor_dict = {"key": input_tensor_list[1].cpu()}
+            np.save(weight_path, tensor_dict)
+            os.chmod(weight_path, 0o600)
+            compress_config = compress_config_cls(record_detail_root=work_dir)
+            compressor = compressor_cls(compress_config, weight_path)
+            compress_weight, LinearSparseOperation.compress_index, compress_info = compressor.run()
+        finally:
+            builtins.input = original_input
         weight_npu = torch.tensor(compress_weight["key"].astype(np.int8)).npu()
         input_tensor_list[1] = weight_npu
         input_tensor_list[4] = torch.tensor(LinearSparseOperation.compress_index["key"].astype(np.int8)).npu()
