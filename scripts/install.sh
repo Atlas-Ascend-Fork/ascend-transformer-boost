@@ -17,6 +17,7 @@ recover_flag=n
 install_path_flag=n
 install_for_all_flag=n
 torch_atb_flag=n
+preserve_torch_atb=n
 install_dir=""
 install_torch_atb_dir=""
 default_install_path="/usr/local/Ascend/atb"
@@ -61,7 +62,7 @@ function log() {
     if [ x"$log_file" = x ]; then
         echo -e "[cann-atb] [$(date +%Y%m%d-%H:%M:%S)] [$1] $2"
     else
-        if [ $(stat -c %s $log_file) -gt $MAX_LOG_SIZE ];then 
+        if [ $(stat -c %s $log_file) -gt $MAX_LOG_SIZE ];then
             echo -e "[cann-atb] [$(date +%Y%m%d-%H:%M:%S)] [$1] log file is bigger than $MAX_LOG_SIZE, stop write log to file"
         else
             echo -e "[cann-atb] [$(date +%Y%m%d-%H:%M:%S)] [$1] $2" >>$log_file
@@ -80,7 +81,7 @@ function print() {
     if [ x"$log_file" = x ]; then
         echo -e "[cann-atb] [$(date +%Y%m%d-%H:%M:%S)] [$1] $2"
     else
-        if [ $(stat -c %s $log_file) -gt $MAX_LOG_SIZE ];then 
+        if [ $(stat -c %s $log_file) -gt $MAX_LOG_SIZE ];then
             echo -e "[cann-atb] [$(date +%Y%m%d-%H:%M:%S)] [$1] log file is bigger than $MAX_LOG_SIZE, stop write log to file"
             echo -e "[cann-atb] [$(date +%Y%m%d-%H:%M:%S)] [$1] $2"
         else
@@ -161,7 +162,7 @@ function chmod_authority() {
     fi
 }
 
-function chmod_file() { 
+function chmod_file() {
     chmod_recursion ${1} "550" "file" "*.sh"
     chmod_recursion ${1} "440" "file" "*.bin"
     chmod_recursion ${1} "440" "file" "*.h"
@@ -173,7 +174,7 @@ function chmod_file() {
 
 function chmod_dir() {
     chmod_recursion ${1} ${2} "dir"
-} 
+}
 
 function chmod_recursion() {
     # install-for-all 实际上是给other组用户赋予了和同组用户相同的权限
@@ -217,7 +218,7 @@ function parse_script_args() {
         upgrade_flag=y
         shift
         ;;
-        --torch_atb)  
+        --torch_atb)
         torch_atb_flag=y
         shift
         ;;
@@ -404,7 +405,9 @@ function install_to_path() {
 function copy_files() {
     cp -r "${sourcedir}/atb" "$install_dir"
     cp -r "${sourcedir}/scripts" "$install_dir"
-    cp -r "${sourcedir}/whl" "$install_dir"
+    if [ -d "${sourcedir}/whl" ]; then
+        cp -r "${sourcedir}/whl" "$install_dir"
+    fi
     cp "${sourcedir}/install.sh" "$install_dir"
     cp "${sourcedir}/version.info" "$install_dir"
     cp "${sourcedir}/set_env.sh" "$install_dir"
@@ -419,7 +422,7 @@ function install_process() {
     fi
     if [ -n "${ARCH}" ]; then
         if [ "${arch_pkg}" != "${ARCH}" ]; then
-            print "ERROR" "Install failed, pkg arch ${arch_pkg} is not consistent with the current enviroment architecture ${ARCH}."
+            print "ERROR" "Install failed, pkg arch ${arch_pkg} is not consistent with the current environment architecture ${ARCH}."
             exit 1
         fi
     fi
@@ -428,10 +431,13 @@ function install_process() {
             print "ERROR" "Install failed, [ERROR] use absolute path for --install-path argument"
             exit 1
         fi
-        install_to_path
-    else
-        install_to_path
     fi
+    if [ "${torch_atb_flag}" == "y" ] && [ "${upgrade_flag}" != "y" ]; then
+        check_torch_atb_wheel || exit 1
+    elif [ "${torch_atb_flag}" != "y" ] && { [ ! -d "${sourcedir}/whl" ] || ! compgen -G "${sourcedir}/whl/*.whl" > /dev/null 2>&1; }; then
+        print "WARNING" "This run package does not contain torch_atb wheel. ATB installed without Python interface; rebuild with 'bash scripts/build.sh --torch_atb' if required."
+    fi
+    install_to_path
 }
 
 function check_owner() {
@@ -486,7 +492,7 @@ function check_uninstall_path() {
             default_install_path="${HOME}/Ascend/atb"
         fi
     fi
-    
+
     if [ ! -d "${default_install_path}" ]; then
         print "ERROR" "Uninstall failed, can not find the path of Ascend-cann-atb."
         exit 1
@@ -566,11 +572,15 @@ function upgrade() {
     print "INFO" "Ascend-cann-atb uninstall start!"
     check_owner
     check_upgrade_path
-    back_up_old_version
     if pip show "torch_atb" > /dev/null 2>&1; then
         print "INFO" "torch_atb is installed. need upgrade."
         torch_atb_flag=y
     fi
+    if [ "${torch_atb_flag}" == "y" ]; then
+        check_torch_atb_wheel || exit 1
+        preserve_torch_atb=y
+    fi
+    back_up_old_version
     uninstall_process ${version_dir}
     recover_flag=y
     install_process
@@ -636,9 +646,10 @@ PY
     echo "$abi"
 }
 
-function install_torch_atb() {
-    if [ "${torch_atb_flag}" != "y" ]; then
-        return 0
+function check_torch_atb_wheel() {
+    if [ ! -d "${sourcedir}/whl" ] || ! compgen -G "${sourcedir}/whl/*.whl" > /dev/null 2>&1; then
+        print "ERROR" "This run package does not contain torch_atb wheel. Rebuild with 'bash scripts/build.sh --torch_atb'."
+        return 1
     fi
 
     py_version=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
@@ -646,21 +657,29 @@ function install_torch_atb() {
     py_minor_version=${py_version##*.}
 
     if [ "$py_major_version" != "3" ] || { [ "$py_minor_version" != "10" ] && [ "$py_minor_version" != "11" ]; }; then
-        echo "ERROR: Unsupported Python version. Only Python 3.10, and 3.11 are supported."
-        exit 1
+        print "ERROR" "Unsupported Python version. Only Python 3.10, and 3.11 are supported."
+        return 1
     fi
 
     abi_tag=$(get_torch_cxx11_abi) || {
-        echo "ERROR: get_torch_cxx11_abi failed." >&2
-        exit 1
+        print "ERROR" "get_torch_cxx11_abi failed."
+        return 1
     }
     wheel_file="torch_atb-0.0.1+abi${abi_tag}-cp${py_major_version}${py_minor_version}-none-any.whl"
     wheel_path="${sourcedir}/whl/${wheel_file}"
 
     if [ ! -f "$wheel_path" ]; then
-        echo "ERROR: Wheel file ${wheel_file} not found at ${wheel_path}."
-        exit 1
+        print "ERROR" "This run package does not contain compatible torch_atb wheel ${wheel_file}. Rebuild with 'bash scripts/build.sh --torch_atb'."
+        return 1
     fi
+}
+
+function install_torch_atb() {
+    if [ "${torch_atb_flag}" != "y" ]; then
+        return 0
+    fi
+
+    check_torch_atb_wheel || return 1
 
     if pip show torch_atb > /dev/null 2>&1; then
         echo "INFO: torch_atb is already installed, force-reinstalling..."
@@ -682,6 +701,10 @@ function install_torch_atb() {
 }
 
 function uninstall_torch_atb() {
+    if [ "${preserve_torch_atb}" == "y" ]; then
+        return 0
+    fi
+
     if pip show "torch_atb" > /dev/null 2>&1; then
         print "INFO" "torch_atb is installed. need uninstall."
         pip uninstall -y torch_atb
