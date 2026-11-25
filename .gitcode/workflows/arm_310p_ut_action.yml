@@ -40,7 +40,7 @@ jobs:
             ${{ env.obs_path }}/atb_scheduler.py
             ${{ env.obs_path }}/atb_common.py
             ${{ env.obs_path }}/common.sh
-            ${{ env.obs_path }}/test_framework/x64/atb_test_framework.tar.gz
+            ${{ env.obs_path }}/test_framework/arm64/atb_test_framework.tar.gz
           path: ${{ steps.process_checkout.outputs.path }}
       -
         name: ut
@@ -51,4 +51,6 @@ jobs:
           export WORKSPACE=${{ steps.process_checkout.outputs.path }}
           sudo -E bash ${{ steps.process_checkout.outputs.path }}/ut.sh
     if: "${{ default() }}"
-    runs-on: ['self-hosted','os=ubuntu','arch=x64', 'repo=ascend']
+    runs-on: ['self-hosted','npu=4','smoke=310P']
+    container:
+      image: swr.cn-north-4.myhuaweicloud.com/hw-ascend/ubuntu:20.04.arm.cann920.310p.261019_v2

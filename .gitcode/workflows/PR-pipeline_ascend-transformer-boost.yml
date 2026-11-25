@@ -80,15 +80,6 @@ stages:
         with:
           task_name: 'Compile_ARM'
           image_version: ${{ jobs.JOB_image.outputs.Compile_Ascend_ARM }}
-      JOB_Compile_UT_X86:
-        permissions:
-          repository: read
-          id-token: write
-        name: Compile_UT_X86
-        uses: .gitcode/workflows/x86_compile_ut.yml
-        with:
-          task_name: 'Compile_UT_X86'
-          image_version: ${{ jobs.JOB_image.outputs.Compile_Ascend_X86 }}
       JOB_Compile_UT_ARM:
         permissions:
           repository: read
@@ -127,17 +118,17 @@ stages:
           repository: read
           id-token: write
         name: UT_ARM_910B
-        uses: .gitcode/workflows/arm_ut_action.yml
+        uses: .gitcode/workflows/arm_910b_ut_action.yml
         with:
-          image_version: ${{ jobs.JOB_image.outputs.Compile_Ascend_ARM }}
-      JOB_UT_Test:
+          image_version: ${{ jobs.JOB_image.outputs.UT_Test_910B_ARM }}
+      JOB_UT_ARM_310P:
         permissions:
           repository: read
           id-token: write
-        name: x86_310p_UT
-        uses: .gitcode/workflows/x86_ut_action.yml
+        name: UT_ARM_310P
+        uses: .gitcode/workflows/arm_310p_ut_action.yml
         with:
-          image_version: ${{ jobs.JOB_image.outputs.Compile_Ascend_X86 }}
+          image_version: ${{ jobs.JOB_image.outputs.UT_Test_310P_ARM }}
 post:
   jobs:
     job_post:
