@@ -14,11 +14,11 @@ const uint32_t BATCH_SIZE = 1;   // 批处理大小
 const uint32_t NTOKENS = 4;      // TOKEN大小
 const uint32_t HIDDENSIZEQ = 16; // Q 隐藏层大小
 const uint32_t HIDDENSIZEK = 16; // K 隐藏层大小
-const uint32_t HEAD_SIZE = 16;    // 头大小
+const uint32_t HEAD_SIZE = 16;   // 头大小
 
 /**
  * @brief 创建一个rope operation
- * @param rmsNormOp 创建一个Operation指针
+ * @param ropeOp 创建一个Operation指针
  * @return atb::Status 错误码
  */
 atb::Status PrepareOperation(atb::Operation **ropeOp)

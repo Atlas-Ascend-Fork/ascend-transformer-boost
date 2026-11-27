@@ -43,7 +43,7 @@ atb::Status PrepareInTensor(atb::Context *contextPtr, aclrtStream stream, atb::S
 
 /**
  * @brief 创建一个rmsnorm backward operation
- * @param rmsNormOp 创建一个Operation指针
+ * @param rmsNormBackwardOp 创建一个Operation指针
  * @return atb::Status 错误码
  */
 atb::Status CreateRmsNormBackwardOperation(atb::Operation **rmsNormBackwardOp)

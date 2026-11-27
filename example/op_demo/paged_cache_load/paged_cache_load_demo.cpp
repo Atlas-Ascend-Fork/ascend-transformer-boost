@@ -11,8 +11,8 @@
 #include "../demo_util.h"
 
 const uint32_t NUM_BLOCKS = 4;       // BLOCK数量
-const uint32_t BLOCK_SIZE = 128;       // BLOCK大小
-const uint32_t NUM_HEADS = 4;       // 头大小
+const uint32_t BLOCK_SIZE = 128;     // BLOCK大小
+const uint32_t NUM_HEADS = 4;        // 头大小
 const uint32_t HEAD_SIZE_K = 32;     // K 头大小
 const uint32_t HEAD_SIZE_V = 32;     // V 头大小
 const uint32_t ELENUM_ALIGNED = 32;  // 32字节对齐 int8为32 其他情况为16
@@ -21,7 +21,7 @@ const uint32_t NUM_TOKENS = 384;     // TOKEN 数量
 
 /**
  * @brief 创建一个 paged_cache_load operation
- * @param PagedCacheLoadOperation 创建一个Operation指针
+ * @param pagedCacheLoadOp 创建一个Operation指针
  * @return atb::Status 错误码
  */
 atb::Status PrepareOperation(atb::Operation **pagedCacheLoadOp)
@@ -42,14 +42,18 @@ atb::Status PrepareOperation(atb::Operation **pagedCacheLoadOp)
  */
 atb::Status PrepareInTensor(atb::Context *contextPtr, aclrtStream stream, atb::SVector<atb::Tensor> &inTensors)
 {
-    std::vector<int8_t> kCacheData(NUM_BLOCKS * int32_t(NUM_HEADS * HEAD_SIZE_K / ELENUM_ALIGNED) * BLOCK_SIZE * ELENUM_ALIGNED, 1);
+    std::vector<int8_t> kCacheData(
+        NUM_BLOCKS * int32_t(NUM_HEADS * HEAD_SIZE_K / ELENUM_ALIGNED) * BLOCK_SIZE * ELENUM_ALIGNED, 1);
     atb::Tensor tensorKCache;
-    CHECK_STATUS(CreateTensorFromVector(contextPtr, stream, kCacheData, ACL_INT8, aclFormat::ACL_FORMAT_FRACTAL_NZ,
-                                        {NUM_BLOCKS, int32_t(NUM_HEADS * HEAD_SIZE_K / ELENUM_ALIGNED), BLOCK_SIZE, ELENUM_ALIGNED}, tensorKCache));
-    std::vector<int8_t> vCacheData(NUM_BLOCKS * int32_t(NUM_HEADS * HEAD_SIZE_V / ELENUM_ALIGNED) * BLOCK_SIZE * ELENUM_ALIGNED, 1);
+    CHECK_STATUS(CreateTensorFromVector(
+        contextPtr, stream, kCacheData, ACL_INT8, aclFormat::ACL_FORMAT_FRACTAL_NZ,
+        {NUM_BLOCKS, int32_t(NUM_HEADS * HEAD_SIZE_K / ELENUM_ALIGNED), BLOCK_SIZE, ELENUM_ALIGNED}, tensorKCache));
+    std::vector<int8_t> vCacheData(
+        NUM_BLOCKS * int32_t(NUM_HEADS * HEAD_SIZE_V / ELENUM_ALIGNED) * BLOCK_SIZE * ELENUM_ALIGNED, 1);
     atb::Tensor tensorVCache;
-    CHECK_STATUS(CreateTensorFromVector(contextPtr, stream, vCacheData, ACL_INT8, aclFormat::ACL_FORMAT_FRACTAL_NZ,
-                                        {NUM_BLOCKS, int32_t(NUM_HEADS * HEAD_SIZE_V / ELENUM_ALIGNED), BLOCK_SIZE, ELENUM_ALIGNED}, tensorVCache));
+    CHECK_STATUS(CreateTensorFromVector(
+        contextPtr, stream, vCacheData, ACL_INT8, aclFormat::ACL_FORMAT_FRACTAL_NZ,
+        {NUM_BLOCKS, int32_t(NUM_HEADS * HEAD_SIZE_V / ELENUM_ALIGNED), BLOCK_SIZE, ELENUM_ALIGNED}, tensorVCache));
     std::vector<int32_t> blockTableData = {2, 0, 0};
     atb::Tensor blockTable;
     CHECK_STATUS(CreateTensorFromVector(contextPtr, stream, blockTableData, ACL_INT32, aclFormat::ACL_FORMAT_ND,
