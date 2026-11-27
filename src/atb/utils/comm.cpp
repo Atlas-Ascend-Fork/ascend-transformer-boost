@@ -93,7 +93,7 @@ bool CreateHcclRootInfo(HcclRootInfo &hcclRootInfo, int32_t rank, int32_t rankRo
 {
     uint32_t deviceCount = 0;
     aclError ret = aclrtGetDeviceCount(&deviceCount);
-    if (ret != ACL_ERROR_NONE) {
+    if (ret != ACL_SUCCESS) {
         ATB_LOG(ERROR) << "Failed to get device count, error code: " << ret;
         return false;
     }
