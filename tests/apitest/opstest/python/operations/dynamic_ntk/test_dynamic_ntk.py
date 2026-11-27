@@ -11,23 +11,19 @@ import sys
 import os
 import unittest
 import torch
-import torch_npu
-import numpy as np
-import torch.nn as nn
-import math
 import logging
 
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
- 
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 import operation_test  # NOQA: E402
- 
+
 OP_NAME = "DynamicNTKOperation"
 PARAM = {"outputType": 1}
 
+
 class TestDynamicNTKOperation(operation_test.OperationTest):
-    def __gen_golden(self, position_ids, inv_freqs, seq_lens, out_type = 0):
+    def __gen_golden(self, position_ids, inv_freqs, seq_lens, out_type=0):
         off = 0
         num_tokens = position_ids.shape[0]
         dim = inv_freqs.shape[1] * 2
@@ -37,10 +33,10 @@ class TestDynamicNTKOperation(operation_test.OperationTest):
         cosOut = torch.zeros([num_tokens, dim], dtype=torch.float32)
         for batch_id in range(batch_num):
             pos_len = seq_lens[batch_id]
-            freqs = torch.einsum('i,j->ij', position_ids[off:off + pos_len].to(torch.float32), inv_freqs[batch_id])
-            emb = torch.cat((freqs, freqs), dim = -1)
-            cosOut[off:off + pos_len, :] = emb.cos()
-            sinOut[off:off + pos_len, :] = emb.sin()
+            freqs = torch.einsum('i,j->ij', position_ids[off : off + pos_len].to(torch.float32), inv_freqs[batch_id])
+            emb = torch.cat((freqs, freqs), dim=-1)
+            cosOut[off : off + pos_len, :] = emb.cos()
+            sinOut[off : off + pos_len, :] = emb.sin()
             off += pos_len
         return sinOut.to(otype), cosOut.to(otype)
 
@@ -68,24 +64,25 @@ class TestDynamicNTKOperation(operation_test.OperationTest):
         dim = inv_freqs.shape[1] * 2
         seq_lens = in_tensors[2]
         batch_num = seq_lens.shape[0]
-        otype = torch.float16
         sinOut = torch.zeros([num_tokens, dim], dtype=torch.float16)
         cosOut = torch.zeros([num_tokens, dim], dtype=torch.float16)
         for batch_id in range(batch_num):
             pos_len = seq_lens[batch_id]
-            freqs = torch.einsum('i,j->ij', position_ids[off:off + pos_len].to(torch.float32), inv_freqs[batch_id])
-            emb = torch.cat((freqs, freqs), dim = -1)
-            cosOut[off:off + pos_len, :] = emb.cos()
-            sinOut[off:off + pos_len, :] = emb.sin()
+            freqs = torch.einsum('i,j->ij', position_ids[off : off + pos_len].to(torch.float32), inv_freqs[batch_id])
+            emb = torch.cat((freqs, freqs), dim=-1)
+            cosOut[off : off + pos_len, :] = emb.cos()
+            sinOut[off : off + pos_len, :] = emb.sin()
             off += pos_len
         return [sinOut, cosOut]
+
     def test(self):
-        if  operation_test.get_soc_version() == 'Ascend910A' or \
-            operation_test.get_soc_version() == 'Ascend310B':
-            logging.info("this testcase don't supports Ascend910A\Ascend310B")
+        if operation_test.get_soc_version() == 'Ascend910A' or operation_test.get_soc_version() == 'Ascend310B':
+            logging.info("this testcase don't supports Ascend910A/Ascend310B")
             return True
         position_ids, inv_freqs, seq_lens = self.__gen_test_data(16, 256, 128, 256000, 0)
         PARAM["outDataType"] = 1
         self.execute(OP_NAME, PARAM, [position_ids, inv_freqs, seq_lens])
+
+
 if __name__ == '__main__':
     unittest.main()

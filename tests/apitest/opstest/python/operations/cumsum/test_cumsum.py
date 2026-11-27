@@ -11,18 +11,16 @@ import sys
 import os
 import unittest
 import torch
-import torch_npu
 import logging
 import numpy as np
 
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 import operation_test  # NOQA: E402
 
 OP_NAME = "CumsumOperation"
-PARAM = {"axes":[1]}
+PARAM = {"axes": [1]}
 
 
 class TestCumsumOperation(operation_test.OperationTest):
@@ -31,13 +29,13 @@ class TestCumsumOperation(operation_test.OperationTest):
         golden_result = np.cumsum(in_tensors[0], axis=1)
         # golden_result = torch.cumsum(in_tensors[0], dim=1)
         return [golden_result.npu()]
-    
+
     def test(self):
-        if  operation_test.get_soc_version() == 'Ascend910A' or \
-            operation_test.get_soc_version() == 'Ascend310B':
-            logging.info("this testcase don't supports Ascend910A\Ascend310B")
+        if operation_test.get_soc_version() == 'Ascend910A' or operation_test.get_soc_version() == 'Ascend310B':
+            logging.info("this testcase don't supports Ascend910A/Ascend310B")
             return True
         self.execute(OP_NAME, PARAM, [torch.randn(28, 32, 4096, dtype=torch.float16).npu()])
+
 
 if __name__ == '__main__':
     unittest.main()
