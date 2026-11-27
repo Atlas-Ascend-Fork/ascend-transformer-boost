@@ -29,7 +29,7 @@ aclnnStatus Init(atb::Context **context, aclrtStream *stream, int64_t *deviceId)
     aclrtCreateStream(stream);
     atb::CreateContext(context);
     (*context)->SetExecuteStream(*stream);
-    return ACL_ERROR_NONE;
+    return ACL_SUCCESS;
 }
 
 aclnnStatus Destroy(atb::Context **context, aclrtStream *stream)
@@ -37,7 +37,7 @@ aclnnStatus Destroy(atb::Context **context, aclrtStream *stream)
     aclrtDestroyStream(*stream);
     DestroyContext(*context);
     aclFinalize();
-    return ACL_ERROR_NONE;
+    return ACL_SUCCESS;
 }
 
 aclnnStatus CreateInOutData(size_t num, uint8_t **inoutHost, uint8_t **inoutDevice, size_t *inoutSize)
@@ -48,7 +48,7 @@ aclnnStatus CreateInOutData(size_t num, uint8_t **inoutHost, uint8_t **inoutDevi
             aclrtMalloc((void **)(&(inoutDevice[i])), inoutSize[i], ACL_MEM_MALLOC_HUGE_FIRST);
         }
     }
-    return ACL_ERROR_NONE;
+    return ACL_SUCCESS;
 }
 
 void CreateACLTensorInOut(const std::vector<int64_t> dims, aclDataType type, aclFormat format, aclTensor **list,
