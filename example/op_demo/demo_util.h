@@ -62,7 +62,7 @@ const char *const ATB_ERROR_DOC = "https://www.hiascend.com/document/detail/zh/C
  * @param  dataType 数据类型
  * @param  format 数据格式
  * @param  shape 数据shape
- * @param atb::Tensor 返回创建的Tensor对象
+ * @param tensor 返回创建的Tensor对象
  * @return atb::Status atb错误码
  */
 atb::Status CreateTensor(const aclDataType dataType, const aclFormat format, std::vector<int64_t> shape,
@@ -86,7 +86,7 @@ atb::Status CreateTensor(const aclDataType dataType, const aclFormat format, std
  * @param  format 数据格式
  * @param  shape 数据shape
  * @param  hostData host侧数据地址，生命周期需覆盖Execute调用
- * @param atb::Tensor 返回创建的Tensor对象
+ * @param tensor 返回创建的Tensor对象
  * @return atb::Status atb错误码
  * @note 文档中“位置”为cpu的输入（如SelfAttention的seqLen、tokenOffset）用本接口创建，
  *       只有hostData、不分配device内存
@@ -113,8 +113,7 @@ atb::Status CreateHostTensor(const aclDataType dataType, const aclFormat format,
  * @param stream stream
  * @param inTensor 输入tensor
  * @param outTensorType 输出tensor的数据类型
- * @param shape 输出tensor的shape
- * @param atb::Tensor 转换后的tensor
+ * @param outTensor 转换后的tensor
  * @return atb::Status atb错误码
  */
 atb::Status CastOp(atb::Context *contextPtr, aclrtStream stream, const atb::Tensor inTensor,
@@ -187,7 +186,7 @@ atb::Status GetShape(const aclDataType tensorType, const std::vector<int64_t> &i
  * @param contextPtr context指针
  * @param stream stream
  * @param inTensor 输入tensor
- * @param outTensorType tensor的数据类型
+ * @param tensorType tensor的数据类型
  * @param outTensor 输出tensor
  * @param shape tensor的shape
  * @return atb::Status atb错误码
@@ -234,6 +233,7 @@ atb::Status TransdataOp(atb::Context *contextPtr, aclrtStream stream, const atb:
  * @param format 输出tensor的格式，即NZ，ND等
  * @param shape 输出tensor的shape
  * @param outTensor 返回创建的tensor
+ * @param inTensorType 输入tensor的数据类型，默认 ACL_DT_UNDEFINED
  */
 template <typename T>
 atb::Status CreateTensorFromVector(atb::Context *contextPtr, aclrtStream stream, std::vector<T> data,

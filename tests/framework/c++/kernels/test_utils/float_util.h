@@ -24,12 +24,12 @@ class FloatUtil {
 public:
     /**
      * @brief 指定精度下判断两float数据是否相同
-     * @param excepted      期望数据
+     * @param expected      期望数据
      * @param actual        真实计算数据
      * @param atol          绝对误差的阈值，例如0.001
      * @param rtol          相对误差的阈值，例如0.001
      * @return 数据相同返回true，不同返回false
-    */
+     */
     static bool FloatJudgeEqual(float expected, float actual, float atol, float rtol);
 
     /**
@@ -37,9 +37,8 @@ public:
      * @param lower         随机数大小下限
      * @param upper         随机数大小上限
      * @param code          输出，生成的随机数vector，数据类型转为T
-    */
-    template <class T> 
-    static void GenerateCode(float lower, float upper, std::vector<T> &code)
+     */
+    template <class T> static void GenerateCode(float lower, float upper, std::vector<T> &code)
     {
         std::random_device rd;
         std::default_random_engine eng(rd());
@@ -49,8 +48,7 @@ public:
         }
     }
 
-    template <typename T>
-    static Mki::Status MatchAtTensorFloat(at::Tensor &out, at::Tensor &gt, float atol, float rtol)
+    template <typename T> static Mki::Status MatchAtTensorFloat(at::Tensor &out, at::Tensor &gt, float atol, float rtol)
     {
         T *result = static_cast<T *>(out.storage().data_ptr().get());
         T *expect = static_cast<T *>(gt.storage().data_ptr().get());
